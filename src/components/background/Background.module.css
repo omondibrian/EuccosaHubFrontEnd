@@ -1,0 +1,114 @@
+.Background {
+    background-image: url(../../assets/vectors/home-background.svg);
+    background-size: cover;
+    position: relative;
+}
+
+.foreground {
+    z-index: 10;
+    position: relative;
+    z-index: 10;
+}
+
+.planets {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.planets_small__blue>svg {
+    position: absolute;
+    bottom: 10%;
+    right: 20%;
+    height: 176px;
+    width: 176px;
+}
+
+.planets_small__purple {
+    position: absolute;
+    left: 25%;
+    bottom: 10%;
+    height: 150px;
+    width: 150px;
+}
+
+.planets_large__purple>svg {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    height: 400px;
+    width: 400px;
+}
+
+.planets_medium>svg {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+.planets_small>svg {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+@media (max-width:720px) {
+    .planets_small__blue>svg {
+        bottom: 15%;
+        right: 5%;
+        height: 176px;
+        width: 176px;
+    }
+    .planets_small__purple {
+        left: 5%;
+        bottom: 10%;
+        height: 150px;
+        width: 150px;
+    }
+    .planets_large__purple>svg {
+        top: -20px;
+        right: -20px;
+        height: 300px;
+        width: 300px;
+    }
+    .planets_medium>svg {
+        width: 200px;
+        height: 200px;
+        top: 3%;
+        left: 0%;
+    }
+}
+
+@media (max-width:400px) {
+    .planets_small__blue>svg {
+        bottom: 10%;
+        right: 5%;
+        height: 130px;
+        width: 130px;
+    }
+    .planets_small__purple {
+        left: 5%;
+        bottom: 10%;
+        height: 120px;
+        width: 120px;
+    }
+    .planets_large__purple>svg {
+        top: -10px;
+        right: -10px;
+        height: 200px;
+        width: 200px;
+    }
+    .planets_medium>svg {
+        width: 150px;
+        height: 150px;
+    }
+}

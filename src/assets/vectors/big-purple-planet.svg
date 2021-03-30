@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   style="fill:none"
+   id="svg25"
+   version="1.1"
+   viewBox="0 0 430.05026 172.53514"
+   height="430.05026"
+   width="430.05026">
+  <metadata
+     id="metadata29">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     style="fill:url(#paint0_linear)"
+     id="path2"
+     d="m 101.44423,269.15989 c 99.577,64.683 232.736,36.396 297.419,-63.18101 64.683,-99.5765 36.396,-232.735695 -63.18,-297.418995 -99.577,-64.682995 -232.736,-36.395995 -297.42,63.1804 -64.6829,99.576798 -36.3961005,232.735595 63.181,297.419605 z" />
+  <path
+     style="fill:url(#paint1_linear)"
+     id="path4"
+     d="m 366.88423,101.19388 c -16.231,-7.481897 -38.233,5.6385 -49.142,29.3051 -10.91,23.6669 -6.596,48.9179 9.635,56.3989 16.231,7.482 38.232,-5.638 49.142,-29.305 10.909,-23.6664 6.595,-48.9172 -9.635,-56.399 z" />
+  <path
+     style="fill:url(#paint2_linear)"
+     id="path6"
+     d="m 265.09723,133.19208 c -1.7,-5.6016 -9.751,-8.1168 -17.982,-5.6177 -8.231,2.4991 -13.525,9.066 -11.824,14.6677 1.701,5.6016 9.752,8.1168 17.983,5.6177 8.231,-2.499 13.524,-9.066 11.823,-14.6677 z" />
+  <defs
+     id="defs23">
+    <linearGradient
+       gradientTransform="translate(-79.43677,51.859883)"
+       gradientUnits="userSpaceOnUse"
+       y2="96.040802"
+       x2="43.4921"
+       y1="13.6081"
+       x1="398.83499"
+       id="paint0_linear">
+      <stop
+         id="stop8"
+         stop-color="#B86DDE" />
+      <stop
+         id="stop10"
+         stop-color="#295EEE"
+         offset="0.994624" />
+    </linearGradient>
+    <linearGradient
+       gradientTransform="translate(-79.43677,51.859883)"
+       gradientUnits="userSpaceOnUse"
+       y2="125.354"
+       x2="472.505"
+       y1="102.519"
+       x1="409.901"
+       id="paint1_linear">
+      <stop
+         id="stop13"
+         stop-color="#B86DDE" />
+      <stop
+         id="stop15"
+         stop-color="#295EEE"
+         offset="0.994624" />
+    </linearGradient>
+    <linearGradient
+       gradientTransform="translate(-79.43677,51.859883)"
+       gradientUnits="userSpaceOnUse"
+       y2="106.639"
+       x2="335.07999"
+       y1="84.038101"
+       x1="323.435"
+       id="paint2_linear">
+      <stop
+         id="stop18"
+         stop-color="#B86DDE" />
+      <stop
+         id="stop20"
+         stop-color="#295EEE"
+         offset="0.994624" />
+    </linearGradient>
+  </defs>
+</svg>
