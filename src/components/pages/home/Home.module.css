@@ -196,8 +196,11 @@
 .d_flex {
   display: flex;
   justify-content: space-between;
+ 
 }
 .team {
+  overflow: hidden;
   max-width: 1200px;
   margin: 2rem auto;
+  transition: all .3s ease;
 }

@@ -36,9 +36,8 @@ const ourTeam = [
     img_src: Img3,
   },
 ];
-
+const height = window.innerHeight;
 const createWaveAnimation = () => {
-  const height = window.innerHeight;
   const amplitude = 70;
   const units = 4 * Math.PI;
   let clipPathPoints = {
@@ -71,7 +70,6 @@ const createWaveAnimation = () => {
   clipPathPoints["firstControlPath"] += ")";
   clipPathPoints["secondControlPath"] += ")";
   clipPathPoints["endPath"] += ")";
-  console.log(clipPathPoints["secondControlPath"]);
   return clipPathPoints;
 };
 
@@ -115,6 +113,20 @@ const SiteHero = () => {
   );
 };
 
+const slider = (elements, len) => {
+  elements.forEach((ele) => {
+    let order = +ele.dataset.order + 1;
+    if (order > len + 1) {
+      order = 1;
+    }
+    ele.style.order = order;
+    ele.dataset.order = order;
+  });
+  setTimeout(() => {
+    slider(elements, len);
+  }, 2000);
+};
+
 function Home() {
   const myEvent = {
     title: "Mastering the Language",
@@ -126,6 +138,12 @@ function Home() {
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.",
     img: Img,
   };
+
+  useEffect(() => {
+    const profiles = document.querySelectorAll("#team-slider>div");
+
+    slider(profiles, profiles.length);
+  }, []);
   return (
     <div className={style.home}>
       <section className={style.site_hero}>
@@ -179,9 +197,9 @@ function Home() {
         </div>
         <div className={style.team}>
           <h3 className={style.sub_header}>Our Team</h3>
-          <div className={style.d_flex}>
-            {ourTeam.map((profile) => (
-              <Profile key={profile.fullName} profile={profile} />
+          <div className={style.d_flex} id="team-slider">
+            {ourTeam.map((profile, indx) => (
+              <Profile key={indx} profile={profile} index={indx} />
             ))}
           </div>
         </div>

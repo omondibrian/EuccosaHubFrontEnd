@@ -2,9 +2,9 @@ import style from "./Profile.module.css";
 
 import React from "react";
 
-function Profile({ profile }) {
+function Profile({ profile, index }) {
   return (
-    <div className={style.profile}>
+    <div className={`${style.profile} .splide__slide`} data-order={index+1}>
       <div className={style.profile__top}>
         <img
           src={profile.img_src}
