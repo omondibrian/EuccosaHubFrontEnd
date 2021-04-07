@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   style="enable-background:new"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 208.74542 30.480001"
+   height="30.480001"
+   width="208.74542">
+  <defs
+     id="defs2">
+    <filter
+       id="filter887"
+       style="color-interpolation-filters:sRGB">
+      <feBlend
+         id="feBlend889"
+         in2="BackgroundImage"
+         mode="multiply" />
+    </filter>
+  </defs>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-113.01605,-127.52069)"
+     id="layer1">
+    <g
+       id="flowRoot815"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:40px;line-height:1.25;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.98999999;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter887)"
+       transform="matrix(0.26458333,0,0,0.26458333,115,33.571429)"
+       aria-label="EUCOSSA">
+      <path
+         id="path823"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:133.33332825px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+         d="m 128.24817,444.81715 v 14.53334 H 58.248177 v -93.33333 h 68.133333 v 14.53333 H 75.581509 v 24.26666 h 45.066661 v 14.26667 H 75.581509 v 25.73333 z" />
+      <path
+         id="path825"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:133.33332825px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+         d="m 187.71459,460.68382 q -19.33333,0 -30.13333,-10.8 -10.8,-10.93333 -10.8,-31.2 v -52.66666 h 17.33333 v 51.99999 q 0,27.46667 23.73334,27.46667 23.59999,0 23.59999,-27.46667 v -51.99999 h 17.06667 v 52.66666 q 0,20.26667 -10.8,31.2 -10.66666,10.8 -30,10.8 z" />
+      <path
+         id="path827"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:133.33332825px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+         d="m 295.98119,460.68382 q -14.13333,0 -25.59999,-6.13333 -11.33334,-6.26667 -17.86667,-17.2 -6.4,-10.93334 -6.4,-24.66667 0,-13.73333 6.53333,-24.66667 6.53334,-10.93333 17.86667,-17.06666 11.46667,-6.26667 25.6,-6.26667 11.46666,0 20.93333,4 9.46667,4 16,11.6 l -11.2,10.53333 q -10.13333,-10.93333 -24.93333,-10.93333 -9.6,0 -17.2,4.26667 -7.6,4.13333 -11.86667,11.6 -4.26666,7.46666 -4.26666,16.93333 0,9.46667 4.26666,16.93333 4.26667,7.46667 11.86667,11.73334 7.6,4.13333 17.2,4.13333 14.8,0 24.93333,-11.06667 l 11.2,10.66667 q -6.53333,7.6 -16.13333,11.6 -9.46667,4 -20.93334,4 z" />
+      <path
+         id="path829"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:133.33332825px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+         d="m 391.31424,460.68382 q -14.26667,0 -25.73333,-6.13333 -11.46667,-6.26667 -18,-17.2 -6.53334,-11.06667 -6.53334,-24.66667 0,-13.6 6.53334,-24.53333 6.53333,-11.06667 18,-17.2 11.46666,-6.26667 25.73333,-6.26667 14.26667,0 25.73333,6.26667 11.46667,6.13333 18,17.06666 6.53333,10.93334 6.53333,24.66667 0,13.73333 -6.53333,24.66667 -6.53333,10.93333 -18,17.2 -11.46666,6.13333 -25.73333,6.13333 z m 0,-15.2 q 9.33333,0 16.8,-4.13333 7.46667,-4.26667 11.73333,-11.73334 4.26667,-7.6 4.26667,-16.93333 0,-9.33333 -4.26667,-16.8 -4.26666,-7.6 -11.73333,-11.73333 -7.46667,-4.26667 -16.8,-4.26667 -9.33333,0 -16.8,4.26667 -7.46667,4.13333 -11.73333,11.73333 -4.26667,7.46667 -4.26667,16.8 0,9.33333 4.26667,16.93333 4.26666,7.46667 11.73333,11.73334 7.46667,4.13333 16.8,4.13333 z" />
+      <path
+         id="path831"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:133.33332825px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+         d="m 488.91411,460.68382 q -10.8,0 -20.93333,-3.06667 -10,-3.06666 -15.86666,-8.13333 l 5.99999,-13.46667 q 5.73334,4.53334 14,7.46667 8.4,2.8 16.8,2.8 10.4,0 15.46667,-3.33333 5.2,-3.33334 5.2,-8.8 0,-4 -2.93333,-6.53334 -2.8,-2.66666 -7.2,-4.13333 -4.4,-1.46667 -12,-3.33333 -10.66667,-2.53334 -17.33334,-5.06667 -6.53333,-2.53333 -11.33333,-7.86667 -4.66666,-5.46666 -4.66666,-14.66666 0,-7.73334 4.13333,-14 4.26666,-6.4 12.66666,-10.13333 8.53334,-3.73334 20.8,-3.73334 8.53334,0 16.8,2.13334 8.26667,2.13333 14.26667,6.13333 l -5.46667,13.46666 q -6.13333,-3.6 -12.8,-5.46666 -6.66666,-1.86667 -12.93333,-1.86667 -10.26667,0 -15.33333,3.46667 -4.93334,3.46666 -4.93334,9.2 0,4 2.8,6.53333 2.93334,2.53333 7.33334,4 4.4,1.46667 12,3.33333 10.4,2.4 17.06666,5.06667 6.66667,2.53333 11.33334,7.86667 4.8,5.33333 4.8,14.4 0,7.73333 -4.26667,14 -4.13333,6.26666 -12.66667,10 -8.53333,3.73333 -20.8,3.73333 z" />
+      <path
+         id="path833"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:133.33332825px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+         d="m 572.78075,460.68382 q -10.8,0 -20.93333,-3.06667 -10,-3.06666 -15.86667,-8.13333 l 6,-13.46667 q 5.73334,4.53334 14,7.46667 8.4,2.8 16.8,2.8 10.4,0 15.46667,-3.33333 5.2,-3.33334 5.2,-8.8 0,-4 -2.93334,-6.53334 -2.8,-2.66666 -7.2,-4.13333 -4.39999,-1.46667 -11.99999,-3.33333 -10.66667,-2.53334 -17.33334,-5.06667 -6.53333,-2.53333 -11.33333,-7.86667 -4.66667,-5.46666 -4.66667,-14.66666 0,-7.73334 4.13334,-14 4.26666,-6.4 12.66666,-10.13333 8.53334,-3.73334 20.8,-3.73334 8.53333,0 16.8,2.13334 8.26667,2.13333 14.26667,6.13333 l -5.46667,13.46666 q -6.13333,-3.6 -12.8,-5.46666 -6.66667,-1.86667 -12.93333,-1.86667 -10.26667,0 -15.33333,3.46667 -4.93334,3.46666 -4.93334,9.2 0,4 2.8,6.53333 2.93334,2.53333 7.33334,4 4.4,1.46667 12,3.33333 10.39999,2.4 17.06666,5.06667 6.66667,2.53333 11.33333,7.86667 4.8,5.33333 4.8,14.4 0,7.73333 -4.26666,14 -4.13334,6.26666 -12.66667,10 -8.53333,3.73333 -20.8,3.73333 z" />
+      <path
+         id="path835"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:133.33332825px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+         d="m 688.24739,437.75049 h -46.66667 l -9.2,21.6 h -17.86666 l 42,-93.33333 h 17.06666 l 42.13333,93.33333 h -18.13333 z m -5.73333,-13.6 -17.6,-40.8 -17.46667,40.8 z" />
+    </g>
+  </g>
+</svg>

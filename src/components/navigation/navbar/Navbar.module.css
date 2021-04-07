@@ -1,0 +1,83 @@
+.navbar {
+  transition: all 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: inherit;
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 0.8rem;
+}
+
+.nav {
+  display: flex;
+  list-style: none;
+  font-weight: bold;
+  padding-right: 2rem;
+  text-transform: lowercase;
+}
+.nav_link {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: capitalize;
+}
+.nav__toggler {
+  display: none;
+  margin-right: 2rem;
+}
+
+.nav__toggler > button {
+  background: transparent;
+  outline: none;
+  border: none;
+}
+@media (min-width: 719.98px) {
+  .nav__scrolled {
+    background: white;
+    color: var(--dark-blue);
+    box-shadow: 0 5px 7px -10px rgba(0, 0, 0, 0.75);
+  }
+}
+@media (max-width: 720px) {
+  .nav {
+    display: none;
+  }
+  .nav__toggler {
+    display: block;
+  }
+  .navbar {
+    background: white;
+    color: var(--dark-blue);
+    box-shadow: 0 5px 7px -10px rgba(0, 0, 0, 0.75);
+  }
+}
+.nav__text {
+  color: var(--dark-blue);
+  display: block;
+}
+.mobile_nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  transform: scaleY(0);
+  background: url(../../../assets/vectors/home-background.svg);
+  z-index: 100;
+
+  transform-origin: top;
+}
+.mobile_nav button {
+  color: var(--white);
+  font-size: 3rem;
+  position: fixed;
+  top: 10px;
+  right: 20px;
+}

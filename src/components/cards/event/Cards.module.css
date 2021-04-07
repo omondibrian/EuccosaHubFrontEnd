@@ -1,0 +1,161 @@
+.event_card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 5px;
+  margin-right: 1rem;
+  overflow: hidden;
+  overflow: hidden;
+}
+
+.event_card__description {
+  padding: 10px 20px;
+  flex-basis: 60%;
+  font-size: 16px;
+}
+
+.event_card__img {
+  width: 100%;
+  height: auto;
+}
+
+.event_card__burner {
+  flex-basis: 40%;
+  position: relative;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.event_card__title {
+  margin: 0.5rem 0 0 0;
+  color: var(--gray);
+}
+
+.event_card__text {
+  margin-top: 0.5rem;
+  color: var(--gray);
+}
+
+.event_card__caption {
+  box-sizing: border-box;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.event_card__burner img {
+  transition: opacity 0.35s;
+}
+.event_card__burner {
+  font-family: Arial, sans-serif;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: #000000;
+  text-align: left;
+  height: min-content;
+}
+
+.event_card__burner figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 30px 3em;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.event_card__burner figcaption::before {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  bottom: 30px;
+  left: 100%;
+  border-left: 4px solid rgba(255, 255, 255, 0.8);
+  content: "";
+  opacity: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: all 0.5s;
+  transition-delay: 0.6s;
+}
+.event_card__burner .card_details {
+  margin: 0 0 5px;
+  opacity: 0;
+  transition: opacity 0.35s, -webkit-transform 0.35s, -moz-transform 0.35s,
+    -o-transform 0.35s, transform 0.35s;
+}
+.event_card__burner .card_details {
+  word-spacing: -0.15em;
+  text-transform: uppercase;
+  transform: translate3d(30%, 0%, 0);
+  transition-delay: 0.3s;
+}
+
+.event_card__burner:hover img {
+  opacity: 0.3;
+}
+.event_card__burner:hover figcaption .card_details {
+  opacity: 1;
+  transform: translate3d(0%, 0%, 0);
+  transition-delay: 0.4s;
+}
+
+.event_card__burner:hover figcaption::before {
+  background: rgba(255, 255, 255, 0);
+  left: 30px;
+  opacity: 1;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.card_details {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.card_details > svg {
+  fill: var(--white);
+  height: 18px;
+  width: 18px;
+}
+.mobile_details {
+  color: var(--gray);
+  justify-content: space-between;
+  margin-top: 10px;
+  display: none;
+  text-transform: capitalize;
+  flex-wrap: wrap;
+}
+.mobile_details > span {
+  display: inline-block;
+}
+
+@media (max-width: 678px) {
+  .event_card__burner {
+    display: none;
+  }
+  .event_card__description {
+    flex-basis: 100%;
+  }
+  .mobile_details {
+    display: flex;
+  }
+}
+
+.event_card h4 {
+  position: relative;
+  left: 500px;
+}
+.line {
+  transform: scaleX(0);
+}
+.event_card p {
+  top: 500px;
+  position: relative;
+}
