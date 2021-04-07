@@ -12,10 +12,13 @@
   margin-left: 1rem;
   margin-right: 1rem;
   width: 200px;
-  
+  flex-shrink:0;
+  margin-bottom: 1rem;
+  transition: all .3s linear;
 }
 .profile__top {
   background-color: lightgray;
+  height: 200px;
 }
 .profile__bottom {
   clip-path: polygon(
