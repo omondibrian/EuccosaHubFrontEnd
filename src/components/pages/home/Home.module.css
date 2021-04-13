@@ -1,12 +1,12 @@
 .site_hero {
-  color: var(--dark-blue);
+  color: var(--dark-blue)!important
 }
 .site_hero__animate {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
-  color: var(--white);
+  color: var(--white)!important;
 }
 
 .site_hero__content {

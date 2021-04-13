@@ -6,18 +6,11 @@ import avator from "../../../assets/images/avatar.png";
 import Img1 from "../../../assets/images/profile/1.jpeg";
 import Img2 from "../../../assets/images/profile/2.jpeg";
 import Img3 from "../../../assets/images/profile/3.jpeg";
-import SiteHeroSection from "./sections/SiteHero";
 import EventSection from "./sections/Event";
 import AboutSection from "./sections/About";
 import TestimonialSection from "./sections/Testimonial";
 
-const ourTeam = [
-  {
-    fullName: "Jonathan Onderi",
-    position: "Developer",
-    img_src: Img1,
-  },
-  {
+  const ourTeam=[{
     fullName: "Jonathan Onderi",
     position: "Developer",
     img_src: avator,
