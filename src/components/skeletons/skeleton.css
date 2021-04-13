@@ -20,8 +20,12 @@
     border-radius: 50%;
   }
   .skeleton.thumbnail {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
+  }
+  .skeleton.thumbnail.about{
+    width: 300px;
+    height: 300px;
   }
   .skeleton-wrapper {
     margin: 20px auto;
@@ -31,10 +35,26 @@
     overflow: hidden;
   }
   
-  /* skeleton profile */
-  .skeleton-profile {
+  /* skeleton events */
+  .skeleton-events {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    grid-gap: 10px;
+    align-items: center;
+  }
+
+   /* skeleton about */
+   .skeleton-about {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-gap: 30px;
+    align-items: center;
+  }
+
+  /* skeleton team */
+  .skeleton-team {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 30px;
     align-items: center;
   }

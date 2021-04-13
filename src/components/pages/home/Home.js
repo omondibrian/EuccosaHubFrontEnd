@@ -13,6 +13,10 @@ import Profile from "../../cards/profile/Profile";
 import Img1 from "../../../assets/images/profile/1.jpeg";
 import Img2 from "../../../assets/images/profile/2.jpeg";
 import Img3 from "../../../assets/images/profile/3.jpeg";
+import EventSkeleton from "../../skeletons/EventSkeleton";
+import AboutSkeleton from "../../skeletons/AboutSkeleton";
+import TeamSkeleton from "../../skeletons/TeamSkeleton";
+import TestimonialSkeleton from "../../skeletons/TestimonialSkeleton";
 
 const ourTeam = [
   {
@@ -157,26 +161,30 @@ function Home() {
       <section className={style.events}>
         <h2 className={style.header} data-animate="" id="anime">
           <span className="letters">Events</span>
-          {/* <span className={`line ${style.line}`}></span> */}
+          <span className={`line ${style.line}`}></span>
         </h2>
         <div className={style.events__timeline}>
           <div className={style.events__timeline__card}>
-            <EventCard event={myEvent} />
+            {/* <EventSkeleton /> */}
+             <EventCard event={myEvent} />
           </div>
           <div className={style.events__timeline__card}>
             <EventCard event={myEvent} />
+            {/* <EventSkeleton /> */}
           </div>
         </div>
       </section>
       <section className={style.about}>
         <h2 className={style.header} data-animate="">
           <span className="letters">About</span>
-          {/* <span className={`line ${style.line}`}></span> */}
+          <span className={`line ${style.line}`}></span>
         </h2>
         <div className={style.about__content}>
           <div className={style.about__content__text}>
-            <h3>About Us</h3>
-            <p>
+            {/* <h3>About Us</h3> */}
+            {/* <AboutSkeleton />
+          </div> */}
+          <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum
               dolorum architecto obcaecati enim dicta praesentium, quam nobis!
               Neque ad aliquam facilis numquam. Veritatis, sit.Lorem ipsum dolor
@@ -198,6 +206,7 @@ function Home() {
         <div className={style.team}>
           <h3 className={style.sub_header}>Our Team</h3>
           <div className={style.d_flex} id="team-slider">
+            {/* <TeamSkeleton /> */}
             {ourTeam.map((profile, indx) => (
               <Profile key={indx} profile={profile} index={indx} />
             ))}
@@ -205,6 +214,7 @@ function Home() {
         </div>
       </section>
       <section className={style.testimonial}>
+        {/* <TestimonialSkeleton /> */}
         <TestimonialCard
           message="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit."
           user={{
@@ -214,7 +224,7 @@ function Home() {
           }}
         />
       </section>
-      <Footer />
+      <Footer />  
     </div>
   );
 }
