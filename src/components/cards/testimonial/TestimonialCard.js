@@ -1,13 +1,13 @@
 import style from "./TestimonialCard.module.css";
 import React from "react";
 
-function TestimonialCard({ message, user }) {
+function TestimonialCard({ testimonial }) {
   return (
-    <div className={style.testimonial_card}>
+    <div className={`${style.testimonial_card} testimonial_card`}>
       <div className={style.testimonial_card__text}>
         <p>
           <q>
-            {message}
+            {testimonial.message}
             <br />
           </q>
         </p>
@@ -15,15 +15,15 @@ function TestimonialCard({ message, user }) {
       <div className={style.testimonial_card__profile}>
         <div className={style.testimonial_card__profile__img}>
           <img
-            src={user.profile}
-            alt={user.profile}
+            src={testimonial.user.profile}
+            alt={testimonial.user.profile}
             className={style.img_fluid}
           />
         </div>
         <div className={style.testimonial_card__profile__text}>
-          {user.fullName}
+          {testimonial.user.fullName}
           <br />
-          {user.occupation}
+          {testimonial.user.occupation}
         </div>
       </div>
     </div>

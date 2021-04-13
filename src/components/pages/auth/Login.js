@@ -40,12 +40,20 @@ function Login() {
             />
             <Button onclick={handleClick} name="submit" />
           </form>
-          <span className={styles.auth_alt}>OR</span>
+          <span className={styles.auth_alt}>Login With</span>
           <div className={styles.social_auth}>
-            <a href="http://localhost:3000/auth/google" className={styles.social_auth__icon}>
+            <a
+              href="http://localhost:3000/auth/google"
+              className={styles.social_auth__icon}
+              title="login with google"
+            >
               <Google />
             </a>
-            <a href="http://localhost:3000/auth/github" className={styles.social_auth__icon}>
+            <a
+              title="login with github"
+              href="http://localhost:3000/auth/github"
+              className={styles.social_auth__icon}
+            >
               <Github />
             </a>
           </div>

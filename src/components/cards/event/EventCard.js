@@ -33,7 +33,7 @@ export const EventCard = ({ event = {} }) => {
           fill="none"
           className={style.line}
         >
-          <rect width="73" height="5" rx="3" fill="#0A73FA" />
+          <rect width="73" height="5" rx="3" fill="var(--dark-blue)" />
         </svg>
         <br />
         <p className={style.event_card__text}>{event.description}</p>
