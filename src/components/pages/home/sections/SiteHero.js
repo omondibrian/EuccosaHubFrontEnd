@@ -30,7 +30,7 @@ const SiteHero = () => {
 
   return (
     <div>
-      <div className={style.site_hero__content}>
+      <div className={style.site_hero__content} id="home">
         <Navbar />
         <h1 className={style.site_hero__header}>EUCCOSA COMMUNITY</h1>
         <div className={style.site_hero__text}>

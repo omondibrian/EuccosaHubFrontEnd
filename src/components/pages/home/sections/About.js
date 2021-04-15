@@ -7,7 +7,7 @@ import Profile from "../../../cards/profile/Profile";
 
 function AboutSection({ ourTeam }) {
   return (
-    <section className={style.about}>
+    <section className={style.about} id="about">
       <h2 className={style.header} data-animate="">
         <span className="letters">About</span>
       </h2>

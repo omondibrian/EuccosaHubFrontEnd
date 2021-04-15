@@ -27,6 +27,7 @@ body {
   color: var(--black);
   box-sizing: border-box;
   overflow-x: hidden;
+  line-height: normal !important;
 }
 
 code {

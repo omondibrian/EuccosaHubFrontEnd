@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import style from './Navbar.module.css'
+import { Link } from "react-router-dom"
+import {scrollTo} from "../../../utils/scroll"
 //import { Logo } from '../../vectors/Vectors'
 
 
@@ -8,11 +10,13 @@ let windowHeight = window.innerHeight
 
 const navScroll = () => {
     const navbar = document.querySelectorAll(`.${style.navbar}`)[1]
-    if (window.scrollY > windowHeight - 70) {
-        navbar.classList.add(style.nav__scrolled)
-    }
-    else {
-        navbar.classList.remove(style.nav__scrolled)
+    if (navbar) {
+        if (window.scrollY > windowHeight - 70) {
+            navbar.classList.add(style.nav__scrolled)
+        }
+        else {
+            navbar.classList.remove(style.nav__scrolled)
+        }
     }
     requestAnimationFrame(navScroll)
 
@@ -38,6 +42,7 @@ function Navbar() {
     }
     useEffect(() => {
         requestAnimationFrame(navScroll)
+        scrollTo()
     }, [])
     return (
         <div className={style.navbar} >
@@ -46,19 +51,19 @@ function Navbar() {
             </div>
             <ul className={style.nav}>
                 <li className={style.nav_link}>
-                    Home
+                    <a href="#home">Home</a>
                 </li>
                 <li className={style.nav_link}>
-                    About
+                    <a href="#about">About</a>
                 </li>
                 <li className={style.nav_link}>
-                    Contact
+                    <a href="#contact">Contact</a>
                 </li>
                 <li className={style.nav_link}>
-                    Shop
+                    <Link to="/shop">Shop</Link>
                 </li>
                 <li className={style.nav_link}>
-                    Donate
+                    <Link to="/donate">Donate</Link>
                 </li>
             </ul>
             <div className={style.nav__toggler}>

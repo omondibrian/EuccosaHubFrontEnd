@@ -115,6 +115,7 @@
   left: 0;
   opacity: 0.8;
   border-radius: 5px;
+
 }
 
 .events__timeline__card {
@@ -135,6 +136,7 @@
   border-radius: 50%;
   z-index: 1;
   animation: pulse 1s infinite;
+  box-sizing: content-box;
 }
 
 @media (min-width: 1100px) {

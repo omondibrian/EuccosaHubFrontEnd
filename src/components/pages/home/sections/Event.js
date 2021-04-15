@@ -2,10 +2,9 @@ import React from "react";
 import style from "../Home.module.css";
 import EventCard from "../../../cards/event/EventCard";
 
-
 function EventSection({ events }) {
   return (
-    <section className={style.events}>
+    <section className={style.events} id="events">
       <h2 className={style.header} data-animate="" id="anime">
         <span className="letters">Events</span>
       </h2>

@@ -9,7 +9,7 @@ const defaultLayoutProps = {
 
 export default function DashBoard() {
   return (
-    <div>
+    <div className="dashboard">
       <DefaultLayout {...defaultLayoutProps}>
         <UserProfile />
       </DefaultLayout>
