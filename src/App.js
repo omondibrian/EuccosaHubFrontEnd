@@ -6,21 +6,24 @@ import { MobileNav } from "./components/navigation/navbar/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/styles/shards-dashboards.1.1.0.min.css";
 import DashBoard from "./components/dashboard";
-import ImageCrop from "./components/dashboard/userProfile/ImageCrop"
+import ImageCrop from "./components/dashboard/userProfile/ImageCrop";
+import { UserContextProvider } from "./state/context/userContext";
 function App() {
   return (
-    <div className="App">
-      <MobileNav />
-      <BrowserRouter>
-        <Switch>
-          <Route path="/login" render={() => <Login />} />
-          <Route path="/dashboard" render={() => <DashBoard />} />
-          <Route path="/crop" render={()=><ImageCrop />}/>
-          <Route path="/" render={() => <Home />} exact={true} />
-          <Route path="*" render={() => <PageNotFound />} />
-        </Switch>
-      </BrowserRouter>
-    </div>
+    <UserContextProvider>
+      <div className="App">
+        <MobileNav />
+        <BrowserRouter>
+          <Switch>
+            <Route path="/login" render={() => <Login />} />
+            <Route path="/dashboard" render={() => <DashBoard />} />
+            <Route path="/crop" render={() => <ImageCrop />} />
+            <Route path="/" render={() => <Home />} exact={true} />
+            <Route path="*" render={() => <PageNotFound />} />
+          </Switch>
+        </BrowserRouter>
+      </div>
+    </UserContextProvider>
   );
 }
 

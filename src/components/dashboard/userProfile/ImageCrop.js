@@ -8,7 +8,7 @@ const ImageCrop =()=> {
     return (
        <div  className="image-crop">
            <div className="card">
-
+ 
            </div>
       </div >
     );
