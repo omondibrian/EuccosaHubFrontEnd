@@ -5,22 +5,34 @@ import PageTitle from "../../pageTitle";
 import UserDetails from "../../userDetails";
 import UserAccountDetails from "../../userAccountDetails";
 import AvatorImg from "../../../assets/images/avatar.png";
-
-const accDetailsProps = {
-  title: "Account Details",
-};
+const today = new Date();
 
 const userDetails = {
-  userDetails: {
-    name: "Brian Omondi",
-    avatar: AvatorImg,
-    jobTitle: "Vice Chairman",
-    performanceReportTitle: "Workload",
-    performanceReportValue: 74,
-    metaTitle: "Description",
-    metaValue:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?",
+  title: "Account Details",
+  firstName: "Brian",
+  lastName: "Omondi",
+  Email: "omondibrian392@gmail.com",
+  Address: {
+    city: "Malindi",
+    street: "Jiwe Leupe",
+    country: "Kenya",
   },
+  role: "Vice chairman",
+  testimonial: "test testimonial",
+  avatar: AvatorImg,
+  phoneNumber:"+2544567890",
+  startDate:today,
+  completionDate:today,
+  metaData: [
+    {
+      metaTitle: "Address",
+      metaValue: `Jiwe Leupe Malindi,  Kenya `,
+    },
+    {
+      metaTitle: "Email",
+      metaValue: "omondibrian392@gmail.com ",
+    },
+  ],
 };
 
 const UserProfile = () => (
@@ -38,7 +50,7 @@ const UserProfile = () => (
         <UserDetails {...userDetails} />
       </Col>
       <Col lg="8">
-        <UserAccountDetails {...accDetailsProps} />
+        <UserAccountDetails {...userDetails} />
       </Col>
     </Row>
   </Container>

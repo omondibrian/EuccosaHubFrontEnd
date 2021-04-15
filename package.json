@@ -10,13 +10,17 @@
     "animejs": "^3.2.1",
     "bootstrap": "^4.6.0",
     "classnames": "^2.3.1",
+    "date-fns": "^2.21.0",
+    "formik": "^2.2.6",
     "materialize-css": "^1.0.0-rc.2",
+    "module-alias": "^2.2.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "shards-react": "^1.0.3",
-    "web-vitals": "^1.1.1"
+    "web-vitals": "^1.1.1",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,5 +56,11 @@
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.1.21",
     "storybook-addon-designs": "^5.4.5"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@components": "./src/components",
+    "@assets": "./src/assets",
+    "@services": "./src/services"
   }
 }
