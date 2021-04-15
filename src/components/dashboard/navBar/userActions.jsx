@@ -1,19 +1,18 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+
 import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  Collapse,
   NavItem,
+  Collapse,
   NavLink,
 } from "shards-react";
 
 import AvatorImg from "../../../assets/images/avatar.png";
+import DropdownItem from "./DropDownItem";
 
-export default function UserActions({state,toggleUserActions}) {
- 
+export default function UserActions({ state, toggleUserActions }) {
   return (
     <NavItem tag={Dropdown} caret toggle={toggleUserActions}>
       <DropdownToggle caret tag={NavLink} className="text-nowrap px-3">
@@ -25,22 +24,24 @@ export default function UserActions({state,toggleUserActions}) {
         <span className="d-none d-md-inline-block">Brian omondi</span>
       </DropdownToggle>
       <Collapse tag={DropdownMenu} right small open={state.isMenuVisible}>
-        <DropdownItem tag={Link} to="user-profile">
-          <i className="material-icons">&#xE7FD;</i> Profile
-        </DropdownItem>
-        <DropdownItem tag={Link} to="edit-user-profile">
-          <i className="material-icons">&#xE8B8;</i> Edit Profile
-        </DropdownItem>
-        <DropdownItem tag={Link} to="file-manager-list">
-          <i className="material-icons">&#xE2C7;</i> Files
-        </DropdownItem>
-        <DropdownItem tag={Link} to="transaction-history">
-          <i className="material-icons">&#xE896;</i> Transactions
-        </DropdownItem>
-        <DropdownItem divider />
-        <DropdownItem tag={Link} to="/" className="text-danger">
-          <i className="material-icons text-danger">&#xE879;</i> Logout
-        </DropdownItem>
+        <DropdownItem icon="&#xE7FD;" title="Profile" to="/userProfile" />
+
+        <DropdownItem
+          icon="&#xE8B8;"
+          title="Edit Profile"
+          to="/editUserProfile"
+        />
+
+        <DropdownItem icon="&#xE2C7;" title="Files" to="/fileManager" />
+
+        <DropdownItem icon="&#xE896;" title="Transactions" to="/Transactions" />
+
+        <DropdownItem
+          icon="&#xE879;"
+          title="Profile"
+          to="/"
+          className="text-danger"
+        />
       </Collapse>
     </NavItem>
   );

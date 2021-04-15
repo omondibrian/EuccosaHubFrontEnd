@@ -1,6 +1,7 @@
 import React from "react";
 import DefaultLayout from "./layout/default";
 import UserProfile from "./userProfile";
+import {  Switch, Route } from "react-router-dom";
 
 const defaultLayoutProps = {
   noNavbar: false,
@@ -11,7 +12,12 @@ export default function DashBoard() {
   return (
     <div className="dashboard">
       <DefaultLayout {...defaultLayoutProps}>
-        <UserProfile />
+        
+        
+       
+            <Route path="/dashboard/userProfile" render={() => <UserProfile />} />
+      
+       
       </DefaultLayout>
     </div>
   );

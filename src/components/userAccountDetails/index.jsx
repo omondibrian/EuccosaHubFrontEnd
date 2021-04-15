@@ -254,7 +254,6 @@ const UserAccountDetails = () => {
                       name="country"
                       value={formik.values.country}
                       onChange={formik.handleChange}
-                      defaultValue={formik.values.country}
                     >
                       <option>Choose...</option>
                       {countries.map((con) => {
