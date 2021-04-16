@@ -6,7 +6,7 @@ import { MobileNav } from "./components/navigation/navbar/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/styles/shards-dashboards.1.1.0.min.css";
 import DashBoard from "./components/dashboard";
-import ImageCrop from "./components/dashboard/userProfile/ImageCrop"
+import ImageCrop from "./components/dashboard/imageCrop/ImageCrop"
 function App() {
   return (
     <div className="App">
