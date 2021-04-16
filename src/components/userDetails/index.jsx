@@ -1,4 +1,5 @@
 import React from "react";
+import ImageCrop from "../dashboard/imageCrop/ImageCrop"
 
 import {
   Card,
@@ -11,6 +12,7 @@ import {
 
 const UserDetails = ({ firstName, lastName, role, avatar, metaData }) => (
   <Card small className="mb-4 pt-3">
+    <ImageCrop Profile={avatar} />
     <CardHeader className="border-bottom text-center">
       <div className="mb-3 mx-auto">
         <img
@@ -22,7 +24,8 @@ const UserDetails = ({ firstName, lastName, role, avatar, metaData }) => (
       </div>
       <h4 className="mb-0">{firstName + lastName}</h4>
       <span className="text-muted d-block mb-2">{role}</span>
-      <Button pill outline size="sm" className="mb-2">
+      <Button pill outline size="sm" className="mb-2"
+        onClick={() => document.querySelector(".image-crop").classList.remove("d-none")}>
         <i className="material-icons mr-1">edit</i> Edit profile image
       </Button>
     </CardHeader>
