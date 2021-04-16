@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Card,
   CardHeader,
@@ -12,7 +12,7 @@ import {
   FormTextarea,
   Button,
 } from "shards-react";
-import countries from "../../data/countries";
+import { UserContext } from "../../state/context/userContext";
 import "./userAccountDetails.css";
 import "shards-react/components/datepicker/DatePicker.css";
 import { useFormik } from "formik";
@@ -20,18 +20,24 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import en from "date-fns/locale/en-GB";
 import "react-datepicker/dist/react-datepicker.css";
 import { formValidationSchema } from "./validationSchema";
+import { UPDATE_PROFILE } from "../../state/Actions";
 registerLocale("en", en);
-const UserAccountDetails = ({
-  title,
-  firstName,
-  lastName,
-  Email,
-  Address,
-  testimonial,
-  phoneNumber,
-  startDate,
-  completionDate,
-}) => {
+
+const UserAccountDetails = () => {
+  const { state, dispatch } = useContext(UserContext);
+  const {
+    title,
+    firstName,
+    lastName,
+    Email,
+    Address,
+    testimonial,
+    phoneNumber,
+    startDate,
+    completionDate,
+    countries,
+  } = state;
+
   let initialState = {
     firstName: "",
     lastName: "",
@@ -44,6 +50,7 @@ const UserAccountDetails = ({
     startDate: "",
     completionDate: "",
   };
+
   initialState = {
     firstName,
     lastName,
@@ -56,17 +63,28 @@ const UserAccountDetails = ({
     startDate,
     completionDate,
   };
-  const formik = useFormik({
-    initialValues: {...initialState},
-    onSubmit: (data, { setSubmitting }) => {
-      setSubmitting(true);
+  const handleSub =() => {
+    if (!formik.isValidating && formik.isValid) {
+     
+      formik.setSubmitting(true);
       // make async call
-      console.log("submit: ", data);
-      setSubmitting(false);
-    },
-    validationSchema: formValidationSchema
-    
+      setTimeout(() => {
+        console.log("submitted");
+        console.log("submit: ", formik.values);
+        dispatch({
+          type: UPDATE_PROFILE,
+          payload: { ...formik.values },
+        });
+        formik.setSubmitting(false);
+      }, 5000);
+    }
+  }
+  const formik = useFormik({
+    initialValues: { ...initialState },
+    onSubmit: handleSub,
+    validationSchema: formValidationSchema,
   });
+
   return (
     <Card small className="mb-4">
       <CardHeader className="border-bottom">
@@ -76,7 +94,9 @@ const UserAccountDetails = ({
         <ListGroupItem className="p-3">
           <Row>
             <Col>
-              <Form onSubmit={formik.handleSubmit}>
+              <Form
+               onSubmit={formik.handleSubmit}
+              >
                 <Row form>
                   {/* First Name */}
                   <Col md="6" className="form-group">
@@ -234,7 +254,6 @@ const UserAccountDetails = ({
                       name="country"
                       value={formik.values.country}
                       onChange={formik.handleChange}
-                      defaultValue={formik.values.country}
                     >
                       <option>Choose...</option>
                       {countries.map((con) => {
@@ -266,7 +285,11 @@ const UserAccountDetails = ({
                     ) : null}
                   </Col>
                 </Row>
-                <Button type="submit" theme="accent">
+                <Button
+                  disabled={formik.isSubmitting}
+                  type="submit"
+                  theme={formik.isSubmitting ? "btn btn-secondary" : "accent"}
+                >
                   Update Account
                 </Button>
               </Form>

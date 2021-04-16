@@ -15,11 +15,11 @@ export const formValidationSchema = yup.object().shape({
   completionDate: yup
     .string()
     .required("please add your ExpectedGraduationDate"),
-  street: yup.string(),
-  city: yup.string(),
-  testimony: yup.string().max(500),
-  country: yup.string(),
-  email: yup.string().email().required("Email is a required field"),
+  street: yup.string().nullable(),
+  city: yup.string().nullable(),
+  testimony: yup.string().max(500).nullable(),
+  country: yup.string().nullable(),
+  Email: yup.string().email().required("Email is a required field"),
 });
 
 export const passWordValidationSchema = yup.object().shape({

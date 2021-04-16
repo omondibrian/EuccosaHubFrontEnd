@@ -15,15 +15,9 @@ function SideBar(props) {
           style={{ lineHeight: "25px" }}
         >
           <div className="d-table m-auto">
-            <img
-              id="main-logo"
-              className="d-inline-block align-top mr-1"
-              style={{ maxWidth: "25px" }}
-              src={AvatorImg}
-              alt="Shards Dashboard"
-            />
+          
             {!hideLogoText && (
-              <span className="d-none d-md-inline ml-1">Shards Dashboard</span>
+              <span className="d-none d-md-inline ml-1">EuccosaHub </span>
             )}
           </div>
         </NavbarBrand>
