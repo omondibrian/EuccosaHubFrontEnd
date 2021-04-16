@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/styles/shards-dashboards.1.1.0.min.css";
 import DashBoard from "./components/dashboard";
 import ImageCrop from "./components/dashboard/imageCrop/ImageCrop"
-import ImageCrop from "./components/dashboard/userProfile/ImageCrop";
+
 import { UserContextProvider } from "./state/context/userContext";
 function App() {
   return (
