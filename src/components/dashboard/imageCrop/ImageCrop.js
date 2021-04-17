@@ -3,8 +3,21 @@ import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import "./ImageCrop.css";
 
+const sendImage = async (file, fileName) => {
+  const formData = new FormData();
+  formData.append("profilePic", file, `${fileName}.jpeg`);
+  formData.append("id", "4");
+
+  let request = new XMLHttpRequest();
+  request.open("PUT", "http://192.168.43.154:3001/auth/profile");
+  request.send(formData);
+  request.onload = (res) => {
+    console.log(res);
+  };
+};
+
 const ImageCrop = ({ Profile }) => {
-  let fileUrl, imageRef;
+  let fileUrl, file;
   const [state, setState] = useState({
     cropSrc: null,
     crop: {
@@ -18,12 +31,21 @@ const ImageCrop = ({ Profile }) => {
     isCroping: false,
     croppedImageUrl: null,
     cropDone: false,
+    file: null,
+    fileName: null,
+    imageRef: null,
   });
   const onSelectFile = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       const reader = new FileReader();
+      let fName = e.target.files[0].name.split(".")[0];
       reader.addEventListener("load", () => {
-        setState({ ...state, cropSrc: reader.result, isCroping: true });
+        setState({
+          ...state,
+          cropSrc: reader.result,
+          isCroping: true,
+          fileName: fName,
+        });
         e.target.value = "";
       });
       reader.readAsDataURL(e.target.files[0]);
@@ -36,66 +58,77 @@ const ImageCrop = ({ Profile }) => {
       crop.height = 200;
       crop.width = 200;
     }
+    if (crop.y > 200) {
+      crop.y = 200;
+    }
     setState({ ...state, crop: crop });
   };
 
-  const getCroppedImg = (image, crop, fileName) => {
+  const getCroppedImg = (image, fileName) => {
     const canvas = document.createElement("canvas");
     const scaleX = image.naturalWidth / image.width;
     const scaleY = image.naturalHeight / image.height;
-    canvas.width = crop.width;
-    canvas.height = crop.height;
+    canvas.width = state.crop.width;
+    canvas.height = state.crop.height;
     const ctx = canvas.getContext("2d");
 
     ctx.drawImage(
       image,
-      crop.x * scaleX,
-      crop.y * scaleY,
-      crop.width * scaleX,
-      crop.height * scaleY,
+      state.crop.x * scaleX,
+      state.crop.y * scaleY,
+      state.crop.width * scaleX,
+      state.crop.height * scaleY,
       0,
       0,
-      crop.width,
-      crop.height
+      state.crop.width,
+      state.crop.height
     );
-
     return new Promise((resolve, reject) => {
       canvas.toBlob((blob) => {
         if (!blob) {
-          //reject(new Error('Canvas is empty'));
           console.error("Canvas is empty");
           return;
         }
         blob.name = fileName;
         window.URL.revokeObjectURL(fileUrl);
         fileUrl = window.URL.createObjectURL(blob);
-        resolve(fileUrl);
+        file = blob;
+        resolve({ fileUrl, file });
       }, "image/jpeg");
     });
   };
-  const makeClientCrop = async (crop) => {
-    if (imageRef && crop.width && crop.height) {
-      const croppedImageUrl = await getCroppedImg(
-        imageRef,
-        crop,
-        "newFile.jpeg"
+  const makeClientCrop = async () => {
+    if (state.imageRef && state.crop.height && state.crop.width) {
+      const { fileUrl, file } = await getCroppedImg(
+        state.imageRef,
+        "profileImg.jpeg"
       );
-      setState({ ...state, croppedImageUrl: croppedImageUrl });
+
+      setState({
+        ...state,
+        croppedImageUrl: fileUrl,
+        file: file,
+        isCroping: false,
+        cropDone: true,
+      });
+    } else {
+      setState({
+        ...state,
+        crop: {
+          unit: "px",
+          x: 0,
+          y: 0,
+          width: 200,
+          height: 200,
+          aspect: 1 / 1,
+        },
+      });
     }
   };
   const onImageLoaded = (image) => {
-    imageRef = image;
+    state.imageRef = image;
   };
 
-  const onCropComplete = (crop) => {
-    makeClientCrop(crop);
-  };
-
-  const cropDone = () => {
-    setTimeout(() => {
-      setState({ ...state, isCroping: false, cropDone: true });
-    }, 300);
-  };
   return (
     <div className="image-crop d-none">
       <div className="card pt-3">
@@ -109,15 +142,22 @@ const ImageCrop = ({ Profile }) => {
             Cancel
           </button>
           <button
+            style={
+              state.isCroping
+                ? { visibility: "visible" }
+                : { visibility: "hidden" }
+            }
             className="btn crop-btn rounded"
-            onClick={cropDone}
+            onClick={makeClientCrop}
             title="crop image"
           >
             <i className="material-icons">crop</i>
           </button>
           <button
             className="btn btn-primary my-0 px-4 my-2"
-            onClick={() => setState({ ...state, isCroping: false })}
+            onClick={async () => {
+              await sendImage(state.file, state.fileName);
+            }}
             style={
               !state.cropDone
                 ? { visibility: "hidden" }
@@ -135,7 +175,7 @@ const ImageCrop = ({ Profile }) => {
               crop={state.crop}
               ruleOfThirds
               onImageLoaded={onImageLoaded}
-              onComplete={onCropComplete}
+              onComplete={() => null}
               onChange={onCropChange}
             />
           )}
@@ -163,5 +203,6 @@ const ImageCrop = ({ Profile }) => {
     </div>
   );
 };
+
 
 export default ImageCrop;
