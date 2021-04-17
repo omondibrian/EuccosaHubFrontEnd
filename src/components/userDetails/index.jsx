@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { UserContext } from "../../state/context/userContext";
+import React  from "react";
+import { useSelector } from "react-redux";
 import {
   Card,
   CardHeader,
@@ -8,10 +8,12 @@ import {
   ListGroupItem,
 } from "shards-react";
 import ImageCrop from "../dashboard/imageCrop/ImageCrop"
+import { getState } from "../../state/slices/user";
 
 const UserDetails = () => {
-  const { state } = useContext(UserContext);
-  const { firstName, lastName, role, avatar, metaData } = state;
+  const  {user}  = useSelector(getState);
+  console.log(user)
+  const { firstName, lastName, role, avatar, metaData } = user;
   return (
     <Card small className="mb-4 pt-3">
       <ImageCrop  Profile={avatar}/>

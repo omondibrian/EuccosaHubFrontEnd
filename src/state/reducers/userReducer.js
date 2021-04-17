@@ -1,17 +1,18 @@
 import { FETCH_PROFILE, UPDATE_PROFILE } from "../Actions";
+import {createReducer} from '@reduxjs/toolkit'
 
-export const userReducer = (state, Action) => {
-  switch (Action.type) {
-    case FETCH_PROFILE:
-      return state;
-    case UPDATE_PROFILE:
-      return updateProfileData(Action, state);
+const userReducer = createReducer([],(builder)=>{
+  builder.addCase(FETCH_PROFILE,(state,action)=>{
+    return state;
+  })
+  builder.addCase(UPDATE_PROFILE,(state,action)=>{
+    return updateProfileData(action, state);
+  })
+})
 
-    default:
-      break;
-  }
-};
 
+
+export default userReducer;
 
 
 

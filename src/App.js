@@ -8,10 +8,11 @@ import "./assets/styles/shards-dashboards.1.1.0.min.css";
 import DashBoard from "./components/dashboard";
 import ImageCrop from "./components/dashboard/imageCrop/ImageCrop"
 
-import { UserContextProvider } from "./state/context/userContext";
+import store from "./state/store";
+import { Provider } from "react-redux";
 function App() {
   return (
-    <UserContextProvider>
+    <Provider store = {store}>
       <div className="App">
         <MobileNav />
         <BrowserRouter>
@@ -24,7 +25,7 @@ function App() {
           </Switch>
         </BrowserRouter>
       </div>
-    </UserContextProvider>
+    </Provider>
   );
 }
 
