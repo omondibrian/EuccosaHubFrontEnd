@@ -1,8 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux"
+import { toggleMenu } from "../../../state/slices/Application"
 
 export default function NavbarToggle() {
-  const handleClick = () => {
-    console.log("toggleNavbar clicked");
+  const dispatch = useDispatch();
+  const handleClick = (e) => {
+    e.preventDefault()
+    dispatch(toggleMenu())
   };
   return (
     <nav className="nav">

@@ -1,8 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Navbar, NavbarBrand } from "shards-react";
-import AvatorImg from "../../../assets/images/avatar.png";
+import { toggleMenu } from "../../../state/slices/Application";
+
 function SideBar(props) {
   const { hideLogoText } = props;
+  const dispatch = useDispatch();
+  const closeSideNav = (e) => {
+    e.preventDefault()
+    dispatch(toggleMenu())
+  };
   return (
     <div className="main-navbar">
       <Navbar
@@ -24,9 +31,9 @@ function SideBar(props) {
         {/* eslint-disable-next-line */}
         <a
           className="toggle-sidebar d-sm-inline d-md-none d-lg-none"
-        //   onClick={this.handleToggleSidebar}
+          onClick={closeSideNav}
         >
-          <i className="material-icons">&#xE5C4;</i>
+          <i className="material-icons">arrow_back</i>
         </a>
       </Navbar>
     </div>

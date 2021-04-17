@@ -9,15 +9,14 @@ import { fetchUserProfile, isLoading } from "../../../state/slices/user";
 const UserProfile = () => {
   const dispatch = useDispatch();
   const state = useSelector(isLoading);
-  console.log('loading', state)
-  const loadUser = async () => {
-    await dispatch(
+
+  useEffect(() => {
+    dispatch(
       fetchUserProfile({
         id: "3",
       })
     );
-  };
-  useEffect(() => {loadUser()}, [dispatch]);
+  }, [dispatch]);
 
   return state.loading ? (
     <div>loading ..... </div>
