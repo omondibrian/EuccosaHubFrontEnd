@@ -5,6 +5,7 @@ import Notifications from "./Notifications";
 import UserActions from "./userActions";
 
 export default function NavbarNav() {
+  
   const [state, setState] = useState({
     isMenuVisible: false,
     isNotificationVisible: false,

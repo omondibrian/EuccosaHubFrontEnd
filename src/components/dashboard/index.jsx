@@ -1,7 +1,7 @@
 import React from "react";
 import DefaultLayout from "./layout/default";
 import UserProfile from "./userProfile";
-import {  Switch, Route } from "react-router-dom";
+import {  Route } from "react-router-dom";
 
 const defaultLayoutProps = {
   noNavbar: false,

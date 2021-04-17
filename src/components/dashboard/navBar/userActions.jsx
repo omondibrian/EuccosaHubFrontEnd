@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   Dropdown,
   DropdownToggle,
@@ -8,24 +7,27 @@ import {
   Collapse,
   NavLink,
 } from "shards-react";
-
-import AvatorImg from "../../../assets/images/avatar.png";
 import DropdownItem from "./DropDownItem";
+import { getState } from "../../../state/slices/user";
+import { useSelector } from "react-redux"
 
 export default function UserActions({ state, toggleUserActions }) {
+  const { user} = useSelector(getState)
+
+
   return (
     <NavItem tag={Dropdown} caret toggle={toggleUserActions}>
       <DropdownToggle caret tag={NavLink} className="text-nowrap px-3">
         <img
           className="user-avatar rounded-circle mr-2"
-          src={AvatorImg}
+          src={user.avatar}
           alt="User Avatar"
         />
-        <span className="d-none d-md-inline-block">Brian omondi</span>
+        <span className="d-none d-md-inline-block">{`${user.firstName} ${user.lastName}`}</span>
       </DropdownToggle>
       <Collapse tag={DropdownMenu} right small open={state.isMenuVisible}>
         <DropdownItem icon="&#xE7FD;" title="Profile" to="/userProfile" />
-
+ 
         <DropdownItem
           icon="&#xE8B8;"
           title="Edit Profile"
@@ -38,7 +40,7 @@ export default function UserActions({ state, toggleUserActions }) {
 
         <DropdownItem
           icon="&#xE879;"
-          title="Profile"
+          title="Log out"
           to="/"
           className="text-danger"
         />
