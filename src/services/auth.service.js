@@ -14,14 +14,25 @@ export const login = async (credentials) => {
     if (data._id) {
       localStorage.setItem("ID", data._id);
       localStorage.setItem("TOKEN", data.token);
+      return { message: "login successful", status: 200, isLogedIn: true };
+    } else {
+      return {
+        message: "This account has not been activated",
+        status: 200,
+        isLogedIn: false,
+      };
     }
-    else{
-      
-    }
+  } else if (result.status === 401) {
+    return {
+      message: "Invalid credentials",
+      status: 401,
+      isLogedIn: false,
+    };
   } else {
-    console.log(result.status);
-    //TODO:add display incase of server error or any other errors
-    // console.log(result.statusText);
+    return {
+      message: "An error occured",
+      status: result.status,
+    };
   }
 };
 

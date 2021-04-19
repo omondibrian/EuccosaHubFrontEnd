@@ -1,32 +1,21 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import "./ImageCrop.css";
-
-const sendImage = async (file, fileName) => {
-  const formData = new FormData();
-  formData.append("profilePic", file, `${fileName}.jpeg`);
-  const id  = localStorage.getItem("ID")
-  formData.append("id", id);
-
-  let request = new XMLHttpRequest();
-  request.open("PUT", "http://192.168.43.154:3001/auth/profile");
-  request.send(formData);
-  request.onload = (res) => {
-    console.log(res);
-  };
-};
+import { useDispatch } from "react-redux";
+import { fetchUserProfile } from "../../../state/slices/user";
 
 const ImageCrop = ({ Profile }) => {
   let fileUrl, file;
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     cropSrc: null,
     crop: {
       unit: "px",
       x: 0,
       y: 0,
-      width: 200,
-      height: 200,
+      width: 300,
+      height: 300,
       aspect: 1 / 1,
     },
     isCroping: false,
@@ -129,16 +118,31 @@ const ImageCrop = ({ Profile }) => {
   const onImageLoaded = (image) => {
     state.imageRef = image;
   };
-
+  const sendImage = async (file, fileName) => {
+    const formData = new FormData();
+    formData.append("profilePic", file, `${fileName}.jpeg`);
+    const id = localStorage.getItem("ID");
+    formData.append("id", id);
+    let request = new XMLHttpRequest();
+    request.open("PUT", "http://192.168.43.154:3001/auth/profile");
+    request.send(formData);
+    request.onload = (res) => {
+      cropRef.classList.add("d-none");
+      dispatch(
+        fetchUserProfile({
+          id,
+        })
+      );
+    };
+  };
+  const cropRef = useRef();
   return (
-    <div className="image-crop d-none">
+    <div className="image-crop d-none" ref={cropRef}>
       <div className="card pt-3">
         <div className="controls d-flex justify-content-between mx-2">
           <button
             className="btn btn-secondary my-0 px-4 my-2"
-            onClick={() =>
-              document.querySelector(".image-crop").classList.add("d-none")
-            }
+            onClick={() => cropRef.current.classList.add("d-none")}
           >
             Cancel
           </button>
@@ -204,6 +208,5 @@ const ImageCrop = ({ Profile }) => {
     </div>
   );
 };
-
 
 export default ImageCrop;

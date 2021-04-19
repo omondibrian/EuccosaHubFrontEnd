@@ -18,7 +18,7 @@ function App() {
         <MobileNav />
         <BrowserRouter>
           <Switch>
-            <Route path="/login/" render={() => <Login />} />
+            <Route path="/login/" render={(prop) => <Login {...prop} />} />
             <Route path="/dashboard" render={() => <DashBoard />} />
             <Route path="/crop" render={() => <ImageCrop />} />
             <Route path="/stat" render={() => <DashBoardStats />} />

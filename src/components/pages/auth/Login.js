@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Auth.module.css";
 import { InputBox } from "../../inputBox";
 import { Button } from "../../button";
@@ -6,10 +6,12 @@ import BackGround from "../../background";
 import { Github, Google } from "../../vectors/Vectors";
 import Footer from "../../footer/Footer";
 import { login } from "../../../services/auth.service";
-import {useHistory} from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux";
+import { toggleIsUserLoggedIn } from "../../../state/slices/Application";
 
 function Login(props) {
   const [state, setState] = useState({ email: "", password: "" });
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
@@ -17,11 +19,18 @@ function Login(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  const handleClick = () => {
-    const data = login(state);
-   
+  let error;
+  const handleClick = async () => {
+    const result = await login(state);
+    if (result.status === 200 && result.isLogedIn === true) {
+      dispatch(toggleIsUserLoggedIn());
+      props.history.push("/");
+    } else {
+      error = result.message;
+    }
   };
- 
+  // const { isLogedIn } = useSelector((state) => state.application);
+
   return (
     <BackGround>
       <div className={styles.auth}>

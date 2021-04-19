@@ -107,3 +107,10 @@ margin: 0 !important;
   background: rgba(150,150,150,0.9);
   border: rgba(150,150,150,0.9);
 }
+
+.zoom{
+  transition: transform .2s ease;
+}
+.zoom:hover{
+  transform: scale(1.5);
+}
