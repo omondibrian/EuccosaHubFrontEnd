@@ -12,7 +12,6 @@ import { getState } from "../../state/slices/user";
 
 const UserDetails = () => {
   const  {user}  = useSelector(getState);
-  console.log(user)
   const { firstName, lastName, role, avatar, metaData } = user;
   return (
     <Card small className="mb-4 pt-3">

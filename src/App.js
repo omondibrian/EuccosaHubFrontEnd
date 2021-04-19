@@ -6,20 +6,22 @@ import { MobileNav } from "./components/navigation/navbar/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/styles/shards-dashboards.1.1.0.min.css";
 import DashBoard from "./components/dashboard";
-import ImageCrop from "./components/dashboard/imageCrop/ImageCrop"
+import ImageCrop from "./components/dashboard/imageCrop/ImageCrop";
 
 import store from "./state/store";
 import { Provider } from "react-redux";
+import DashBoardStats from "./components/dashboard/statsOverview";
 function App() {
   return (
-    <Provider store = {store}>
+    <Provider store={store}>
       <div className="App">
         <MobileNav />
         <BrowserRouter>
           <Switch>
-            <Route path="/login" render={() => <Login />} />
+            <Route path="/login/" render={() => <Login />} />
             <Route path="/dashboard" render={() => <DashBoard />} />
             <Route path="/crop" render={() => <ImageCrop />} />
+            <Route path="/stat" render={() => <DashBoardStats />} />
             <Route path="/" render={() => <Home />} exact={true} />
             <Route path="*" render={() => <PageNotFound />} />
           </Switch>

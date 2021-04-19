@@ -6,20 +6,24 @@ import UserDetails from "../../userDetails";
 import UserAccountDetails from "../../userAccountDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile, isLoading } from "../../../state/slices/user";
+import ProfilePageSkeleton from "../../skeletons/dashboardSkeletons/profilePageSkeleton";
+// import uUUserProfileSkeleto
+
 const UserProfile = () => {
   const dispatch = useDispatch();
   const state = useSelector(isLoading);
 
   useEffect(() => {
+    const id = localStorage.getItem('ID')
     dispatch(
       fetchUserProfile({
-        id: "3",
+        id,
       })
     );
   }, [dispatch]);
 
-  return state.loading ? (
-    <div>loading ..... </div>
+  return  state.loading ? (
+    <ProfilePageSkeleton />
   ) : (
     <Container fluid className="main-content-container px-4">
       <Row noGutters className="page-header py-4">

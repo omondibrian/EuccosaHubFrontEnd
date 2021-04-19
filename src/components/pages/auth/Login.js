@@ -6,8 +6,9 @@ import BackGround from "../../background";
 import { Github, Google } from "../../vectors/Vectors";
 import Footer from "../../footer/Footer";
 import { login } from "../../../services/auth.service";
+import {useHistory} from "react-router-dom"
 
-function Login() {
+function Login(props) {
   const [state, setState] = useState({ email: "", password: "" });
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -17,8 +18,10 @@ function Login() {
     e.preventDefault();
   };
   const handleClick = () => {
-    login(state);
+    const data = login(state);
+   
   };
+ 
   return (
     <BackGround>
       <div className={styles.auth}>

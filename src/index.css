@@ -26,8 +26,8 @@ body {
   background-color: var(--background);
   color: var(--black);
   box-sizing: border-box;
-  overflow-x: hidden;
   line-height: normal !important;
+  overflow-x: hidden !important;
 }
 
 code {

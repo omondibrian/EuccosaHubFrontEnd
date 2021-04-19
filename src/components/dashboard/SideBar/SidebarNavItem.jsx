@@ -10,6 +10,7 @@ const SidebarNavItem = ({ item }) => (
       icon={item.icon}
       after={item.htmlAfter}
       to={item.to}
+      
     />
   </NavItem>
 );
