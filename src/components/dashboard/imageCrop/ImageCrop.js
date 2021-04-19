@@ -6,7 +6,7 @@ import "./ImageCrop.css";
 const sendImage = async (file, fileName) => {
   const formData = new FormData();
   formData.append("profilePic", file, `${fileName}.jpeg`);
-  formData.append("id", "4");
+  formData.append("id", "3");
 
   let request = new XMLHttpRequest();
   request.open("PUT", "http://192.168.43.154:3001/auth/profile");

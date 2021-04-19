@@ -55,7 +55,8 @@ const userSlice = createSlice({
     },
     [fetchUserProfile.fulfilled]: (state, { payload }) => {
       console.log('fetchProfile',payload);
-
+      state.firstName = payload.firstName;
+      state.lastName = payload.lastName;
       state.Email = payload.email;
       state.avatar = 'http://192.168.43.154:3001/auth/uploads/'+payload.profilePic;
       state.phoneNumber = payload.phoneNumber;
