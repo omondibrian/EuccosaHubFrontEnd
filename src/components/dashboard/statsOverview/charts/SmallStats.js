@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from "react";
 import classNames from "classnames";
 import { Card, CardBody } from "shards-react";
@@ -77,10 +78,10 @@ function SmallStats(props) {
       chart.destroy();
     };
   }, [config]);
-  const canvasHeight = 120;
+  const canvasHeight = 150;
   const canvaRef = useRef();
   return (
-    <Card small className="stats-small stats-small--1">
+    <Card  className="stats-small stats-small--1">
       <CardBody className="p-0 d-flex">
         <div className="d-flex flex-column m-auto">
           <div className="stats-small__data text-center">
