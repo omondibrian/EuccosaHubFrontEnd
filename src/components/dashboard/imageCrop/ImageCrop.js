@@ -127,7 +127,7 @@ const ImageCrop = ({ Profile }) => {
     request.open("PUT", "http://192.168.43.154:3001/auth/profile");
     request.send(formData);
     request.onload = (res) => {
-      cropRef.classList.add("d-none");
+      document.querySelector(".image-crop").classList.add("d-none");
       dispatch(
         fetchUserProfile({
           id,

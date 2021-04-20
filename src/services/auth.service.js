@@ -37,7 +37,6 @@ export const login = async (credentials) => {
 };
 
 export const FetchUser = async (id) => {
-  console.log(id);
   const result = await fetch("http://192.168.43.154:3001/auth/profile/" + id, {
     method: "GET",
     headers: {
@@ -46,7 +45,6 @@ export const FetchUser = async (id) => {
   });
   if (result.ok) {
     const data = await result.json();
-    console.log(data);
     return data;
   } else {
     //TODO:add display incase of server error or any other errors
