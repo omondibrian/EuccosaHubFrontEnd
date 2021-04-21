@@ -9,9 +9,11 @@ export const login = async (credentials) => {
     },
     body: JSON.stringify(credentials),
   });
+  localStorage.setItem("testing","i was testing this")
   if (result.ok) {
     const data = await result.json();
     if (data._id) {
+      
       localStorage.setItem("ID", data._id);
       localStorage.setItem("TOKEN", data.token);
       return { message: "login successful", status: 200, isLogedIn: true };

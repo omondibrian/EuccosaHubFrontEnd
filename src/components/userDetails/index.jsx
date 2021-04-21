@@ -25,7 +25,7 @@ const UserDetails = () => {
             width="110"
           />
         </div>
-        <h4 className="mb-0">{firstName + lastName}</h4>
+        <h4 className="mb-0">{`${firstName}  ${lastName}`}</h4>
         <span className="text-muted d-block mb-2">{role}</span>
         <Button pill outline size="sm" className="mb-2"
           onClick={() => document.querySelector(".image-crop").classList.remove("d-none")}>

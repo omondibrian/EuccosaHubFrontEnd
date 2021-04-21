@@ -13,6 +13,7 @@ const Application = createSlice({
   initialState: {
     isMenuOpen: false,
     isUserLoggedIn: getToken() && getId() ? true : false,
+    flushMessage: null,
   },
   reducers: {
     toggleMenu: (state, action) => {
@@ -21,9 +22,16 @@ const Application = createSlice({
     toggleIsUserLoggedIn: (state) => {
       state.isUserLoggedIn = !state.isUserLoggedIn;
     },
+    setFlushMessage: (state, flushMessage) => {
+      state.flushMessage = flushMessage;
+    },
   },
 });
 export const getApplicationState = (state) => state;
-export const { toggleMenu, toggleIsUserLoggedIn } = Application.actions;
+export const {
+  toggleMenu,
+  toggleIsUserLoggedIn,
+  setFlushMessage,
+} = Application.actions;
 
 export default Application.reducer;

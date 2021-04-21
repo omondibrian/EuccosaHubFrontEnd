@@ -6,9 +6,12 @@ import BackGround from "../../background";
 import { Github, Google } from "../../vectors/Vectors";
 import Footer from "../../footer/Footer";
 import { login } from "../../../services/auth.service";
-import { useSelector, useDispatch } from "react-redux";
-import { toggleIsUserLoggedIn } from "../../../state/slices/Application";
-import {useLocation} from "react-router-dom"
+import { useDispatch } from "react-redux";
+import {
+  setFlushMessage,
+  toggleIsUserLoggedIn,
+} from "../../../state/slices/Application";
+import { useLocation } from "react-router-dom";
 
 function Login(props) {
   const [state, setState] = useState({ email: "", password: "" });
@@ -26,13 +29,18 @@ function Login(props) {
     const result = await login(state);
     if (result.status === 200 && result.isLogedIn === true) {
       dispatch(toggleIsUserLoggedIn());
-      const next = query.get("next") || "/"
+      dispatch(
+        setFlushMessage({
+          className: "alert-success",
+          message: `Welcome  ${state.email}`,
+        })
+      );
+      const next = query.get("next") || "/";
       props.history.push(next);
     } else {
       error = result.message;
     }
   };
- 
 
   return (
     <BackGround>
