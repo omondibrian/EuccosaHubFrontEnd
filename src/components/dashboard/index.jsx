@@ -15,7 +15,7 @@ export default function DashBoard() {
       <DefaultLayout {...defaultLayoutProps}>
         <Route path="/dashboard/userProfile" render={() => <UserProfile />} />
 
-        <Route path="/dashboard" render={() => <DashboardStats />} />
+        <Route exact={true} path="/dashboard" render={() => <DashboardStats />} />
       </DefaultLayout>
     </div>
   );

@@ -21,7 +21,7 @@ function App() {
           <Switch>
             <Route path="/login/" render={(prop) => <Login {...prop} />} />
             <Route path="/dashboard" render={(prop) =>
-              !application.isUserLoggedIn ? <Redirect to={`/login/next${prop.location}`}/> :  <DashBoard />} />
+              !application.isUserLoggedIn ? <Redirect to={`/login/?next=${prop.location.pathname}`}/> :  <DashBoard />} />
             <Route path="/crop" render={() => <ImageCrop />} />
             <Route path="/stat" render={() => <DashBoardStats />} />
             <Route path="/" render={() => <Home />} exact={true} />
