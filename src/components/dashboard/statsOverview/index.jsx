@@ -4,6 +4,99 @@ import PieChart from "./charts/Piechart";
 import AcountHistory from "./charts/AccountBalance";
 import { Container, Row, Col } from "shards-react";
 import PageTitle from "../../pageTitle";
+import Draft from "./Draft";
+import Discussions from "./Disscussion";
+import EventPlan from "./EventPlan";
+import avator1 from "../../../assets/images/avatars/1.jpg";
+import avator2 from "../../../assets/images/avatars/2.jpg";
+import avator3 from "../../../assets/images/avatars/3.jpg";
+
+const dicccussions = {
+  title: "Discussions",
+  discussions: [
+    {
+      id: 1,
+      date: "3 days ago",
+      author: {
+        image: avator1,
+        name: "John Doe",
+        url: "#",
+      },
+      post: {
+        title: "Hello World!",
+        url: "#",
+      },
+      body: "Well, the way they make shows is, they make one show ...",
+    },
+    {
+      id: 2,
+      date: "4 days ago",
+      author: {
+        image: avator2,
+        name: "John Doe",
+        url: "#",
+      },
+      post: {
+        title: "Hello World!",
+        url: "#",
+      },
+      body: "After the avalanche, it took us a week to climb out. Now...",
+    },
+    {
+      id: 3,
+      date: "5 days ago",
+      author: {
+        image: avator3,
+        name: "John Doe",
+        url: "#",
+      },
+      post: {
+        title: "Hello World!",
+        url: "#",
+      },
+      body: "My money's in that office, right? If she start giving me...",
+    },
+  ],
+};
+
+const TopReferrals = {
+  title: "Top Referrals",
+  referralData: [
+    {
+      title: "GitHub",
+      value: "19,291",
+    },
+    {
+      title: "Stack Overflow",
+      value: "11,201",
+    },
+    {
+      title: "Hacker News",
+      value: "9,291",
+    },
+    {
+      title: "Reddit",
+      value: "8,281",
+    },
+    {
+      title: "The Next Web",
+      value: "7,128",
+    },
+    {
+      title: "Tech Crunch",
+      value: "6,218",
+    },
+    {
+      title: "YouTube",
+      value: "1,218",
+    },
+    {
+      title: "Adobe",
+      value: "1,171",
+    },
+  ],
+};
+
 function DashboardStats() {
   const data = {
     labels: ["January", "February", "March", "April", "May", "June"],
@@ -80,9 +173,28 @@ function DashboardStats() {
           </div>
         </Col>
       </Row>
-      <div style={{ position: "relative",width:'contentBox' }}>
-        <AcountHistory data={Accountdata} />
-      </div>
+      <Row>
+        <Col lg="12" md="12" sm="12" className="mb-4">
+          <AcountHistory data={Accountdata} />
+        </Col>
+      </Row>
+      <Row>
+        <Col lg="4" md="6" sm="12" className="mb-4">
+          <Draft />
+        </Col>
+        <Col lg="5" md="12" sm="12" className="mb-4">
+          <Discussions
+            title={dicccussions.title}
+            discussions={dicccussions.discussions}
+          />
+        </Col>
+        <Col lg="3" md="12" sm="12" className="mb-4">
+          <EventPlan
+            title={TopReferrals.title}
+            referralData={TopReferrals.referralData}
+          />
+        </Col>
+      </Row>
     </Container>
   );
 }
