@@ -11,6 +11,7 @@ const defaultLayoutProps = {
 };
 
 export default function DashBoard() {
+  
   return (
     <div className="dashboard">
       <DefaultLayout {...defaultLayoutProps}>
@@ -18,6 +19,8 @@ export default function DashBoard() {
         <Route path="/dashboard/userProfile" render={() => <UserProfile />} />
         <Route path="/dashboard/addNewEvent" render={() => <AddNewEvent />} />
         <Route path="/dashboard/Users" render={() => <Users />} />
+
+        <Route exact={true} path="/dashboard" render={() => <DashboardStats />} />
       </DefaultLayout>
     </div>
   );

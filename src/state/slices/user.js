@@ -1,15 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { FetchUser } from "../../services/auth.service";
 import countries from "../../data/countries";
-import AvatorImg from "../../assets/images/avatar.png";
+import AvatorImg from "../../assets/images/avatar.svg";
 const today = new Date();
 
 const State = {
   countries,
   title: "Account Details",
-  firstName: "Brian",
-  lastName: "Omondi",
-  Email: "omondibrian392@gmail.com",
+  firstName: "",
+  lastName: "",
+  Email: "",
   Address: {
     city: "Malindi",
     street: "Jiwe Leupe",
@@ -18,9 +18,9 @@ const State = {
   role: "Vice chairman",
   testimonial: "test testimonial",
   avatar: AvatorImg,
-  phoneNumber: "+2544567890",
-  startDate: today.getDate(),
-  completionDate: today.getDate(),
+  phoneNumber: "",
+  startDate: "",
+  completionDate: "",
   loading: false,
   metaData: [
     {

@@ -1,5 +1,5 @@
 import Img from "../../assets/images/im.jpg";
-import avator from "../../assets/images/avatar.png";
+import avator from "../../assets/images/avatar.svg";
 import Img2 from "../../assets/images/profile/2.jpeg";
 import Img3 from "../../assets/images/profile/3.jpeg";
 

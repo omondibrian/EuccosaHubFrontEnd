@@ -78,7 +78,7 @@ function SmallStats(props) {
       chart.destroy();
     };
   }, [config]);
-  const canvasHeight = 150;
+  const canvasHeight = 170;
   const canvaRef = useRef();
   return (
     <Card  className="stats-small stats-small--1">
