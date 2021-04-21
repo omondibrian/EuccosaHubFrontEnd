@@ -20,8 +20,8 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route path="/login/" render={(prop) => <Login {...prop} />} />
-            <Route path="/dashboard" render={() =>
-              !application.isUserLoggedIn ? <Redirect to="/login/"/> :  <DashBoard />} />
+            <Route path="/dashboard" render={(prop) =>
+              !application.isUserLoggedIn ? <Redirect to={`/login/next${prop.location}`}/> :  <DashBoard />} />
             <Route path="/crop" render={() => <ImageCrop />} />
             <Route path="/stat" render={() => <DashBoardStats />} />
             <Route path="/" render={() => <Home />} exact={true} />

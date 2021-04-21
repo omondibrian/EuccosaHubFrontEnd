@@ -5,6 +5,7 @@ import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
 
 function AccountHistory({ data }) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const config = {
     type: "line",
     data: data,
@@ -40,8 +41,8 @@ function AccountHistory({ data }) {
   const canvasHeight = 120;
   const canvaRef = useRef();
   return (
-    <div className="container mx-auto">
-      <Card className="my-3 mx-3">
+    <div>
+      <Card >
         <CardBody>
           <canvas height={canvasHeight} ref={canvaRef} />
         </CardBody>
