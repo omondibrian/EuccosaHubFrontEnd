@@ -58,40 +58,33 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.social_auth__icon {
+
+.social_auth>a {
   margin: 0 1.5rem;
-}
-.shine__btn,
-.shine__btn {
+  background-color: rgba(255,255,255,.7);
+  padding: 5px 5px;
+  border-radius: 4px;
   text-decoration: none;
-  border: 1px solid rgb(146, 148, 248);
-  position: relative;
-  overflow: hidden;
+  transition: all .3s ease;
+  fill: #007bff;
+}
+.social_auth>a:hover{
+  text-decoration: none;
+  opacity: .7;
+}
+@media(max-width:600px){
+  .social_auth>a {
+    margin: 0;
+  }
+  .social_auth{
+    justify-content: space-between;
+  }
 }
 
-.shine__btn:hover,
-.shine__btn:hover {
-  box-shadow: 1px 1px 25px 10px rgba(146, 148, 248, 0.4);
+.errors{
+  color:#c4183c;
 }
-
-.shine__btn:before,
-.shine__btn:before {
-  content: "";
-  position: bsolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(146, 148, 248, 0.4),
-    transparent
-  );
-  transition: ll 650ms;
-}
-
-.shine__btn:hover:before,
-.shine__btn:before {
-  left: 100%;
+.auth strong a{
+  color: #fff;
+  font-weight: 600;
 }

@@ -2,12 +2,14 @@ import React, { useRef, useState } from "react";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import "./ImageCrop.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile } from "../../../state/slices/user";
+import { getApplicationState,createFlushMessage } from "../../../state/slices/Application";
 
 const ImageCrop = ({ Profile }) => {
   let fileUrl, file;
   const dispatch = useDispatch();
+  const { application } = useSelector(getApplicationState);
   const [state, setState] = useState({
     cropSrc: null,
     crop: {
@@ -121,19 +123,32 @@ const ImageCrop = ({ Profile }) => {
   const sendImage = async (file, fileName) => {
     const formData = new FormData();
     formData.append("profilePic", file, `${fileName}.jpeg`);
-    const id = localStorage.getItem("ID");
+    const id = application.userID;
     formData.append("id", id);
     let request = new XMLHttpRequest();
     request.open("PUT", "http://192.168.43.154:3001/auth/profile");
     request.send(formData);
     request.onload = (res) => {
-      document.querySelector(".image-crop").classList.add("d-none");
       dispatch(
         fetchUserProfile({
           id,
         })
+        
       );
+      dispatch(
+        createFlushMessage({
+          className: "alert-success",
+          message: "Your profile has been updated",
+        }))
     };
+    request.onerror = ()=>{
+      dispatch(
+        createFlushMessage({
+          className: "alert-danger",
+          message: "An error occured",
+        }))
+    }
+    document.querySelector(".image-crop").classList.add("d-none");
   };
   const cropRef = useRef();
   return (
@@ -152,11 +167,12 @@ const ImageCrop = ({ Profile }) => {
                 ? { visibility: "visible" }
                 : { visibility: "hidden" }
             }
-            className="btn crop-btn rounded"
+            className="btn btn-info rounded crop-btn"
             onClick={makeClientCrop}
             title="crop image"
           >
             <i className="material-icons">crop</i>
+            <small class="d-block">crop</small>
           </button>
           <button
             className="btn btn-primary my-0 px-4 my-2"
@@ -169,7 +185,7 @@ const ImageCrop = ({ Profile }) => {
                 : { visibility: "visible" }
             }
           >
-            Done
+            save
           </button>
         </div>
 

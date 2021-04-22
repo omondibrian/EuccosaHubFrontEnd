@@ -10,7 +10,7 @@ import { getApplicationState } from "../../../state/slices/Application"
 
 export default function MainSidebar({ hideLogoText }) {
   const { application } = useSelector(getApplicationState)
-  const [state, setState] = useState({
+  const [state] = useState({
     sidebarNavItems: sideBarItems()
   })
 

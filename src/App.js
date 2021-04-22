@@ -1,6 +1,6 @@
 import Login from "./components/pages/auth/Login";
 import PageNotFound from "./components/pages/404_page/404_page";
-import { BrowserRouter, Switch, Route, useLocation,Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Home from "./components/pages/home/Home";
 import { MobileNav } from "./components/navigation/navbar/index";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,6 +10,7 @@ import ImageCrop from "./components/dashboard/imageCrop/ImageCrop";
 import { useSelector  } from "react-redux";
 import DashBoardStats from "./components/dashboard/statsOverview";
 import { getApplicationState } from "./state/slices/Application";
+import Register from "./components/pages/auth/Register"
 
 function App() {
   const { application } = useSelector(getApplicationState)
@@ -20,8 +21,9 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route path="/login/" render={(prop) => <Login {...prop} />} />
+            <Route path="/register/" render={(prop) => <Register {...prop} />} />
             <Route path="/dashboard" render={(prop) =>
-              !application.isUserLoggedIn ? <Redirect to={`/login/?next=${prop.location.pathname}`}/> :  <DashBoard />} />
+              !application.isAuthenticated ? <Redirect to={`/login/?next=${prop.location.pathname}`}/> :  <DashBoard />} />
             <Route path="/crop" render={() => <ImageCrop />} />
             <Route path="/stat" render={() => <DashBoardStats />} />
             <Route path="/" render={() => <Home />} exact={true} />

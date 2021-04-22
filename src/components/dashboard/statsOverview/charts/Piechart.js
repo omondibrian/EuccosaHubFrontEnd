@@ -6,25 +6,25 @@ Chart.register(...registerables);
 
 function PieChart(props) {
   const { data, title } = props;
-  const config = {
-    type: "pie",
-    data: data,
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: "bottom",
-        },
-      },
-    },
-  };
 
   useEffect(() => {
+    const config = {
+      type: "pie",
+      data: data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+    };
     const chart = new Chart(canvaRef.current, config);
     return () => {
       chart.destroy();
     };
-  }, [config]);
+  }, [data]);
   const canvasHeight = 300;
   const canvaRef = useRef();
   return (

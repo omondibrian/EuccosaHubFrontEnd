@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { FetchUser } from "../../services/auth.service";
 import countries from "../../data/countries";
 import AvatorImg from "../../assets/images/avatar.svg";
-const today = new Date();
+
 
 const State = {
   countries,
