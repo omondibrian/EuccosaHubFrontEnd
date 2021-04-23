@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { Col } from "shards-react";
 import SidebarMainNavbar from "./sideBar";
 import sideBarItems from '../../../data/sidebar'
 import SidebarNavItems from "./SideBarItems";

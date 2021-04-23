@@ -1,6 +1,5 @@
 import React from "react";
 import SidebarNavItem from "./SidebarNavItem";
-import { Nav } from "shards-react";
 import { useDispatch } from "react-redux"
 import { toggleMenu } from "../../../state/slices/Application"
 

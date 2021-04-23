@@ -22,7 +22,7 @@ export default function NavbarNav() {
     });
   };
   return (
-    <nav  className="navbar-nav border-left flex-row">
+    <nav  className="navbar-nav flex-row">
       <Notifications state={state} toggleNotification={toggleNotification} />
       <UserActions state={state} toggleUserActions={toggleUserActions} />
     </nav>

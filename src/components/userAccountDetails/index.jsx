@@ -1,17 +1,4 @@
 import React from "react";
-import {
-  Card,
-  CardHeader,
-  ListGroup,
-  ListGroupItem,
-  Row,
-  Col,
-  Form,
-  FormInput,
-  FormSelect,
-  FormTextarea,
-  Button,
-} from "shards-react";
 import "./userAccountDetails.css";
 import "shards-react/components/datepicker/DatePicker.css";
 import { useFormik } from "formik";
@@ -25,7 +12,7 @@ import { getState } from "../../state/slices/user";
 registerLocale("en", en);
 
 const UserAccountDetails = () => {
-  const {user} = useSelector(getState);
+  const { user } = useSelector(getState);
   // const dispatch = useDispatch()
   const initialState = {
     firstName: user.firstName,
@@ -62,20 +49,21 @@ const UserAccountDetails = () => {
   });
 
   return (
-    <Card small className="mb-4">
-      <CardHeader className="border-bottom">
+    <div className="card mb-4">
+      <div className="card-header border-bottom">
         <h6 className="m-0">{user.title}</h6>
-      </CardHeader>
-      <ListGroup flush>
-        <ListGroupItem className="p-3">
-          <Row>
-            <Col>
-              <Form onSubmit={formik.handleSubmit}>
-                <Row form>
+      </div>
+      <ul className="list-group list-group-flush">
+        <li className="list-group-item p-3">
+          <div className="row">
+            <div className="col-12">
+              <form onSubmit={formik.handleSubmit}>
+                <div className="row form-group">
                   {/* First Name */}
-                  <Col md="6" className="form-group">
+                  <div className="col-md-6 form-group">
                     <label htmlFor="firstName">First Name</label>
-                    <FormInput
+                    <input
+                    className="form-control"
                       id="firstName"
                       placeholder="First Name"
                       name="firstName"
@@ -87,11 +75,12 @@ const UserAccountDetails = () => {
                         {formik.errors.firstName}
                       </small>
                     ) : null}
-                  </Col>
+                  </div>
                   {/* Last Name */}
-                  <Col md="6" className="form-group">
+                  <div className="col-md-6 form-group">
                     <label htmlFor="lastName">Last Name</label>
-                    <FormInput
+                    <input
+                    className="form-control"
                       placeholder="Last Name"
                       id="lastName"
                       name="lastName"
@@ -103,13 +92,14 @@ const UserAccountDetails = () => {
                         {formik.errors.lastName}
                       </small>
                     ) : null}
-                  </Col>
-                </Row>
-                <Row form>
+                  </div>
+                </div>
+                <div className="row form-group">
                   {/* Email */}
-                  <Col md="6" className="form-group">
+                  <div className="col-md-6 form-group">
                     <label htmlFor="feEmail">Email</label>
-                    <FormInput
+                    <input
+                    className="form-control"
                       type="email"
                       placeholder="Email Address"
                       id="Email"
@@ -123,11 +113,12 @@ const UserAccountDetails = () => {
                         {formik.errors.Email}
                       </small>
                     ) : null}
-                  </Col>
+                  </div>
 
-                  <Col md="6" className="form-group">
+                  <div className="col-md-6 form-group">
                     <label htmlFor="phoneNumber">PhoneNumber</label>
-                    <FormInput
+                    <input
+                    className="form-control"
                       type="text"
                       placeholder="+2547123456"
                       id="phoneNumber"
@@ -141,10 +132,10 @@ const UserAccountDetails = () => {
                         {formik.errors.phoneNumber}
                       </small>
                     ) : null}
-                  </Col>
-                </Row>
-                <Row form>
-                  <Col md="6" lg="6" className="form-group">
+                  </div>
+                </div>
+                <div className="row form-group">
+                  <div className="col-6 form-group">
                     <label style={{ display: "block" }} htmlFor="startDate">
                       Start Date
                     </label>
@@ -162,9 +153,9 @@ const UserAccountDetails = () => {
                         {formik.errors.startDate}
                       </small>
                     ) : null}
-                  </Col>
+                  </div>
 
-                  <Col md="6" lg="6" className="form-group">
+                  <div className="col-6 form-group">
                     <label
                       style={{ display: "block" }}
                       htmlFor="completionDate"
@@ -183,17 +174,18 @@ const UserAccountDetails = () => {
                       } //only when value has changed
                     />
                     {formik.touched.completionDate &&
-                    formik.errors.completionDate ? (
+                      formik.errors.completionDate ? (
                       <small className="text-danger">
                         {formik.errors.completionDate}
                       </small>
                     ) : null}
-                  </Col>
-                </Row>
-                <Row form>
-                  <Col md="2" className="form-group">
+                  </div>
+                </div>
+                <div className="row form-group">
+                  <div className="col-md-4 form-group">
                     <label htmlFor="street">street</label>
-                    <FormInput
+                    <input
+                    className="form-control"
                       id="street"
                       name="street"
                       value={formik.values.street}
@@ -204,11 +196,12 @@ const UserAccountDetails = () => {
                         {formik.errors.street}
                       </small>
                     ) : null}
-                  </Col>
+                  </div>
                   {/* City */}
-                  <Col md="6" className="form-group">
+                  <div className="col-md-4 form-group">
                     <label htmlFor="city">City</label>
-                    <FormInput
+                    <input
+                    className="form-control"
                       id="city"
                       name="city"
                       value={formik.values.city}
@@ -219,59 +212,62 @@ const UserAccountDetails = () => {
                         {formik.errors.city}
                       </small>
                     ) : null}
-                  </Col>
+                  </div>
                   {/* country */}
-                  <Col md="4" className="form-group">
+                  <div className="col-md-4 form-group">
                     <label htmlFor="country">country</label>
-                    <FormSelect
+                    <select
                       id="country"
                       name="country"
                       value={formik.values.country}
                       onChange={formik.handleChange}
+                      className="form-control"
                     >
                       <option>Choose...</option>
                       {user.countries.map((con) => {
                         return <option key={con.id}>{con.name}</option>;
                       })}
                       <option>...</option>
-                    </FormSelect>
+                    </select>
                     {formik.touched.country && formik.errors.country ? (
                       <small className="text-danger">
                         {formik.errors.country}
                       </small>
                     ) : null}
-                  </Col>
-                </Row>
-                <Row form>
+                  </div>
+                </div>
+                <div className="form-group">
                   {/* Description */}
-                  <Col md="12" className="form-group">
+                  <div className="form-group">
                     <label htmlFor="testimonial">Testimonial</label>
-                    <FormTextarea
+                    <textarea
                       id="testimonial"
                       onChange={formik.handleChange}
                       rows="5"
                       value={formik.values.testimonial}
+                      className="form-control"
                     />
                     {formik.touched.testimonial && formik.errors.testimonial ? (
                       <small className="text-danger">
                         {formik.errors.testimonial}
                       </small>
                     ) : null}
-                  </Col>
-                </Row>
-                <Button
-                  disabled={formik.isSubmitting}
+                  </div>
+                </div>
+                <button
+                  // disabled={formik.isSubmitting}
                   type="submit"
-                  theme={formik.isSubmitting ? "btn btn-secondary" : "accent"}
+                  className="btn btn-primary"
+
                 >
-                  Update Account
-                </Button>
-              </Form>
-            </Col>
-          </Row>
-        </ListGroupItem>
-      </ListGroup>
-    </Card>
+                  {formik.isSubmitting ? "updating..." : "Update Account"}
+                </button>
+              </form>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   );
 };
 

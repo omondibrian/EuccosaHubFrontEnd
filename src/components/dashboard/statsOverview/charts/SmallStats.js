@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from "react";
 import classNames from "classnames";
-import { Card, CardBody } from "shards-react";
 import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
 
