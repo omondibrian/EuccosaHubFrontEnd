@@ -15,13 +15,20 @@ export const getId = () => {
     return "";
   }
 };
-const id=getId()
-const token = getToken()
+export const clearLocalStorage=()=>{
+  try{
+    localStorage.clear()
+  }
+  catch (e){    
+  }
+}
+const id = getId();
+const token = getToken();
 const Application = createSlice({
   name: "application",
   initialState: {
     isMenuOpen: false,
-    isAuthenticated:token  && id ? true : false,
+    isAuthenticated: token && id ? true : false,
     flushMessage: false,
     userToken: token,
     userID: id,
@@ -37,12 +44,13 @@ const Application = createSlice({
       state.flushMessage = actions.payload;
     },
     Authenticate: (state, actions) => {
-     
       state.userID = actions.payload.ID;
       state.userToken = actions.payload.TOKEN;
-    }
+    },
+    logOutUser: (state) => {
+      state.isAuthenticated = false;
+    },
   },
-  
 });
 export const getApplicationState = (state) => state;
 export const {
@@ -50,6 +58,7 @@ export const {
   loginUser,
   createFlushMessage,
   Authenticate,
+  logOutUser,
 } = Application.actions;
 
 export default Application.reducer;

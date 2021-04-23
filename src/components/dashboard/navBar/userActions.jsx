@@ -41,7 +41,7 @@ export default function UserActions({ state, toggleUserActions }) {
         <DropdownItem
           icon="&#xE879;"
           title="Log out"
-          to="/"
+          to="/logout"
           className="text-danger"
         />
       </Collapse>
