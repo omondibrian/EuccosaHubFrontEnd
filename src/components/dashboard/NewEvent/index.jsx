@@ -1,31 +1,29 @@
 import React from "react";
-import { Container, Row, Col } from "shards-react";
-
 import PageTitle from "../../pageTitle";
 import Editor from "../../AddNewEvent/Editor";
 import SidebarActions from "../../AddNewEvent/SideBarActions";
 import SidebarCategories from "../../AddNewEvent/SideBarCategory";
 
 const AddNewEvent = () => (
-  <Container fluid className="main-content-container px-4 pb-4">
+  <div className="container-fulid main-content-container px-4 pb-4">
     {/* Page Header */}
-    <Row noGutters className="page-header py-4">
+    <div className="row page-header py-4">
       <PageTitle sm="4" title="Add New Post" subtitle="Blog Posts" className="text-sm-left" />
-    </Row>
+    </div>
 
-    <Row>
+    <div className="row">
       {/* Editor */}
-      <Col lg="9" md="12">
+      <div className="col-lg-9 col-md-12">
         <Editor />
-      </Col>
+      </div>
 
       {/* Sidebar Widgets */}
-      <Col lg="3" md="12">
+      <div className="col-lg-3 col-md-12">
         <SidebarActions />
         <SidebarCategories />
-      </Col>
-    </Row>
-  </Container>
+      </div>
+    </div>
+  </div>
 );
 
 export default AddNewEvent;

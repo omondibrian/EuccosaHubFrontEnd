@@ -1,44 +1,33 @@
 import React from "react";
 
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Form,
-  FormGroup,
-  FormInput,
-  FormTextarea,
-  Button
-} from "shards-react";
-
 const NewDraft = ({ title }) => (
-  <Card small className="h-100">
+  <div className="card h-100">
     {/* Card Header */}
-    <CardHeader className="border-bottom">
+    <div className="card-header border-bottom">
       <h6 className="m-0">{title}</h6>
-    </CardHeader>
+    </div>
 
-    <CardBody className="d-flex flex-column">
-      <Form className="quick-post-form">
+    <div className="card-body d-flex flex-column">
+      <form className="quick-post-form">
         {/* Title */}
-        <FormGroup>
-          <FormInput placeholder="Brave New World" />
-        </FormGroup>
+        <div className="form-group">
+          <input type="text" placeholder="Brave New World" className="form-control" />
+        </div>
 
         {/* Body */}
-        <FormGroup>
-          <FormTextarea placeholder="Words can be like X-rays if you use them properly..." />
-        </FormGroup>
+        <div className="form-group">
+          <textarea className="form-control" placeholder="Words can be like X-rays if you use them properly..." />
+        </div>
 
         {/* Create Draft */}
-        <FormGroup className="mb-0">
-          <Button theme="accent" type="submit">
+        <div className="form-group mb-0">
+          <button className="btn btn-primary" type="submit">
             Create Draft
-          </Button>
-        </FormGroup>
-      </Form>
-    </CardBody>
-  </Card>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 );
 
 export default NewDraft;

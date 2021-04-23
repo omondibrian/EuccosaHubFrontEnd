@@ -18,13 +18,15 @@ export default function MainSidebar({ hideLogoText }) {
     "main-sidebar",
     "px-0",
     "col-12",
+    "col-lg-2",
+    "col-md-3",
     application.isMenuOpen && "open"
   );
 
   return (
-    <Col tag="aside" className={classes} lg={{ size: 2 }} md={{ size: 3 }}>
+    <div className={classes}>
       <SidebarMainNavbar hideLogoText={hideLogoText} />
       <SidebarNavItems navItems={state.sidebarNavItems} />
-    </Col>
+    </div>
   );
 }

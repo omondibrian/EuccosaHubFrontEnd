@@ -12,11 +12,11 @@ function SideBarItems(props) {
   }
   return (
     <div className="nav-wrapper">
-      <Nav className="nav--no-borders flex-column">
+      <nav className="nav nav--no-borders flex-column">
         {items.map((item, idx) => (
           <div onClick={handleClick } key={idx}> <SidebarNavItem  item={item} /></div>
         ))}
-      </Nav>
+      </nav>
     </div>
   );
 }

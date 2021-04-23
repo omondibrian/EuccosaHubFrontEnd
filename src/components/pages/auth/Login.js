@@ -29,7 +29,11 @@ function Login(props) {
   const query = new URLSearchParams(useLocation().search);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await login(state);
+    const result = await login({
+      email: state.email.toLowerCase(),
+      password: state.password,
+    });
+    console.log(result);
     if (result.status === 200 && result.isAuthenticated === true) {
       dispatch(loginUser());
       dispatch(

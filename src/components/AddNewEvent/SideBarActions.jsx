@@ -1,23 +1,14 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  ListGroup,
-  ListGroupItem,
-  Button
-} from "shards-react";
 
 const SidebarActions = ({ title }) => (
-  <Card small className="mb-3">
-    <CardHeader className="border-bottom">
+  <div small className="card mb-3">
+    <div className="border-bottom card-header">
       <h6 className="m-0">{title}</h6>
-    </CardHeader>
+    </div>
 
-    <CardBody className="p-0">
-      <ListGroup flush>
-        <ListGroupItem className="p-3">
+    <div className="card-body p-0">
+      <ul className="list-group list-group-flush">
+        <li className="list-group-item p-3">
           <span className="d-flex mb-2">
             <i className="material-icons mr-1">flag</i>
             <strong className="mr-1">Status:</strong> Draft{" "}
@@ -29,6 +20,7 @@ const SidebarActions = ({ title }) => (
             <i className="material-icons mr-1">visibility</i>
             <strong className="mr-1">Visibility:</strong>{" "}
             <strong className="text-success">Public</strong>{" "}
+            {/* */}
             <a className="ml-auto" href="#">
               Edit
             </a>
@@ -45,18 +37,18 @@ const SidebarActions = ({ title }) => (
             <strong className="mr-1">Readability:</strong>{" "}
             <strong className="text-warning">Ok</strong>
           </span>
-        </ListGroupItem>
-        <ListGroupItem className="d-flex px-3 border-0">
-          <Button outline theme="accent" size="sm">
+        </li>
+        <li className="list-group-item d-flex px-3 border-0">
+          <button className="btn btn-outline-primary accent" >
             <i className="material-icons">save</i> Save Draft
-          </Button>
-          <Button theme="accent" size="sm" className="ml-auto">
+          </button>
+          <button className="btn btn-primary ml-auto">
             <i className="material-icons">file_copy</i> Publish
-          </Button>
-        </ListGroupItem>
-      </ListGroup>
-    </CardBody>
-  </Card>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
 );
 
 export default SidebarActions;

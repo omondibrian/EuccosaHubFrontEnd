@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Navbar, NavbarBrand } from "shards-react";
 import { toggleMenu } from "../../../state/slices/Application";
 
 function SideBar(props) {
@@ -12,22 +11,22 @@ function SideBar(props) {
   };
   return (
     <div className="main-navbar">
-      <Navbar
-        className="align-items-stretch bg-white flex-md-nowrap border-bottom p-0"
-        type="light"
+      <nav
+        className="navbar align-items-stretch bg-white flex-md-nowrap border-bottom p-0"
+
       >
-        <NavbarBrand
-          className="w-100 mr-0"
-          href="#"
+        <a
+          className="w-100 mr-0 navbar-brand"
+          href="/"
           style={{ lineHeight: "25px" }}
         >
           <div className="d-table m-auto">
-          
+
             {!hideLogoText && (
               <span className="d-none d-md-inline ml-1">EuccosaHub </span>
             )}
           </div>
-        </NavbarBrand>
+        </a>
         {/* eslint-disable-next-line */}
         <a
           className="toggle-sidebar d-sm-inline d-md-none d-lg-none"
@@ -35,7 +34,7 @@ function SideBar(props) {
         >
           <i className="material-icons">arrow_back</i>
         </a>
-      </Navbar>
+      </nav>
     </div>
   );
 }

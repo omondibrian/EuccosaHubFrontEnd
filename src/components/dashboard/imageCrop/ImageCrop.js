@@ -172,7 +172,7 @@ const ImageCrop = ({ Profile }) => {
             title="crop image"
           >
             <i className="material-icons">crop</i>
-            <small class="d-block">crop</small>
+            <small className="d-block">crop</small>
           </button>
           <button
             className="btn btn-primary my-0 px-4 my-2"

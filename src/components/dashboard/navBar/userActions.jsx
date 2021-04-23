@@ -12,7 +12,7 @@ import { getState } from "../../../state/slices/user";
 import { useSelector } from "react-redux"
 
 export default function UserActions({ state, toggleUserActions }) {
-  const { user} = useSelector(getState)
+  const { user } = useSelector(getState)
 
 
   return (
@@ -27,7 +27,7 @@ export default function UserActions({ state, toggleUserActions }) {
       </DropdownToggle>
       <Collapse tag={DropdownMenu} right small open={state.isMenuVisible}>
         <DropdownItem icon="&#xE7FD;" title="Profile" to="/userProfile" />
- 
+
         <DropdownItem
           icon="&#xE8B8;"
           title="Edit Profile"
