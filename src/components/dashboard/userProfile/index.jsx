@@ -6,21 +6,22 @@ import UserDetails from "../../userDetails";
 import UserAccountDetails from "../../userAccountDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile, isLoading } from "../../../state/slices/user";
+import {getApplicationState} from "../../../state/slices/Application"
 import ProfilePageSkeleton from "../../skeletons/dashboardSkeletons/profilePageSkeleton";
-// import uUUserProfileSkeleto
+
 
 const UserProfile = () => {
   const dispatch = useDispatch();
   const state = useSelector(isLoading);
-
+  const {application} = useSelector(getApplicationState)
+  const id = application.userID
   useEffect(() => {
-    const id = localStorage.getItem('ID')
     dispatch(
       fetchUserProfile({
         id,
       })
     );
-  }, [dispatch]);
+  }, [dispatch,id]);
 
   return  state.loading ? (
     <ProfilePageSkeleton />

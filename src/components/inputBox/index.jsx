@@ -1,16 +1,13 @@
 import React from 'react'
 import styles from './Inputbox.module.css'
 
-export const InputBox = ({ onChange, placeHolder, value, name, type = "text" }) => {
+export const InputBox = (props) => {
     return <div>
         <div className="input-field ">
-            <input onChange={onChange}
-                placeholder={placeHolder}
-                id={name}
-                type={type}
-                name={name}
+            <input
                 className={styles.input_text}
-                value={value}
+                {...props}
+
             />
         </div>
     </div>

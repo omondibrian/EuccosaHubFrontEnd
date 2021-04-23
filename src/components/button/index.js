@@ -1,9 +1,9 @@
 import styles from './button.module.css'
 import React from 'react'
-export const Button = ({ onclick, name, state }) => {
+export const Button = (props) => {
     return <button
-        onClick={() => onclick(state)}
+         {...props}
         className={styles.btn_primary}>
-        {name}
+        {props.name}
     </button>
 }

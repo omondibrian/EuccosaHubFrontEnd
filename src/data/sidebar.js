@@ -36,6 +36,12 @@ export default function sideBarItems() {
         icon: 'error',
         to: "/dashboard/transcations",
       }
+      ,
+      {
+        title: "Logout",
+        icon: '&#xE879;',
+        to: "/logout",
+      }
     ];
   }
   

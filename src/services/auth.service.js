@@ -1,39 +1,37 @@
-// import {useLocation} from "react"
-
 export const login = async (credentials) => {
-  console.log(credentials);
   const result = await fetch("http://192.168.43.154:3001/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
     body: JSON.stringify(credentials),
+  }).catch((e) => {
+    return {
+      message: e.message,
+      status: e.status,
+      isAuthenticated: false,
+    };
   });
-  localStorage.setItem("testing","i was testing this")
   if (result.ok) {
     const data = await result.json();
     if (data._id) {
-      
-      localStorage.setItem("ID", data._id);
-      localStorage.setItem("TOKEN", data.token);
-      return { message: "login successful", status: 200, isLogedIn: true };
-    } else {
+      try {
+        localStorage.setItem("ID", data._id);
+        localStorage.setItem("TOKEN", data.token);
+      } catch (e) {}
       return {
-        message: "This account has not been activated",
+        message: result.message,
         status: 200,
-        isLogedIn: false,
+        isAuthenticated: true,
+        ID: data._id,
+        TOKEN: data.token,
       };
     }
-  } else if (result.status === 401) {
-    return {
-      message: "Invalid credentials",
-      status: 401,
-      isLogedIn: false,
-    };
   } else {
     return {
-      message: "An error occured",
+      message: result.message,
       status: result.status,
+      isAuthenticated: false,
     };
   }
 };
@@ -53,3 +51,5 @@ export const FetchUser = async (id) => {
     console.log(result.statusText);
   }
 };
+
+

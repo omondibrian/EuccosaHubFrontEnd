@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 import { Col } from "shards-react";
-
 import SidebarMainNavbar from "./sideBar";
 import sideBarItems from '../../../data/sidebar'
 import SidebarNavItems from "./SideBarItems";
@@ -10,7 +9,7 @@ import { getApplicationState } from "../../../state/slices/Application"
 
 export default function MainSidebar({ hideLogoText }) {
   const { application } = useSelector(getApplicationState)
-  const [state, setState] = useState({
+  const [state] = useState({
     sidebarNavItems: sideBarItems()
   })
 

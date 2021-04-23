@@ -1,37 +1,64 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const getToken = () => {
-  return localStorage.getItem("TOKEN");
+  try {
+    return localStorage.getItem("TOKEN");
+  } catch (e) {
+    return "";
+  }
 };
 
 export const getId = () => {
-  return localStorage.getItem("ID");
+  try {
+    return localStorage.getItem("ID");
+  } catch (e) {
+    return "";
+  }
 };
-
+export const clearLocalStorage=()=>{
+  try{
+    localStorage.clear()
+  }
+  catch (e){    
+  }
+}
+const id = getId();
+const token = getToken();
 const Application = createSlice({
   name: "application",
   initialState: {
     isMenuOpen: false,
-    isUserLoggedIn: getToken() && getId() ? true : false,
-    flushMessage: null,
+    isAuthenticated: token && id ? true : false,
+    flushMessage: false,
+    userToken: token,
+    userID: id,
   },
   reducers: {
     toggleMenu: (state, action) => {
       state.isMenuOpen = !state.isMenuOpen;
     },
-    toggleIsUserLoggedIn: (state) => {
-      state.isUserLoggedIn = !state.isUserLoggedIn;
+    loginUser: (state) => {
+      state.isAuthenticated = true;
     },
-    setFlushMessage: (state, flushMessage) => {
-      state.flushMessage = flushMessage;
+    createFlushMessage: (state, actions) => {
+      state.flushMessage = actions.payload;
+    },
+    Authenticate: (state, actions) => {
+      state.userID = actions.payload.ID;
+      state.userToken = actions.payload.TOKEN;
+    },
+    logOutUser: (state) => {
+      state.isAuthenticated = false;
     },
   },
 });
 export const getApplicationState = (state) => state;
 export const {
   toggleMenu,
-  toggleIsUserLoggedIn,
-  setFlushMessage,
+  loginUser,
+  createFlushMessage,
+  Authenticate,
+  logOutUser,
 } = Application.actions;
 
 export default Application.reducer;

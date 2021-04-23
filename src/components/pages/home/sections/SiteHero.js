@@ -5,6 +5,7 @@ import style from "../Home.module.css";
 import {
     createWaveAnimation,
   } from "../../../animations/Animations";
+import {Link} from "react-router-dom"
 
 const SiteHero = () => {
   const clipPathPoints = createWaveAnimation();
@@ -36,9 +37,9 @@ const SiteHero = () => {
         <div className={style.site_hero__text}>
           Egerton university computer science students association
         </div>
-        <a href="/" className={style.site_hero__btn}>
+        <Link to="/register" className={style.site_hero__btn}>
           Join Us
-        </a>
+        </Link>
       </div>
     </div>
   );

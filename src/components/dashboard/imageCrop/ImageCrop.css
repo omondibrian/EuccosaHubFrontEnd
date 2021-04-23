@@ -83,13 +83,12 @@ margin: 0 !important;
   border-color: hsl(204, 86%, 53%);
 }
 
-.file--upload > label:hover,
-.crop-btn:hover {
+.file--upload > label:hover {
   border-color: hsl(204, 86%, 53%);
   background-color: hsl(204, 86%, 96%);
 }
-.crop-btn {
-  background-color: rgba(240,240,240,0.9);
+.crop-btn i {
+ 
   font-size: 1.5rem;
 }
 .ReactCrop__image {

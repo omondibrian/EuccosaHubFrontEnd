@@ -1,6 +1,6 @@
 .btn_primary{
   background-color: #0c55d4da;
-  padding: 13px 30px;
+  padding: 10px 30px;
   border: none;
   color: #fff;
   text-align: center;
@@ -8,5 +8,10 @@
   display: block;
   border-radius: 5px;
   font-weight: bold;
+  transition: all .3s ease;
   
+}
+.btn_primary:hover{
+  background-color: rgba(255,255,255,.7);
+  color: #0c55d4da;
 }

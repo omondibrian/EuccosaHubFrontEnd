@@ -5,9 +5,9 @@ import { Redirect, useLocation } from "react-router-dom"
 import DashBoard from "../dashboard";
 
 function ProtectedRoute({ Component, redirectUrl }) {
-    const { isUserLoggedIn } = useSelector(getApplicationState)
+    const { isAuthenticated } = useSelector(getApplicationState)
     const next = useLocation().pathname
-    return !isUserLoggedIn ?
+    return !isAuthenticated ?
         <Redirect to={`/${redirectUrl}/?${next}`} /> : <DashBoard />
 }
 

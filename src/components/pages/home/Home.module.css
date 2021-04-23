@@ -40,7 +40,10 @@
   color: white;
   background: linear-gradient(115deg, #fd0079 50%, #ffd200 100%);
 }
-
+.site_hero__btn:hover{
+  text-decoration: none;
+  color: inherit;
+}
 .container {
   max-width: 1200px;
   margin-left: auto;

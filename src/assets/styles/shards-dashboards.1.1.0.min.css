@@ -3006,14 +3006,14 @@ a.badge {
   background-color: #eceeef;
   border-radius: 0.5rem;
 }
-.alert {
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
-  border: none;
-  border-radius: 0;
-}
 .alert-link {
   font-weight: 500;
+}
+.alert{
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  top: 0;
 }
 .alert-dismissible .close {
   top: 0;
@@ -3023,66 +3023,6 @@ a.badge {
 }
 .alert-dismissible .close:hover {
   cursor: pointer;
-}
-.alert-primary {
-  color: #f5faff;
-  background-color: #007bff;
-}
-.alert-primary .alert-link {
-  color: #f5faff;
-}
-.alert-secondary {
-  color: #d9dcdf;
-  background-color: #5a6169;
-}
-.alert-secondary .alert-link {
-  color: #d9dcdf;
-}
-.alert-success {
-  color: #d7fae9;
-  background-color: #17c671;
-}
-.alert-success .alert-link {
-  color: #d7fae9;
-}
-.alert-info {
-  color: #cef8ff;
-  background-color: #00b8d8;
-}
-.alert-info .alert-link {
-  color: #cef8ff;
-}
-.alert-warning {
-  color: #fffcf5;
-  background-color: #ffb400;
-}
-.alert-warning .alert-link {
-  color: #fffcf5;
-}
-.alert-danger {
-  color: #fad7de;
-  background-color: #c4183c;
-}
-.alert-danger .alert-link {
-  color: #fad7de;
-}
-.alert-light {
-  color: #fff;
-  background-color: #fbfbfb;
-  color: #212529;
-}
-.alert-light .alert-link {
-  color: #fff;
-}
-.alert-light .alert-link {
-  color: #212529;
-}
-.alert-dark {
-  color: #959faa;
-  background-color: #212529;
-}
-.alert-dark .alert-link {
-  color: #959faa;
 }
 .progress-wrapper {
   position: relative;
