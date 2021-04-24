@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 //creating the validation schema
-export const formValidationSchema = yup.object().shape({
+export const userBioData = yup.object().shape({
   firstName: yup
     .string()
     .required("Your First Name is required")
@@ -10,19 +10,17 @@ export const formValidationSchema = yup.object().shape({
     .string()
     .required("Your Last Name is required")
     .min(2, "Name must be at least 2 characters"),
+
+  Email: yup.string().email().required("Email is a required field"),
+});
+
+export const AdditionalInfo = yup.object().shape({
+  regNumber: yup.number().required("Please supply your phoneNumber").min(10),
   phoneNumber: yup.number().required("Please supply your phoneNumber").min(10),
   startDate: yup.string().required("please add your date of admision"),
   completionDate: yup
     .string()
     .required("please add your ExpectedGraduationDate"),
-  street: yup.string().nullable(),
-  city: yup.string().nullable(),
-  country: yup.string().nullable(),
-  testimony: yup.string().max(500).nullable(),
-  Email: yup.string().email().required("Email is a required field"),
-});
-
-export const passWordValidationSchema = yup.object().shape({
   password: yup
     .string()
     .required("Please enter your password")
@@ -38,3 +36,11 @@ export const passWordValidationSchema = yup.object().shape({
       then: yup.string().oneOf([yup.ref("password")], "Password doesn't match"),
     }),
 });
+
+
+//creating the validation schema
+export const AddressInfo = yup.object().shape({
+    street: yup.string().nullable(),
+    city: yup.string().nullable(),
+    country: yup.string().nullable(),
+  });
