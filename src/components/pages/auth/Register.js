@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Auth.module.css";
 import { InputBox } from "../../inputBox";
 import { Button } from "../../button";
@@ -6,18 +6,21 @@ import BackGround from "../../background";
 import { Github, Google } from "../../vectors/Vectors";
 import Footer from "../../footer/Footer";
 import { Link } from "react-router-dom";
+import createDefaultProfilePic from "./CreateProfilePic";
 
 function Register() {
   const handleChange = () => {};
   const handleSubmit = () => {};
+  // const url = createDefaultProfilePic("OJ")
+
   return (
     <BackGround>
       <div className={styles.auth}>
         <div className={styles.glass_form}>
-          <strong>
-            Have an account? <Link to="/login">Login</Link>
-          </strong>
           <h2 className={styles.header}>Register</h2>
+          <div className={styles.form_step}>
+            
+          </div>
           <form className={styles.auth__form} onSubmit={handleSubmit}>
             <div>
               <InputBox
@@ -101,6 +104,9 @@ function Register() {
               Register with <Github />
             </a>
           </div>
+          <strong>
+            Have an account? <Link to="/login">Login</Link>
+          </strong>
         </div>
       </div>
       <Footer />

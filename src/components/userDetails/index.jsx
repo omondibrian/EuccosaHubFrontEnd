@@ -20,7 +20,7 @@ const UserDetails = () => {
         </div>
         <h4 className="mb-0">{`${firstName}  ${lastName}`}</h4>
         <span className="text-muted d-block mb-2">{role}</span>
-        <button   className="btn btn-outlined-info mb-2"
+        <button   className="btn btn-outline-primary mb-2"
           onClick={() => document.querySelector(".image-crop").classList.remove("d-none")}>
           <i className="material-icons mr-1">edit</i> Edit profile image
         </button>

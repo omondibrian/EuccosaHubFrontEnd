@@ -82,7 +82,12 @@
 }
 
 .errors{
-  color:#c4183c;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  padding:5px 10px ;
+  display: block;
+  border-radius: 4px;
 }
 .auth strong a{
   color: #fff;

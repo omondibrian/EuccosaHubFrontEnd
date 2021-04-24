@@ -1,10 +1,10 @@
 import React from "react";
 
 import NavLink from "../../NavLink";
-import { NavItem } from "shards-react";
+
 
 const SidebarNavItem = ({ item }) => (
-  <NavItem>
+  <div className="nav-item">
     <NavLink
       title={item.title}
       icon={item.icon}
@@ -12,7 +12,7 @@ const SidebarNavItem = ({ item }) => (
       to={item.to}
       
     />
-  </NavItem>
+  </div>
 );
 
 export default SidebarNavItem;

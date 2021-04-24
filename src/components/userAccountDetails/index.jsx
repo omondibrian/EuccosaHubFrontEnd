@@ -1,6 +1,5 @@
 import React from "react";
 import "./userAccountDetails.css";
-import "shards-react/components/datepicker/DatePicker.css";
 import { useFormik } from "formik";
 import DatePicker, { registerLocale } from "react-datepicker";
 import en from "date-fns/locale/en-GB";

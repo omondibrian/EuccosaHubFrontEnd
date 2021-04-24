@@ -29,8 +29,7 @@ const UserProfile = () => {
         <PageTitle
           title="User Profile"
           subtitle="Overview"
-          md="12"
-          className="ml-sm-auto mr-sm-auto"
+          className="ml-sm-auto mr-sm-auto col-12"
         />
       </div>
       <div className="row">
