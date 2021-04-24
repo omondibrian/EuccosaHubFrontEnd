@@ -24,6 +24,6 @@ const createDefaultProfilePic = (name) => {
   svgElement.appendChild(text);
   let xml = new XMLSerializer().serializeToString(svgElement);
   const blob = new Blob([xml], { type: "image/svg+xml;charset=utf-8" });
-  return URL.createObjectURL(blob);
+  return blob;
 };
 export default createDefaultProfilePic;
