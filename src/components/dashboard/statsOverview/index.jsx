@@ -2,7 +2,6 @@ import React from "react";
 import SmallStats from "./charts/SmallStats";
 import PieChart from "./charts/Piechart";
 import AcountHistory from "./charts/AccountBalance";
-import { Container, Row, Col } from "shards-react";
 import PageTitle from "../../pageTitle";
 import Draft from "./Draft";
 import Discussions from "./Disscussion";
@@ -135,24 +134,23 @@ function DashboardStats() {
     ],
   };
   return (
-    <Container fluid className="main-content-container px-4">
-      <Row noGutters className="page-header py-4">
+    <div className="main-content-container container-fluid px-4">
+      <div className="row page-header py-4">
         <PageTitle
           title=" statistical Overview"
           subtitle="DashBoard"
-          md="12"
-          className="ml-sm-auto mr-sm-auto"
+          className="ml-sm-auto mr-sm-auto col-12"
         />
-      </Row>
-      <Row>
-        <Col className="col-xl-4 col-lg-6 col-sm-12">
+      </div>
+      <div>
+        <div className="col-xl-4 col-lg-6 col-sm-12">
           <PieChart data={pieData} title="Registered members" />
-        </Col>
-        <Col className="col-xl-4 col-sm-12">
+        </div>
+        <div className="col-xl-4 col-sm-12">
           <PieChart data={pieData} title="Registered members" />
-        </Col>
+        </div>
 
-        <Col className="col-xl-4 col-lg-12 col-sm-12 ">
+        <div className="col-xl-4 col-lg-12 col-sm-12 ">
           <div className="mt-5  mb-5">
             <SmallStats
               label="Test"
@@ -171,31 +169,31 @@ function DashboardStats() {
               data={data}
             />
           </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col lg="12" md="12" sm="12" className="mb-4">
+        </div>
+      </div>
+      <div className="row">
+        <div  className="col-12 mb-4">
           <AcountHistory data={Accountdata} />
-        </Col>
-      </Row>
-      <Row>
-        <Col lg="4" md="6" sm="12" className="mb-4">
+        </div>
+      </div>
+      <div>
+        <div  className="col-lg-4 col-md-6 col-12 mb-4">
           <Draft />
-        </Col>
-        <Col lg="5" md="12" sm="12" className="mb-4">
+        </div>
+        <div className="col-lg-4 col-md-6 col-12 mb-4 mb-4">
           <Discussions
             title={dicccussions.title}
             discussions={dicccussions.discussions}
           />
-        </Col>
-        <Col lg="3" md="12" sm="12" className="mb-4">
+        </div>
+        <div className="col-lg-3 col-12 mb-4">
           <EventPlan
             title={TopReferrals.title}
             referralData={TopReferrals.referralData}
           />
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 }
 

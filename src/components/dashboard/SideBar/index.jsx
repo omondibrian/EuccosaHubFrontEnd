@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { Col } from "shards-react";
 import SidebarMainNavbar from "./sideBar";
 import sideBarItems from '../../../data/sidebar'
 import SidebarNavItems from "./SideBarItems";
@@ -18,13 +17,15 @@ export default function MainSidebar({ hideLogoText }) {
     "main-sidebar",
     "px-0",
     "col-12",
+    "col-lg-2",
+    "col-md-3",
     application.isMenuOpen && "open"
   );
 
   return (
-    <Col tag="aside" className={classes} lg={{ size: 2 }} md={{ size: 3 }}>
+    <div className={classes}>
       <SidebarMainNavbar hideLogoText={hideLogoText} />
       <SidebarNavItems navItems={state.sidebarNavItems} />
-    </Col>
+    </div>
   );
 }

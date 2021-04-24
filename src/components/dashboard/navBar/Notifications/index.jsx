@@ -1,15 +1,17 @@
 import React from "react";
-import { Collapse, DropdownItem } from "shards-react";
 import NavItem from "../../../NavItem";
+import className from "classnames"
+
 export default function Notifications({ state, toggleNotification }) {
+  const dropDownMenuClasses = className("dropdown-menu-small", "dropdown-menu",
+    state.isNotificationVisible ? "d-block" : "d-none")
   return (
-    <NavItem className="border-right dropdown notifications">
-      <Bell  notifications={2} toggleNotification={toggleNotification}/>
-      <Collapse
-        open={state.isNotificationVisible}
-        className="dropdown-menu dropdown-menu-small"
+    <NavItem className="dropdown notifications">
+      <Bell notifications={2} toggleNotification={toggleNotification} />
+      <div
+        className={dropDownMenuClasses}
       >
-        <DropdownItem>
+        <button className="dropdown-item">
           <div className="notification__icon-wrapper">
             <div className="notification__icon">
               <i className="material-icons">&#xE6E1;</i>
@@ -23,8 +25,8 @@ export default function Notifications({ state, toggleNotification }) {
               last week. Great job!
             </p>
           </div>
-        </DropdownItem>
-        <DropdownItem>
+        </button >
+        <button className="dropdown-item">
           <div className="notification__icon-wrapper">
             <div className="notification__icon">
               <i className="material-icons">&#xE8D1;</i>
@@ -38,22 +40,22 @@ export default function Notifications({ state, toggleNotification }) {
               have been worse!
             </p>
           </div>
-        </DropdownItem>
-        <DropdownItem className="notification__all text-center">
+        </button >
+        <button className="notification__all text-center dropdown-item">
           View all Notifications
-        </DropdownItem>
-      </Collapse>
+        </button >
+      </div>
     </NavItem>
   );
 }
 
-const Bell = ({ notifications,toggleNotification }) => {
-  const handleClick = (e)=>{
+const Bell = ({ notifications, toggleNotification }) => {
+  const handleClick = (e) => {
     e.preventDefault()
     toggleNotification()
   }
   return (
-    <a  href='/'onClick={handleClick}  className="nav-link-icon text-center nav-link">
+    <a href='/' onClick={handleClick} className="nav-link-icon text-center nav-link">
       <div className="nav-link-icon__wrapper">
         <i className="material-icons">&#xE7F4;</i>
         <span className="badge badge-danger badge-pill">{notifications}</span>

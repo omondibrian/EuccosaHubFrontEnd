@@ -1,42 +1,30 @@
 import React from "react";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  ListGroup,
-  ListGroupItem,
-  CardFooter,
-  Row,
-  Col,
-  FormSelect
-} from "shards-react";
-
 const EventsPlan = ({ title, referralData }) => (
-  <Card small>
-    <CardHeader className="border-bottom">
+  <div className="card">
+    <div className="card-header border-bottom">
       <h6 className="m-0">{title}</h6>
       <div className="block-handle" />
-    </CardHeader>
+    </div>
 
-    <CardBody className="p-0">
-      <ListGroup small flush className="list-group-small">
+    <div className="card-body p-0">
+      <ul className=" list-group list-group-flush list-group-small">
         {referralData.map((item, idx) => (
-          <ListGroupItem key={idx} className="d-flex px-3">
+          <li key={idx} className="list-group-item d-flex px-3">
             <span className="text-semibold text-fiord-blue">{item.title}</span>
             <span className="ml-auto text-right text-semibold text-reagent-gray">
               {item.value}
             </span>
-          </ListGroupItem>
+          </li>
         ))}
-      </ListGroup>
-    </CardBody>
+      </ul>
+    </div>
 
-    <CardFooter className="border-top">
-      <Row>
+    <div className="card-footer border-top">
+      <div className="row">
         {/* Time Span */}
-        <Col>
-          <FormSelect
-            size="sm"
+        <div className="col-12">
+          <select
+           className="form-control"
             value="last-week"
             style={{ maxWidth: "130px" }}
             onChange={() => {}}
@@ -45,17 +33,17 @@ const EventsPlan = ({ title, referralData }) => (
             <option value="today">Today</option>
             <option value="last-month">Last Month</option>
             <option value="last-year">Last Year</option>
-          </FormSelect>
-        </Col>
+          </select>
+        </div>
 
         {/* View Full Report */}
-        <Col className="text-right view-report">
+        <div className="col-12 text-right view-report">
           {/* eslint-disable-next-line */}
           <a href="#">Full report &rarr;</a>
-        </Col>
-      </Row>
-    </CardFooter>
-  </Card>
+        </div>
+      </div>
+    </div>
+  </div>
 );
 
 

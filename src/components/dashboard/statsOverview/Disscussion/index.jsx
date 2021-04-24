@@ -1,22 +1,12 @@
 import React from "react";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  ButtonGroup,
-  Button,
-  Row,
-  Col
-} from "shards-react";
 
 const Discussions = ({ title, discussions }) => (
-  <Card small className="blog-comments">
-    <CardHeader className="border-bottom">
+  <div className="card blog-comments">
+    <div className="card-header border-bottom">
       <h6 className="m-0">{title}</h6>
-    </CardHeader>
+    </div>
 
-    <CardBody className="p-0">
+    <div className="card-body p-0">
       {discussions.map((discussion, idx) => (
         <div key={idx} className="blog-comments__item d-flex p-3">
           {/* Avatar */}
@@ -43,42 +33,42 @@ const Discussions = ({ title, discussions }) => (
 
             {/* Content :: Actions */}
             <div className="blog-comments__actions">
-              <ButtonGroup size="sm">
-                <Button theme="white">
+              <div className="button-group">
+                <button className="btn btn-white">
                   <span className="text-success">
                     <i className="material-icons">check</i>
                   </span>{" "}
                   Approve
-                </Button>
-                <Button theme="white">
+                </button>
+                <button className="btn btn-white">
                   <span className="text-danger">
                     <i className="material-icons">clear</i>
                   </span>{" "}
                   Reject
-                </Button>
-                <Button theme="white">
+                </button>
+                <button className="btn btn-white">
                   <span className="text-light">
                     <i className="material-icons">more_vert</i>
                   </span>{" "}
                   Edit
-                </Button>
-              </ButtonGroup>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       ))}
-    </CardBody>
+    </div>
 
-    <CardFooter className="border-top">
-      <Row>
-        <Col className="text-center view-report">
-          <Button theme="white" type="submit">
+    <div className="card-footer border-top">
+      <div className="row">
+        <div className="text-center view-report">
+          <button className="btn btn-white" type="submit">
             View All Comments
-          </Button>
-        </Col>
-      </Row>
-    </CardFooter>
-  </Card>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 );
 
 

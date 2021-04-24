@@ -1,33 +1,27 @@
 import React from "react";
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  NavItem,
-  Collapse,
-  NavLink,
-} from "shards-react";
 import DropdownItem from "./DropDownItem";
 import { getState } from "../../../state/slices/user";
 import { useSelector } from "react-redux"
+import classNames from "classnames"
 
 export default function UserActions({ state, toggleUserActions }) {
-  const { user} = useSelector(getState)
-
+  const { user } = useSelector(getState)
+  const menuClasses = classNames(
+    state.isMenuVisible ? "visible bg-white" : "invisible")
 
   return (
-    <NavItem tag={Dropdown} caret toggle={toggleUserActions}>
-      <DropdownToggle caret tag={NavLink} className="text-nowrap px-3">
+    <div className="nav-item dropdown">
+      <a className="text-nowrap px-3 dropdown-toggle nav-link" onClick={toggleUserActions}>
         <img
           className="user-avatar rounded-circle mr-2"
           src={user.avatar}
           alt="User Avatar"
         />
         <span className="d-none d-md-inline-block">{`${user.firstName} ${user.lastName}`}</span>
-      </DropdownToggle>
-      <Collapse tag={DropdownMenu} right small open={state.isMenuVisible}>
+      </a>
+      <div className={menuClasses}>
         <DropdownItem icon="&#xE7FD;" title="Profile" to="/userProfile" />
- 
+
         <DropdownItem
           icon="&#xE8B8;"
           title="Edit Profile"
@@ -44,7 +38,7 @@ export default function UserActions({ state, toggleUserActions }) {
           to="/logout"
           className="text-danger"
         />
-      </Collapse>
-    </NavItem>
+      </div>
+    </div>
   );
 }

@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from "react";
 import classNames from "classnames";
-import { Card, CardBody } from "shards-react";
 import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
 
@@ -81,8 +80,8 @@ function SmallStats(props) {
   const canvasHeight = 170;
   const canvaRef = useRef();
   return (
-    <Card  className="stats-small stats-small--1">
-      <CardBody className="p-0 d-flex">
+    <div  className="card stats-small stats-small--1">
+      <div className="card-body p-0 d-flex">
         <div className="d-flex flex-column m-auto">
           <div className="stats-small__data text-center">
             <span className="stats-small__label text-uppercase">{label}</span>
@@ -93,8 +92,8 @@ function SmallStats(props) {
           </div>
         </div>
         <canvas height={canvasHeight} ref={canvaRef} />
-      </CardBody>
-    </Card>
+      </div>
+    </div>
   );
 }
 

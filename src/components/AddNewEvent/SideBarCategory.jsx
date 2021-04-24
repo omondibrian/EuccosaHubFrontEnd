@@ -1,55 +1,48 @@
 import React from "react";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  ListGroup,
-  ListGroupItem,
-  Button,
-  InputGroup,
-  InputGroupAddon,
-  FormCheckbox,
-  FormInput
-} from "shards-react";
 
 const SidebarCategories = ({ title }) => (
-  <Card small className="mb-3">
-    <CardHeader className="border-bottom">
+  <div className="card mb-3">
+    <div className="card-header border-bottom">
       <h6 className="m-0">{title}</h6>
-    </CardHeader>
-    <CardBody className="p-0">
-      <ListGroup flush>
-        <ListGroupItem className="px-3 pb-2">
-          <FormCheckbox className="mb-1" value="uncategorized" defaultChecked>
-            Uncategorized
-          </FormCheckbox>
-          <FormCheckbox className="mb-1" value="design" defaultChecked>
-            Design
-          </FormCheckbox>
-          <FormCheckbox className="mb-1" value="development">
-            Development
-          </FormCheckbox>
-          <FormCheckbox className="mb-1" value="writing">
-            Writing
-          </FormCheckbox>
-          <FormCheckbox className="mb-1" value="books">
-            Books
-          </FormCheckbox>
-        </ListGroupItem>
+    </div>
+    <div className="card-body p-0">
+      <ul className="list-group list-group-flush">
+        <li className="list-group-item px-3 pb-2">
+          <div className="mb-1">
+            <input type="checkbox" id="uncategorized" value="uncategorized" checked={true} />
+            <label htmlFor="uncategorized">Uncategorized</label>
+          </div>
+          <div className="mb-1">
+            <input type="checkbox" id="Friday" value="Tech Friday" checked={true} />
+            <label htmlFor="Friday">Tech Friday</label>
+          </div>
+          <div className="mb-1">
+            <input type="checkbox" id="Open Day" value="Open Day" />
+            <label htmlFor="Open Day">Open Day</label>
+          </div>
+          <div className="mb-1">
+            <input type="checkbox" id="Hackathon" value="Hackathon" />
+            <label htmlFor="Hackathon"> Hackathon</label>
+          </div>
+          <div className="mb-1">
+            <input type="checkbox" id="talks" value="Talks" />
+            <label htmlFor="talks">Talks</label>
+          </div>
+        </li>
 
-        <ListGroupItem className="d-flex px-3">
-          <InputGroup className="ml-auto">
-            <FormInput placeholder="New category" />
-            <InputGroupAddon type="append">
-              <Button theme="white" className="px-2">
+        <li className="list-group-item d-flex px-3">
+          <div className="input-group ml-auto">
+            <input placeholder="New category" type="text" className="form-control" />
+            <div className="input-group-append" >
+              <button className="btn btn-white px-2">
                 <i className="material-icons">add</i>
-              </Button>
-            </InputGroupAddon>
-          </InputGroup>
-        </ListGroupItem>
-      </ListGroup>
-    </CardBody>
-  </Card>
+              </button>
+            </div >
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 );
 
 export default SidebarCategories

@@ -4,7 +4,11 @@ import "react-image-crop/dist/ReactCrop.css";
 import "./ImageCrop.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile } from "../../../state/slices/user";
-import { getApplicationState,createFlushMessage } from "../../../state/slices/Application";
+import {
+  getApplicationState,
+  createFlushMessage,
+} from "../../../state/slices/Application";
+import classNames from "classnames";
 
 const ImageCrop = ({ Profile }) => {
   let fileUrl, file;
@@ -133,24 +137,33 @@ const ImageCrop = ({ Profile }) => {
         fetchUserProfile({
           id,
         })
-        
       );
       dispatch(
         createFlushMessage({
           className: "alert-success",
           message: "Your profile has been updated",
-        }))
+        })
+      );
     };
-    request.onerror = ()=>{
+    request.onerror = () => {
       dispatch(
         createFlushMessage({
           className: "alert-danger",
           message: "An error occured",
-        }))
-    }
+        })
+      );
+    };
     document.querySelector(".image-crop").classList.add("d-none");
   };
   const cropRef = useRef();
+  const cropBtnClasses = classNames(
+    "btn btn-info rounded crop-btn",
+    state.isCroping ? "visible" : "invisible"
+  );
+  const saveBtnClasses = classNames(
+    "btn btn-primary my-0 px-4 my-2",
+    state.cropDone ? "visible" : "invisible"
+  );
   return (
     <div className="image-crop d-none" ref={cropRef}>
       <div className="card pt-3">
@@ -162,28 +175,18 @@ const ImageCrop = ({ Profile }) => {
             Cancel
           </button>
           <button
-            style={
-              state.isCroping
-                ? { visibility: "visible" }
-                : { visibility: "hidden" }
-            }
-            className="btn btn-info rounded crop-btn"
+            className={cropBtnClasses}
             onClick={makeClientCrop}
             title="crop image"
           >
             <i className="material-icons">crop</i>
-            <small class="d-block">crop</small>
+            <small className="d-block">crop</small>
           </button>
           <button
-            className="btn btn-primary my-0 px-4 my-2"
+            className={saveBtnClasses}
             onClick={async () => {
               await sendImage(state.file, state.fileName);
             }}
-            style={
-              !state.cropDone
-                ? { visibility: "hidden" }
-                : { visibility: "visible" }
-            }
           >
             save
           </button>

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Card, CardBody } from "shards-react";
+
 
 import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
@@ -42,11 +42,11 @@ function AccountHistory({ data }) {
   const canvaRef = useRef();
   return (
     <div>
-      <Card >
-        <CardBody>
+      <div className="card" >
+        <div className="card-body">
           <canvas height={canvasHeight} ref={canvaRef} />
-        </CardBody>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

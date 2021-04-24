@@ -6,34 +6,36 @@ export const login = async (credentials) => {
     },
     body: JSON.stringify(credentials),
   }).catch((e) => {
-    return {
-      message: e.message,
-      status: e.status,
-      isAuthenticated: false,
-    };
+    return e;
   });
+  const data = await result.json();
   if (result.ok) {
-    const data = await result.json();
     if (data._id) {
       try {
         localStorage.setItem("ID", data._id);
         localStorage.setItem("TOKEN", data.token);
       } catch (e) {}
       return {
-        message: result.message,
+        message: data.message,
         status: 200,
         isAuthenticated: true,
         ID: data._id,
         TOKEN: data.token,
       };
+    } else {
+      return {
+        message: data.message,
+        status: 200,
+        isAuthenticated: false,
+      };
     }
-  } else {
-    return {
-      message: result.message,
-      status: result.status,
-      isAuthenticated: false,
-    };
   }
+  console.log(data);
+  return {
+    message: data.message,
+    status: result.status,
+    isAuthenticated: false,
+  };
 };
 
 export const FetchUser = async (id) => {
@@ -51,5 +53,3 @@ export const FetchUser = async (id) => {
     console.log(result.statusText);
   }
 };
-
-

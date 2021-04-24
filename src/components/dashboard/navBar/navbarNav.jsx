@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Nav } from "shards-react";
-
 import Notifications from "./Notifications";
 import UserActions from "./userActions";
 
@@ -24,9 +22,9 @@ export default function NavbarNav() {
     });
   };
   return (
-    <Nav navbar className="border-left flex-row">
+    <nav  className="navbar-nav flex-row">
       <Notifications state={state} toggleNotification={toggleNotification} />
       <UserActions state={state} toggleUserActions={toggleUserActions} />
-    </Nav>
+    </nav>
   );
 }

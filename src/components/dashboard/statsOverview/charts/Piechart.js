@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import { Card, CardBody } from "shards-react";
 
 import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
@@ -28,15 +27,15 @@ function PieChart(props) {
   const canvasHeight = 300;
   const canvaRef = useRef();
   return (
-    <Card>
+    <div className="card">
       <div className="border-bottom card-header">
         <h6 className="mb-0 text-center text-capitalize">{title}</h6>
       </div>
 
-      <CardBody>
+      <div className="card-body">
         <canvas height={canvasHeight} ref={canvaRef} />
-      </CardBody>
-    </Card>
+      </div>
+    </div>
   );
 }
 
