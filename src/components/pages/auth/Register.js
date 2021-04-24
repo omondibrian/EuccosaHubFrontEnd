@@ -111,9 +111,9 @@ const RegistrationWrapper = ({ children,state }) => {
           <div className={styles.form_step}>
             <div className={styles.container}>
               <ul className={styles.progressbar}>
-                <li className={state.stage>1 && styles.active}>Step 1</li>
-                <li className={state.stage>2 && styles.active}>Step 2</li>
-                <li className={state.stage>2 && styles.active}>Step 3</li>
+                <li className={state.stage>1? styles.active : ""}>Step 1</li>
+                <li className={state.stage>2? styles.active : ""}>Step 2</li>
+                <li >Step 3</li>
               </ul>
             </div>
           </div>
