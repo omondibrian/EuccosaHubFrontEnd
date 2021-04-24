@@ -1,37 +1,25 @@
-import React, { useState } from "react";
+import React  from "react";
 import { InputBox } from "../../../inputBox";
 import { useFormik } from "formik";
 import { userBioData } from "./validation.schema";
-function UserBio() {
-  const [userBio, setBio] = useState({
-    firstName: "",
-    LastName: "",
-    Email: "",
-  });
-
-  const handleChange = (e) => {
-    console.log(e.target.value);
-  };
+function UserBio({ submit, state, reverse ,setState}) {
   const handleSub = () => {
     if (!formik.isValidating && formik.isValid) {
       formik.setSubmitting(true);
-      // make async call
-      setTimeout(() => {
-        console.log("submitted");
-        console.log("submit: ", formik.values);
-        // dispatch({
-        //   type: UPDATE_PROFILE,
-        //   payload: { ...formik.values },
-        // });
-        formik.setSubmitting(false);
-      }, 5000);
+      console.log("submitted");
+      console.log("submit: ", formik.values);
+      setState({
+        
+      })
+      submit(formik.values);
+      formik.setSubmitting(false);
     }
   };
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      Email: "",
+      firstName: state.firstName,
+      lastName: state.lastName,
+      Email: state.Email,
     },
     onSubmit: handleSub,
     validationSchema: userBioData,
@@ -83,9 +71,18 @@ function UserBio() {
             justifyContent: "space-between",
           }}
         >
-          <button disabled={formik.isSubmitting} className=" btn btn-primary">
-            {formik.isSubmitting ? "updating..." : "Back"}
-          </button>
+          {state.stage >1 && (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                reverse(state.stage);
+              }}
+              disabled={formik.isSubmitting}
+              className=" btn btn-primary"
+            >
+              Back
+            </button>
+          )}
           <button
             disabled={formik.isSubmitting}
             type="submit"
@@ -93,7 +90,6 @@ function UserBio() {
           >
             {formik.isSubmitting ? "updating..." : "next"}
           </button>
-
         </div>
       </form>
     </div>

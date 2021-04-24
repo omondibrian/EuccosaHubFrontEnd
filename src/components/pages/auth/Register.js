@@ -1,21 +1,108 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./Auth.module.css";
-import { InputBox } from "../../inputBox";
-import { Button } from "../../button";
+
 import BackGround from "../../background";
 import { Github, Google } from "../../vectors/Vectors";
 import Footer from "../../footer/Footer";
 import { Link } from "react-router-dom";
 import createDefaultProfilePic from "./CreateProfilePic";
 import UserBio from "./RegistrationForm/UserBio";
-import  AdditionalInfo  from "./RegistrationForm/AdditionalInfo";
-import  AddressInfo  from "./RegistrationForm/UserAddress";
+import AdditionalInfo from "./RegistrationForm/AdditionalInfo";
+import AddressInfo from "./RegistrationForm/UserAddress";
 
 function Register() {
-  const handleChange = () => {};
-  const handleSubmit = () => {};
-  // const url = createDefaultProfilePic("OJ")
+  const [registrationState, setRegistrationState] = useState({
+    firstName: "",
+    lastName: "",
+    Email: "",
+    street: "",
+    city: "",
+    country: "",
+    regNumber: "",
+    startDate: "",
+    completionDate: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: "",
+    google_id: "",
+    profilePic: "",
+    stage: 1,
+  });
 
+  const submit = (state) => {
+    console.log(state)
+    const img = createDefaultProfilePic(
+      registrationState.firstName[0] + registrationState.lastName[0]
+    )
+    setRegistrationState({
+      ...registrationState,
+      ...state,
+      profilePic: img
+    });
+
+    console.log(registrationState);
+    forward(registrationState.stage);
+    
+  };
+  const forward = (stage) => {
+    setRegistrationState({
+      ...registrationState,
+      stage: stage + 1,
+    });
+  };
+
+  const reverse = (stage) => {
+    setRegistrationState({
+      ...registrationState,
+      stage: stage - 1,
+    });
+  };
+
+  switch (registrationState.stage) {
+    case 1:
+      return (
+        <RegistrationWrapper>
+          <UserBio
+            submit={submit}
+            state={registrationState}
+            forward={forward}
+            reverse={reverse}
+            setState={setRegistrationState}
+          />
+        </RegistrationWrapper>
+      );
+    case 2:
+      return (
+        <RegistrationWrapper>
+          <AdditionalInfo
+            submit={submit}
+            state={registrationState}
+            forward={forward}
+            reverse={reverse}
+            setState={setRegistrationState}
+          />
+        </RegistrationWrapper>
+      );
+    case 3:
+      return (
+        <RegistrationWrapper>
+          <AddressInfo
+            submit={submit}
+            forward={forward}
+            reverse={reverse}
+            state={registrationState}
+            setState={setRegistrationState}
+          />
+        </RegistrationWrapper>
+      );
+    default:
+      break;
+  }
+}
+
+export default Register;
+
+const RegistrationWrapper = ({ children }) => {
   return (
     <BackGround>
       <div className={styles.auth}>
@@ -30,9 +117,7 @@ function Register() {
               </ul>
             </div>
           </div>
-          {/* <UserBio /> */}
-          {/* <AdditionalInfo /> */}
-          <AddressInfo />
+          {children}
 
           <span className={styles.auth_alt}>OR</span>
           <div className={styles.social_auth}>
@@ -59,6 +144,4 @@ function Register() {
       <Footer />
     </BackGround>
   );
-}
-
-export default Register;
+};

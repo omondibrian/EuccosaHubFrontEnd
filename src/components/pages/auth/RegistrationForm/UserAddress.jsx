@@ -4,33 +4,25 @@ import { InputBox } from "../../../inputBox";
 import { useFormik } from "formik";
 import { AddressInfo } from "./validation.schema";
 import { useSelector } from "react-redux";
-import styles from './index.module.css'
+import styles from "./index.module.css";
 import { getState } from "../../../../state/slices/user";
-function UserAddress() {
+function UserAddress({ submit, state, reverse }) {
   const { user } = useSelector(getState);
-  const handleChange = (e) => {
-    console.log(e.target.value);
-  };
+
   const handleSub = () => {
     if (!formik.isValidating && formik.isValid) {
       formik.setSubmitting(true);
-      // make async call
-      setTimeout(() => {
-        console.log("submitted");
-        console.log("submit: ", formik.values);
-        // dispatch({
-        //   type: UPDATE_PROFILE,
-        //   payload: { ...formik.values },
-        // });
-        formik.setSubmitting(false);
-      }, 5000);
+      console.log("submitted");
+      console.log("submit: ", formik.values);
+      submit(formik.values);
+      formik.setSubmitting(false);
     }
   };
   const formik = useFormik({
     initialValues: {
-      street: "",
-      city: "",
-      country: "",
+      street: state.street,
+      city: state.city,
+      country: state.country,
     },
     onSubmit: handleSub,
     validationSchema: AddressInfo,
@@ -40,7 +32,7 @@ function UserAddress() {
     <div>
       <form onSubmit={formik.handleSubmit}>
         <div>
-        <label htmlFor="street">street</label>
+          <label htmlFor="street">street</label>
           <InputBox
             value={formik.values.street}
             onChange={formik.handleChange}
@@ -53,7 +45,7 @@ function UserAddress() {
           ) : null}
         </div>
         <div>
-        <label htmlFor="city">city</label>
+          <label htmlFor="city">city</label>
           <InputBox
             value={formik.values.city}
             onChange={formik.handleChange}
@@ -92,9 +84,18 @@ function UserAddress() {
             justifyContent: "space-between",
           }}
         >
-          <button disabled={formik.isSubmitting} className=" btn btn-primary">
-            {formik.isSubmitting ? "updating..." : "Back"}
-          </button>
+          {state.stage > 1 && (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                reverse(state.stage);
+              }}
+              disabled={formik.isSubmitting}
+              className=" btn btn-primary"
+            >
+              Back
+            </button>
+          )}
           <button
             disabled={formik.isSubmitting}
             type="submit"

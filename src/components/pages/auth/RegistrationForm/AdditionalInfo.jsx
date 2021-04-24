@@ -5,46 +5,38 @@ import { AdditionalInfo as addintionalInfoSchema } from "./validation.schema";
 import DatePicker, { registerLocale } from "react-datepicker";
 import en from "date-fns/locale/en-GB";
 import "react-datepicker/dist/react-datepicker.css";
-import styles from './index.module.css'
+import styles from "./index.module.css";
 registerLocale("en", en);
 
-function AdditionalInfo() {
-  const handleChange = (e) => {
-    console.log(e.target.value);
-  };
+function AdditionalInfo({ submit, reverse, state }) {
   const handleSub = () => {
     if (!formik.isValidating && formik.isValid) {
       formik.setSubmitting(true);
-      // make async call
-      setTimeout(() => {
-        console.log("submitted");
-        console.log("submit: ", formik.values);
-        // dispatch({
-        //   type: UPDATE_PROFILE,
-        //   payload: { ...formik.values },
-        // });
-        formik.setSubmitting(false);
-      }, 5000);
+      console.log("submitted");
+      console.log("submit: ", formik.values);
+      submit(formik.values);
+      formik.setSubmitting(false);
     }
   };
   const formik = useFormik({
     initialValues: {
-      regNumber: "",
-      startDate: "",
-      completionDate: "",
-      phoneNumber: "",
-      password: "",
-      confirmPassword: "",
+      regNumber: state.regNumber,
+      startDate: state.startDate,
+      completionDate: state.completionDate,
+      phoneNumber: state.phoneNumber,
+      password: state.password,
+      confirmPassword: state.confirmPassword,
     },
     onSubmit: handleSub,
     validationSchema: addintionalInfoSchema,
+    
   });
 
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
         <div>
-        <label style={{ display: "block" }} htmlFor="regNumber">
+          <label style={{ display: "block" }} htmlFor="regNumber">
             Registration Number
           </label>
           <InputBox
@@ -101,14 +93,14 @@ function AdditionalInfo() {
         </div>
 
         <div>
-        <label style={{ display: "block" }} htmlFor="phoneNumber">
+          <label style={{ display: "block" }} htmlFor="phoneNumber">
             phone Number
           </label>
           <InputBox
             value={formik.values.phoneNumber}
             onChange={formik.handleChange}
             placeholder="phone number"
-            name="phoneNUmber"
+            name="phoneNumber"
             type="text"
           />
 
@@ -118,7 +110,7 @@ function AdditionalInfo() {
         </div>
 
         <div>
-        <label style={{ display: "block" }} htmlFor="password">
+          <label style={{ display: "block" }} htmlFor="password">
             Password
           </label>
           <InputBox
@@ -135,8 +127,8 @@ function AdditionalInfo() {
         </div>
 
         <div>
-        <label style={{ display: "block" }} htmlFor="password">
-           Confirm  Password
+          <label style={{ display: "block" }} htmlFor="password">
+            Confirm Password
           </label>
           <InputBox
             value={formik.values.confirmPassword}
@@ -158,9 +150,18 @@ function AdditionalInfo() {
             justifyContent: "space-between",
           }}
         >
-          <button disabled={formik.isSubmitting} className=" btn btn-primary">
-            {formik.isSubmitting ? "updating..." : "Back"}
-          </button>
+          {state.stage > 1 && (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                reverse(state.stage);
+              }}
+              disabled={formik.isSubmitting}
+              className=" btn btn-primary"
+            >
+              {formik.isSubmitting ? "updating..." : "Back"}
+            </button>
+          )}
           <button
             disabled={formik.isSubmitting}
             type="submit"

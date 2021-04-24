@@ -15,7 +15,7 @@ export const userBioData = yup.object().shape({
 });
 
 export const AdditionalInfo = yup.object().shape({
-  regNumber: yup.number().required("Please supply your registration Number").min(10),
+  regNumber: yup.string().required("Please supply your registration Number").min(10),
   phoneNumber: yup.number().required("Please supply your phoneNumber").min(10),
   startDate: yup.string().required("please add your date of admision"),
   completionDate: yup
