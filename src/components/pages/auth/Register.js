@@ -22,7 +22,13 @@ function Register() {
         <div className={styles.glass_form}>
           <h2 className={styles.header}>Register</h2>
           <div className={styles.form_step}>
-            
+            <div class={styles.container}>
+              <ul class={styles.progressbar}>
+                <li class={styles.active}>Step 1</li>
+                <li>Step 2</li>
+                <li>Step 3</li>
+              </ul>
+            </div>
           </div>
           {/* <UserBio /> */}
           {/* <AdditionalInfo /> */}
