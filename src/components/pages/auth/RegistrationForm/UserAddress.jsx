@@ -3,18 +3,35 @@ import React from "react";
 import { InputBox } from "../../../inputBox";
 import { useFormik } from "formik";
 import { AddressInfo } from "./validation.schema";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import styles from "./index.module.css";
 import { getState } from "../../../../state/slices/user";
-function UserAddress({ submit, state, reverse }) {
+import {
+  getRegistrationState,
+  forward,
+  reverse,
+  setAddressDetails,
+  RegisterNewUser
+} from "../../../../state/slices/registration";
+function UserAddress() {
+  const state = useSelector(getRegistrationState);
   const { user } = useSelector(getState);
+  const dispatch = useDispatch();
 
   const handleSub = () => {
     if (!formik.isValidating && formik.isValid) {
       formik.setSubmitting(true);
       console.log("submitted");
       console.log("submit: ", formik.values);
-      submit(formik.values);
+      dispatch(
+        setAddressDetails({
+          street: formik.values.street,
+          city: formik.values.city,
+          country: formik.values.country,
+        })
+      );
+      dispatch(RegisterNewUser(state));
+      // dispatch(forward({ stage: state.stage + 1 }));
       formik.setSubmitting(false);
     }
   };
@@ -88,7 +105,7 @@ function UserAddress({ submit, state, reverse }) {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                reverse(state.stage);
+                dispatch(reverse({ stage: state.stage - 1 }));
               }}
               disabled={formik.isSubmitting}
               className=" btn btn-primary"
@@ -101,7 +118,7 @@ function UserAddress({ submit, state, reverse }) {
             type="submit"
             className="btn btn-primary"
           >
-            {formik.isSubmitting ? "updating..." : "next"}
+            {formik.isSubmitting ? "updating..." : "finish"}
           </button>
         </div>
       </form>

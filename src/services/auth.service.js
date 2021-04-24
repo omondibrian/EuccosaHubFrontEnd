@@ -53,3 +53,8 @@ export const FetchUser = async (id) => {
     console.log(result.statusText);
   }
 };
+
+
+export const registerNewUser = (user)=>{
+  console.log(user)
+}
