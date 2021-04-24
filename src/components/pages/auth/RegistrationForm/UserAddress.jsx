@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+
 import { InputBox } from "../../../inputBox";
 import { useFormik } from "formik";
-import { userBioData } from "./validation.schema";
-function UserBio() {
-  const [userBio, setBio] = useState({
-    firstName: "",
-    LastName: "",
-    Email: "",
-  });
-
+import { AddressInfo } from "./validation.schema";
+import { useSelector } from "react-redux";
+import styles from './index.module.css'
+import { getState } from "../../../../state/slices/user";
+function UserAddress() {
+  const { user } = useSelector(getState);
   const handleChange = (e) => {
     console.log(e.target.value);
   };
@@ -29,52 +28,62 @@ function UserBio() {
   };
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      Email: "",
+      street: "",
+      city: "",
+      country: "",
     },
     onSubmit: handleSub,
-    validationSchema: userBioData,
+    validationSchema: AddressInfo,
   });
 
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
         <div>
+        <label htmlFor="street">street</label>
           <InputBox
-            value={formik.values.firstName}
+            value={formik.values.street}
             onChange={formik.handleChange}
-            placeholder="First name"
-            name="firstName"
+            placeholder="Street"
+            name="street"
             type="text"
           />
-          {formik.touched.firstName && formik.errors.firstName ? (
-            <small className="text-danger">{formik.errors.firstName}</small>
+          {formik.touched.street && formik.errors.street ? (
+            <small className="text-danger">{formik.errors.street}</small>
           ) : null}
         </div>
         <div>
+        <label htmlFor="city">city</label>
           <InputBox
-            value={formik.values.lastName}
+            value={formik.values.city}
             onChange={formik.handleChange}
-            placeholder="Last name"
-            name="lastName"
+            placeholder="City"
+            name="city"
             type="text"
           />
 
-          {formik.touched.lastName && formik.errors.lastName ? (
-            <small className="text-danger">{formik.errors.lastName}</small>
+          {formik.touched.city && formik.errors.city ? (
+            <small className="text-danger">{formik.errors.city}</small>
           ) : null}
         </div>
-        <div>
-          <InputBox
-            value={formik.values.Email}
+        {/* country */}
+        <div className={styles.formGroup}>
+          <label htmlFor="country">country</label>
+          <select
+            id="country"
+            name="country"
+            value={formik.values.country}
             onChange={formik.handleChange}
-            placeholder="JohnDoe@test.com"
-            name="Email"
-            type="email"
-          />
-          {formik.touched.Email && formik.errors.Email ? (
-            <small className="text-danger">{formik.errors.Email}</small>
+            className="form-control"
+          >
+            <option>Choose...</option>
+            {user.countries.map((con) => {
+              return <option key={con.id}>{con.name}</option>;
+            })}
+            <option>...</option>
+          </select>
+          {formik.touched.country && formik.errors.country ? (
+            <small className="text-danger">{formik.errors.country}</small>
           ) : null}
         </div>
         <div
@@ -93,11 +102,10 @@ function UserBio() {
           >
             {formik.isSubmitting ? "updating..." : "next"}
           </button>
-
         </div>
       </form>
     </div>
   );
 }
 
-export default UserBio;
+export default UserAddress;

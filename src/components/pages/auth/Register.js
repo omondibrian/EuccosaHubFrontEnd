@@ -7,6 +7,9 @@ import { Github, Google } from "../../vectors/Vectors";
 import Footer from "../../footer/Footer";
 import { Link } from "react-router-dom";
 import createDefaultProfilePic from "./CreateProfilePic";
+import UserBio from "./RegistrationForm/UserBio";
+import  AdditionalInfo  from "./RegistrationForm/AdditionalInfo";
+import  AddressInfo  from "./RegistrationForm/UserAddress";
 
 function Register() {
   const handleChange = () => {};
@@ -21,72 +24,10 @@ function Register() {
           <div className={styles.form_step}>
             
           </div>
-          <form className={styles.auth__form} onSubmit={handleSubmit}>
-            <div>
-              <InputBox
-                onChange={handleChange}
-                placeholder="first name"
-                name="firstName"
-                required={true}
-                type="text"
-              />
-              {/* {state.errors.email && (
-                <small className={styles.errors}>{state.errors.email}</small>
-              )} */}
-            </div>
-            <div>
-              <InputBox
-                onChange={handleChange}
-                placeholder="last name"
-                name="lastName"
-                required={true}
-                type="text"
-              />
-              {/* {state.errors.email && (
-                <small className={styles.errors}>{state.errors.email}</small>
-              )} */}
-            </div>
-            <div>
-              <InputBox
-                onChange={handleChange}
-                placeholder="email"
-                name="email"
-                required={true}
-                type="email"
-              />
-              {/* {state.errors.email && (
-                <small className={styles.errors}>{state.errors.email}</small>
-              )} */}
-            </div>
-            <div>
-              <InputBox
-                onChange={handleChange}
-                placeholder="phone number"
-                name="phoneNumber"
-                type="text"
-                required={true}
-              />
-            </div>
-            <div>
-              <InputBox
-                onChange={handleChange}
-                placeholder="password"
-                name="password"
-                type="password"
-                required={true}
-              />
-            </div>
-            <div>
-              <InputBox
-                onChange={handleChange}
-                placeholder="confirm password"
-                name="passwordConfirm"
-                type="password"
-                required={true}
-              />
-            </div>
-            <Button name="REGISTER" />
-          </form>
+          {/* <UserBio /> */}
+          {/* <AdditionalInfo /> */}
+          <AddressInfo />
+
           <span className={styles.auth_alt}>OR</span>
           <div className={styles.social_auth}>
             <a
