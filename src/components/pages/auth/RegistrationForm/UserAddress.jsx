@@ -1,11 +1,14 @@
 import React from "react";
-
 import { InputBox } from "../../../inputBox";
 import { useFormik } from "formik";
 import { AddressInfo } from "./validation.schema";
 import { useSelector } from "react-redux";
 import styles from "./index.module.css";
 import { getState } from "../../../../state/slices/user";
+import { Button } from "../../../button/index"
+
+import classNames from "classnames";
+
 function UserAddress({ submit, state, reverse }) {
   const { user } = useSelector(getState);
 
@@ -27,7 +30,8 @@ function UserAddress({ submit, state, reverse }) {
     onSubmit: handleSub,
     validationSchema: AddressInfo,
   });
-
+  const prevBtnClass = classNames("btn_light",
+    state.stage < 1 && "invisible")
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
@@ -84,25 +88,24 @@ function UserAddress({ submit, state, reverse }) {
             justifyContent: "space-between",
           }}
         >
-          {state.stage > 1 && (
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                reverse(state.stage);
-              }}
-              disabled={formik.isSubmitting}
-              className=" btn btn-primary"
-            >
-              Back
-            </button>
-          )}
-          <button
+
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              reverse(state.stage);
+            }}
+            disabled={formik.isSubmitting}
+            className={prevBtnClass}
+          >
+            Back
+            </Button>
+
+          <Button
             disabled={formik.isSubmitting}
             type="submit"
-            className="btn btn-primary"
           >
             {formik.isSubmitting ? "updating..." : "next"}
-          </button>
+          </Button>
         </div>
       </form>
     </div>

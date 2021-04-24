@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./Auth.module.css";
-
 import BackGround from "../../background";
 import { Github, Google } from "../../vectors/Vectors";
 import Footer from "../../footer/Footer";
@@ -9,6 +8,7 @@ import createDefaultProfilePic from "./CreateProfilePic";
 import UserBio from "./RegistrationForm/UserBio";
 import AdditionalInfo from "./RegistrationForm/AdditionalInfo";
 import AddressInfo from "./RegistrationForm/UserAddress";
+
 
 function Register() {
   const [registrationState, setRegistrationState] = useState({
@@ -26,7 +26,7 @@ function Register() {
     confirmPassword: "",
     google_id: "",
     profilePic: "",
-    stage: 1,
+    stage: 2,
   });
 
   const submit = (state) => {

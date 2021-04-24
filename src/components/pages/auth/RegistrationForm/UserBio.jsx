@@ -2,12 +2,11 @@ import React  from "react";
 import { InputBox } from "../../../inputBox";
 import { useFormik } from "formik";
 import { userBioData } from "./validation.schema";
+import {Button} from "../../../button/index"
 function UserBio({ submit, state, reverse ,setState}) {
   const handleSub = () => {
     if (!formik.isValidating && formik.isValid) {
       formik.setSubmitting(true);
-      console.log("submitted");
-      console.log("submit: ", formik.values);
       setState({
         
       })
@@ -71,25 +70,23 @@ function UserBio({ submit, state, reverse ,setState}) {
             justifyContent: "space-between",
           }}
         >
-          {state.stage >1 && (
-            <button
+            <Button
               onClick={(e) => {
                 e.preventDefault();
                 reverse(state.stage);
               }}
               disabled={formik.isSubmitting}
-              className=" btn btn-primary"
+              className=" btn_light invisible"
             >
               Back
-            </button>
-          )}
-          <button
+            </Button>
+        
+          <Button
             disabled={formik.isSubmitting}
             type="submit"
-            className="btn btn-primary"
           >
             {formik.isSubmitting ? "updating..." : "next"}
-          </button>
+          </Button>
         </div>
       </form>
     </div>

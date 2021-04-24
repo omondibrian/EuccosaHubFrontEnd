@@ -89,7 +89,7 @@ function Login(props) {
               )}
             </div>
 
-            <Button name="LOGIN" />
+            <Button type="submit">LOGIN</Button>
           </form>
           <span className={styles.auth_alt}>OR</span>
           <div className={styles.social_auth}>

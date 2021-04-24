@@ -6,7 +6,10 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import en from "date-fns/locale/en-GB";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./index.module.css";
+import { Button } from "../../../button/index"
+import classNames from "classnames"
 registerLocale("en", en);
+
 
 function AdditionalInfo({ submit, reverse, state }) {
   const handleSub = () => {
@@ -29,9 +32,10 @@ function AdditionalInfo({ submit, reverse, state }) {
     },
     onSubmit: handleSub,
     validationSchema: addintionalInfoSchema,
-    
-  });
 
+  });
+  const prevBtnClass = classNames("btn_light",
+    state.stage < 1 && "invisible")
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
@@ -150,25 +154,24 @@ function AdditionalInfo({ submit, reverse, state }) {
             justifyContent: "space-between",
           }}
         >
-          {state.stage > 1 && (
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                reverse(state.stage);
-              }}
-              disabled={formik.isSubmitting}
-              className=" btn btn-primary"
-            >
-              {formik.isSubmitting ? "updating..." : "Back"}
-            </button>
-          )}
-          <button
+
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              reverse(state.stage);
+            }}
+            disabled={formik.isSubmitting}
+            className={prevBtnClass}
+          >
+            {formik.isSubmitting ? "updating..." : "Back"}
+          </Button>
+
+          <Button
             disabled={formik.isSubmitting}
             type="submit"
-            className="btn btn-primary"
           >
-            {formik.isSubmitting ? "updating..." : "next"}
-          </button>
+            Next
+          </Button>
         </div>
       </form>
     </div>
