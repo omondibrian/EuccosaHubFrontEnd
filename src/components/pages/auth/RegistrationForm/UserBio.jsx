@@ -2,24 +2,16 @@ import React from "react";
 import { InputBox } from "../../../inputBox";
 import { useFormik } from "formik";
 import { userBioData } from "./validation.schema";
-import {Button} from "../../../button/index"
-function UserBio({ submit, state, reverse ,setState}) {
-  const handleSub = () => {
-    if (!formik.isValidating && formik.isValid) {
-      formik.setSubmitting(true);
-      setState({
-        
-      })
-      submit(formik.values);
+import { Button } from "../../../button/index"
 import {
   getRegistrationState,
   forward,
-  reverse,
   setBioData,
- 
+
 } from "../../../../state/slices/registration";
 import CreateDefaultProfile from "../CreateProfilePic";
 import { useSelector, useDispatch } from "react-redux";
+import style from "./index.module.css"
 
 function UserBio() {
   const state = useSelector(getRegistrationState);
@@ -38,7 +30,7 @@ function UserBio() {
           firstName: formik.values.firstName,
           lastName: formik.values.lastName,
           Email: formik.values.Email,
-          profilePic:profile,
+          profilePic: profile,
         })
       );
       dispatch(forward({ stage: state.stage + 1 }));
@@ -60,7 +52,9 @@ function UserBio() {
     <div>
       <form onSubmit={formik.handleSubmit}>
         <div>
+        <label htmlFor="fName">First Name</label>
           <InputBox
+            id="fName" 
             value={formik.values.firstName}
             onChange={formik.handleChange}
             placeholder="First name"
@@ -68,11 +62,13 @@ function UserBio() {
             type="text"
           />
           {formik.touched.firstName && formik.errors.firstName ? (
-            <small className="text-danger">{formik.errors.firstName}</small>
+            <small className={style.text_danger}>{formik.errors.firstName}</small>
           ) : null}
         </div>
         <div>
+        <label htmlFor="sName">Second Name</label>
           <InputBox
+            id="sName"
             value={formik.values.lastName}
             onChange={formik.handleChange}
             placeholder="Last name"
@@ -81,11 +77,13 @@ function UserBio() {
           />
 
           {formik.touched.lastName && formik.errors.lastName ? (
-            <small className="text-danger">{formik.errors.lastName}</small>
+            <small className={style.text_danger}>{formik.errors.lastName}</small>
           ) : null}
         </div>
         <div>
+        <label htmlFor="email">Email</label>
           <InputBox
+            id="email"
             value={formik.values.Email}
             onChange={formik.handleChange}
             placeholder="JohnDoe@test.com"
@@ -93,7 +91,7 @@ function UserBio() {
             type="email"
           />
           {formik.touched.Email && formik.errors.Email ? (
-            <small className="text-danger">{formik.errors.Email}</small>
+            <small className={style.text_danger}>{formik.errors.Email}</small>
           ) : null}
         </div>
         <div
@@ -103,22 +101,12 @@ function UserBio() {
           }}
         >
 
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(reverse({ stage: state.stage - 1 }));
-              }}
-              disabled={formik.isSubmitting}
-              className=" btn_light invisible"
-            >
-              Back
+          <Button className=" btn_light invisible">
+            Back
             </Button>
-        
-          <Button
-            disabled={formik.isSubmitting}
-            type="submit"
-          >
-            {formik.isSubmitting ? "updating..." : "next"}
+
+          <Button>
+            Next
           </Button>
         </div>
       </form>

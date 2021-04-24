@@ -5,23 +5,16 @@ import { AddressInfo } from "./validation.schema";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./index.module.css";
 import { getState } from "../../../../state/slices/user";
-<<<<<<< HEAD
-import { Button } from "../../../button/index"
-
-import classNames from "classnames";
-
-function UserAddress({ submit, state, reverse }) {
-=======
 import {
   getRegistrationState,
-  forward,
   reverse,
   setAddressDetails,
   RegisterNewUser
 } from "../../../../state/slices/registration";
+import { Button } from "../../../button/index"
+
 function UserAddress() {
   const state = useSelector(getRegistrationState);
->>>>>>> 2cb9a09da9f1127802e08d51f1ee67738e8b7867
   const { user } = useSelector(getState);
   const dispatch = useDispatch();
 
@@ -51,8 +44,7 @@ function UserAddress() {
     onSubmit: handleSub,
     validationSchema: AddressInfo,
   });
-  const prevBtnClass = classNames("btn_light",
-    state.stage < 1 && "invisible")
+
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
@@ -66,7 +58,7 @@ function UserAddress() {
             type="text"
           />
           {formik.touched.street && formik.errors.street ? (
-            <small className="text-danger">{formik.errors.street}</small>
+            <small className={styles.text_danger}>{formik.errors.street}</small>
           ) : null}
         </div>
         <div>
@@ -80,7 +72,7 @@ function UserAddress() {
           />
 
           {formik.touched.city && formik.errors.city ? (
-            <small className="text-danger">{formik.errors.city}</small>
+            <small className={styles.text_danger}>{formik.errors.city}</small>
           ) : null}
         </div>
         {/* country */}
@@ -91,7 +83,7 @@ function UserAddress() {
             name="country"
             value={formik.values.country}
             onChange={formik.handleChange}
-            className="form-control"
+            className={styles.formControl}
           >
             <option>Choose...</option>
             {user.countries.map((con) => {
@@ -100,7 +92,7 @@ function UserAddress() {
             <option>...</option>
           </select>
           {formik.touched.country && formik.errors.country ? (
-            <small className="text-danger">{formik.errors.country}</small>
+            <small className={styles.text_danger}>{formik.errors.country}</small>
           ) : null}
         </div>
         <div
@@ -109,45 +101,21 @@ function UserAddress() {
             justifyContent: "space-between",
           }}
         >
-<<<<<<< HEAD
-
           <Button
             onClick={(e) => {
               e.preventDefault();
-              reverse(state.stage);
+              dispatch(reverse({ stage: state.stage - 1 }));
             }}
-            disabled={formik.isSubmitting}
-            className={prevBtnClass}
+            className=" btn_light"
           >
             Back
             </Button>
 
           <Button
-=======
-          {state.stage > 1 && (
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(reverse({ stage: state.stage - 1 }));
-              }}
-              disabled={formik.isSubmitting}
-              className=" btn btn-primary"
-            >
-              Back
-            </button>
-          )}
-          <button
->>>>>>> 2cb9a09da9f1127802e08d51f1ee67738e8b7867
-            disabled={formik.isSubmitting}
             type="submit"
           >
-<<<<<<< HEAD
-            {formik.isSubmitting ? "updating..." : "next"}
+            Finish
           </Button>
-=======
-            {formik.isSubmitting ? "updating..." : "finish"}
-          </button>
->>>>>>> 2cb9a09da9f1127802e08d51f1ee67738e8b7867
         </div>
       </form>
     </div>

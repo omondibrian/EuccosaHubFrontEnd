@@ -13,7 +13,7 @@ import {
   setUserAdditionalInfo
 } from "../../../../state/slices/registration";
 import { AdditionalInfo as addintionalInfoSchema } from "./validation.schema";
-import {Button} from "../../../button/index"
+import { Button } from "../../../button/index"
 
 registerLocale("en", en);
 function AdditionalInfo() {
@@ -53,8 +53,7 @@ function AdditionalInfo() {
   });
 
 
-  const prevBtnClass = classNames("btn_light",
-    state.stage < 1 && "invisible")
+
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
@@ -68,7 +67,7 @@ function AdditionalInfo() {
             placeholder="Registration Number"
             name="regNumber"
             type="text"
-          />  
+          />
 
           {formik.touched.regNumber && formik.errors.regNumber ? (
             <small className="text-danger">{formik.errors.regNumber}</small>
@@ -174,22 +173,20 @@ function AdditionalInfo() {
           }}
         >
 
-         
+
 
           <Button
-          
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(reverse({ stage: state.stage - 1 }));
-              }}
-              disabled={formik.isSubmitting}
-              className="btn_light"
-            >
-              Back
+
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(reverse({ stage: state.stage - 1 }));
+            }}
+            className="btn_light"
+          >
+            Back
             </Button>
-        
+
           <Button
-            disabled={formik.isSubmitting}
             type="submit"
           >
             Next

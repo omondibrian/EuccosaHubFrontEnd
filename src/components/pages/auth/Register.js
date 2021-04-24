@@ -8,62 +8,10 @@ import { Link } from "react-router-dom";
 import UserBio from "./RegistrationForm/UserBio";
 import AdditionalInfo from "./RegistrationForm/AdditionalInfo";
 import AddressInfo from "./RegistrationForm/UserAddress";
-<<<<<<< HEAD
-
-
-function Register() {
-  const [registrationState, setRegistrationState] = useState({
-    firstName: "",
-    lastName: "",
-    Email: "",
-    street: "",
-    city: "",
-    country: "",
-    regNumber: "",
-    startDate: "",
-    completionDate: "",
-    phoneNumber: "",
-    password: "",
-    confirmPassword: "",
-    google_id: "",
-    profilePic: "",
-    stage: 2,
-  });
-
-  const submit = (state) => {
-    console.log(state)
-    const img = createDefaultProfilePic(
-      registrationState.firstName[0] + registrationState.lastName[0]
-    )
-    setRegistrationState({
-      ...registrationState,
-      ...state,
-      profilePic: img
-    });
-
-    console.log(registrationState);
-    forward(registrationState.stage);
-    
-  };
-  const forward = (stage) => {
-    setRegistrationState({
-      ...registrationState,
-      stage: stage + 1,
-    });
-  };
-
-  const reverse = (stage) => {
-    setRegistrationState({
-      ...registrationState,
-      stage: stage - 1,
-    });
-  };
-=======
 import { useSelector } from "react-redux";
 import { getStage } from "../../../state/slices/registration";
 function Register() {
   const stage = useSelector(getStage);
->>>>>>> 2cb9a09da9f1127802e08d51f1ee67738e8b7867
 
    switch (stage) {
     case 1:
@@ -130,7 +78,7 @@ const RegistrationWrapper = ({ children, stage }) => {
           </strong>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </BackGround>
   );
 };
