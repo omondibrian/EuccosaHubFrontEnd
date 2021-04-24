@@ -4,10 +4,11 @@ import BackGround from "../../background";
 import { Github, Google } from "../../vectors/Vectors";
 import Footer from "../../footer/Footer";
 import { Link } from "react-router-dom";
-import createDefaultProfilePic from "./CreateProfilePic";
+
 import UserBio from "./RegistrationForm/UserBio";
 import AdditionalInfo from "./RegistrationForm/AdditionalInfo";
 import AddressInfo from "./RegistrationForm/UserAddress";
+<<<<<<< HEAD
 
 
 function Register() {
@@ -57,42 +58,30 @@ function Register() {
       stage: stage - 1,
     });
   };
+=======
+import { useSelector } from "react-redux";
+import { getStage } from "../../../state/slices/registration";
+function Register() {
+  const stage = useSelector(getStage);
+>>>>>>> 2cb9a09da9f1127802e08d51f1ee67738e8b7867
 
-  switch (registrationState.stage) {
+   switch (stage) {
     case 1:
       return (
-        <RegistrationWrapper state={registrationState}>
-          <UserBio
-            submit={submit}
-            state={registrationState}
-            forward={forward}
-            reverse={reverse}
-            setState={setRegistrationState}
-          />
+        <RegistrationWrapper stage={stage}>
+          <UserBio />
         </RegistrationWrapper>
       );
     case 2:
       return (
-        <RegistrationWrapper state={registrationState}>
-          <AdditionalInfo
-            submit={submit}
-            state={registrationState}
-            forward={forward}
-            reverse={reverse}
-            setState={setRegistrationState}
-          />
+        <RegistrationWrapper stage={stage}>
+          <AdditionalInfo />
         </RegistrationWrapper>
       );
     case 3:
       return (
-        <RegistrationWrapper state={registrationState}>
-          <AddressInfo
-            submit={submit}
-            forward={forward}
-            reverse={reverse}
-            state={registrationState}
-            setState={setRegistrationState}
-          />
+        <RegistrationWrapper stage={stage}>
+          <AddressInfo />
         </RegistrationWrapper>
       );
     default:
@@ -102,7 +91,7 @@ function Register() {
 
 export default Register;
 
-const RegistrationWrapper = ({ children,state }) => {
+const RegistrationWrapper = ({ children, stage }) => {
   return (
     <BackGround>
       <div className={styles.auth}>
@@ -111,9 +100,9 @@ const RegistrationWrapper = ({ children,state }) => {
           <div className={styles.form_step}>
             <div className={styles.container}>
               <ul className={styles.progressbar}>
-                <li className={state.stage>1? styles.active : ""}>Step 1</li>
-                <li className={state.stage>2? styles.active : ""}>Step 2</li>
-                <li >Step 3</li>
+                <li className={stage > 1 ? styles.active : ""}>Step 1</li>
+                <li className={stage > 2 ? styles.active : ""}>Step 2</li>
+                <li>Step 3</li>
               </ul>
             </div>
           </div>

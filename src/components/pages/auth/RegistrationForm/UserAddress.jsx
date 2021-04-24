@@ -2,22 +2,43 @@ import React from "react";
 import { InputBox } from "../../../inputBox";
 import { useFormik } from "formik";
 import { AddressInfo } from "./validation.schema";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import styles from "./index.module.css";
 import { getState } from "../../../../state/slices/user";
+<<<<<<< HEAD
 import { Button } from "../../../button/index"
 
 import classNames from "classnames";
 
 function UserAddress({ submit, state, reverse }) {
+=======
+import {
+  getRegistrationState,
+  forward,
+  reverse,
+  setAddressDetails,
+  RegisterNewUser
+} from "../../../../state/slices/registration";
+function UserAddress() {
+  const state = useSelector(getRegistrationState);
+>>>>>>> 2cb9a09da9f1127802e08d51f1ee67738e8b7867
   const { user } = useSelector(getState);
+  const dispatch = useDispatch();
 
   const handleSub = () => {
     if (!formik.isValidating && formik.isValid) {
       formik.setSubmitting(true);
       console.log("submitted");
       console.log("submit: ", formik.values);
-      submit(formik.values);
+      dispatch(
+        setAddressDetails({
+          street: formik.values.street,
+          city: formik.values.city,
+          country: formik.values.country,
+        })
+      );
+      dispatch(RegisterNewUser(state));
+      // dispatch(forward({ stage: state.stage + 1 }));
       formik.setSubmitting(false);
     }
   };
@@ -88,6 +109,7 @@ function UserAddress({ submit, state, reverse }) {
             justifyContent: "space-between",
           }}
         >
+<<<<<<< HEAD
 
           <Button
             onClick={(e) => {
@@ -101,11 +123,31 @@ function UserAddress({ submit, state, reverse }) {
             </Button>
 
           <Button
+=======
+          {state.stage > 1 && (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(reverse({ stage: state.stage - 1 }));
+              }}
+              disabled={formik.isSubmitting}
+              className=" btn btn-primary"
+            >
+              Back
+            </button>
+          )}
+          <button
+>>>>>>> 2cb9a09da9f1127802e08d51f1ee67738e8b7867
             disabled={formik.isSubmitting}
             type="submit"
           >
+<<<<<<< HEAD
             {formik.isSubmitting ? "updating..." : "next"}
           </Button>
+=======
+            {formik.isSubmitting ? "updating..." : "finish"}
+          </button>
+>>>>>>> 2cb9a09da9f1127802e08d51f1ee67738e8b7867
         </div>
       </form>
     </div>

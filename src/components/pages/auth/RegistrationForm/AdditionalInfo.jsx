@@ -1,23 +1,41 @@
 import React from "react";
-import { InputBox } from "../../../inputBox";
 import { useFormik } from "formik";
-import { AdditionalInfo as addintionalInfoSchema } from "./validation.schema";
-import DatePicker, { registerLocale } from "react-datepicker";
+import { useSelector, useDispatch } from "react-redux";
 import en from "date-fns/locale/en-GB";
-import "react-datepicker/dist/react-datepicker.css";
 import styles from "./index.module.css";
-import { Button } from "../../../button/index"
-import classNames from "classnames"
+import { InputBox } from "../../../inputBox";
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker, { registerLocale } from "react-datepicker";
+import {
+  getRegistrationState,
+  forward,
+  reverse,
+  setUserAdditionalInfo
+} from "../../../../state/slices/registration";
+import { AdditionalInfo as addintionalInfoSchema } from "./validation.schema";
+import {Button} from "../../../button/index"
+
 registerLocale("en", en);
+function AdditionalInfo() {
+  const state = useSelector(getRegistrationState);
+  const dispatch = useDispatch();
 
-
-function AdditionalInfo({ submit, reverse, state }) {
   const handleSub = () => {
     if (!formik.isValidating && formik.isValid) {
       formik.setSubmitting(true);
       console.log("submitted");
       console.log("submit: ", formik.values);
-      submit(formik.values);
+      dispatch(
+        setUserAdditionalInfo({
+          regNumber: formik.values.regNumber,
+          startDate: formik.values.startDate,
+          completionDate: formik.values.completionDate,
+          phoneNumber: formik.values.phoneNumber,
+          password: formik.values.password,
+          confirmPassword: formik.values.confirmPassword,
+        })
+      );
+      dispatch(forward({ stage: state.stage + 1 }));
       formik.setSubmitting(false);
     }
   };
@@ -32,8 +50,9 @@ function AdditionalInfo({ submit, reverse, state }) {
     },
     onSubmit: handleSub,
     validationSchema: addintionalInfoSchema,
-
   });
+
+
   const prevBtnClass = classNames("btn_light",
     state.stage < 1 && "invisible")
   return (
@@ -49,7 +68,7 @@ function AdditionalInfo({ submit, reverse, state }) {
             placeholder="Registration Number"
             name="regNumber"
             type="text"
-          />
+          />  
 
           {formik.touched.regNumber && formik.errors.regNumber ? (
             <small className="text-danger">{formik.errors.regNumber}</small>
@@ -155,17 +174,20 @@ function AdditionalInfo({ submit, reverse, state }) {
           }}
         >
 
-          <Button
-            onClick={(e) => {
-              e.preventDefault();
-              reverse(state.stage);
-            }}
-            disabled={formik.isSubmitting}
-            className={prevBtnClass}
-          >
-            {formik.isSubmitting ? "updating..." : "Back"}
-          </Button>
+         
 
+          <Button
+          
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(reverse({ stage: state.stage - 1 }));
+              }}
+              disabled={formik.isSubmitting}
+              className="btn_light"
+            >
+              Back
+            </Button>
+        
           <Button
             disabled={formik.isSubmitting}
             type="submit"

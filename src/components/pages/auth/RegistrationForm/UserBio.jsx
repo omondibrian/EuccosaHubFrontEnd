@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { InputBox } from "../../../inputBox";
 import { useFormik } from "formik";
 import { userBioData } from "./validation.schema";
@@ -11,6 +11,38 @@ function UserBio({ submit, state, reverse ,setState}) {
         
       })
       submit(formik.values);
+import {
+  getRegistrationState,
+  forward,
+  reverse,
+  setBioData,
+ 
+} from "../../../../state/slices/registration";
+import CreateDefaultProfile from "../CreateProfilePic";
+import { useSelector, useDispatch } from "react-redux";
+
+function UserBio() {
+  const state = useSelector(getRegistrationState);
+  const dispatch = useDispatch();
+
+  const handleSub = () => {
+    if (!formik.isValidating && formik.isValid) {
+      formik.setSubmitting(true);
+      console.log("submitted");
+      console.log("submit: ", formik.values);
+      const profile = CreateDefaultProfile(
+        formik.values.firstName[0] + formik.values.lastName[0]
+      );
+      dispatch(
+        setBioData({
+          firstName: formik.values.firstName,
+          lastName: formik.values.lastName,
+          Email: formik.values.Email,
+          profilePic:profile,
+        })
+      );
+      dispatch(forward({ stage: state.stage + 1 }));
+      console.log(state);
       formik.setSubmitting(false);
     }
   };
@@ -70,10 +102,11 @@ function UserBio({ submit, state, reverse ,setState}) {
             justifyContent: "space-between",
           }}
         >
-            <Button
+
+            <button
               onClick={(e) => {
                 e.preventDefault();
-                reverse(state.stage);
+                dispatch(reverse({ stage: state.stage - 1 }));
               }}
               disabled={formik.isSubmitting}
               className=" btn_light invisible"
