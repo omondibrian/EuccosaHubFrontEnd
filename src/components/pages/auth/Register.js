@@ -61,7 +61,7 @@ function Register() {
   switch (registrationState.stage) {
     case 1:
       return (
-        <RegistrationWrapper>
+        <RegistrationWrapper state={registrationState}>
           <UserBio
             submit={submit}
             state={registrationState}
@@ -73,7 +73,7 @@ function Register() {
       );
     case 2:
       return (
-        <RegistrationWrapper>
+        <RegistrationWrapper state={registrationState}>
           <AdditionalInfo
             submit={submit}
             state={registrationState}
@@ -85,7 +85,7 @@ function Register() {
       );
     case 3:
       return (
-        <RegistrationWrapper>
+        <RegistrationWrapper state={registrationState}>
           <AddressInfo
             submit={submit}
             forward={forward}
@@ -102,18 +102,18 @@ function Register() {
 
 export default Register;
 
-const RegistrationWrapper = ({ children }) => {
+const RegistrationWrapper = ({ children,state }) => {
   return (
     <BackGround>
       <div className={styles.auth}>
         <div className={styles.glass_form}>
           <h2 className={styles.header}>Register</h2>
           <div className={styles.form_step}>
-            <div class={styles.container}>
-              <ul class={styles.progressbar}>
-                <li class={styles.active}>Step 1</li>
-                <li>Step 2</li>
-                <li>Step 3</li>
+            <div className={styles.container}>
+              <ul className={styles.progressbar}>
+                <li className={state.stage>1 && styles.active}>Step 1</li>
+                <li className={state.stage>2 && styles.active}>Step 2</li>
+                <li className={state.stage>2 && styles.active}>Step 3</li>
               </ul>
             </div>
           </div>

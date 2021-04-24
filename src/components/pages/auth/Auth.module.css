@@ -136,15 +136,15 @@
 .progressbar li:first-child:after {
   content: none;
 }
-/* .progressbar .active {
-  color:  #fd0079 !important;
-} */
+
 .active::before{
   background-color: #fd0079  !important;
   color: #fff !important;
+  
 }
 .progressbar li.active:before {
   border-color:  #fd0079 ;
+  transition: all .3s ease;
 }
 .progressbar li.active + li:after {
   background-color:  #fd0079 ;
