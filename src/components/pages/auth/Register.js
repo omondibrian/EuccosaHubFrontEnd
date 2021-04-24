@@ -30,9 +30,9 @@ function Register() {
               </ul>
             </div>
           </div>
-          {/* <UserBio /> */}
-          {/* <AdditionalInfo /> */}
-          <AddressInfo />
+          <UserBio />
+          <AdditionalInfo />
+          {/* <AddressInfo /> */}
 
           <span className={styles.auth_alt}>OR</span>
           <div className={styles.social_auth}>
