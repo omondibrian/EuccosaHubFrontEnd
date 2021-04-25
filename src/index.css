@@ -28,6 +28,7 @@ body {
   box-sizing: border-box;
   line-height: normal !important;
   overflow-x: hidden !important;
+  scroll-behavior: smooth;
 }
 
 code {

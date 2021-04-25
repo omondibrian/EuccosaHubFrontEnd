@@ -12,6 +12,9 @@ import {
 import CreateDefaultProfile from "../CreateProfilePic";
 import { useSelector, useDispatch } from "react-redux";
 import style from "./index.module.css"
+import { CSSTransition } from "react-transition-group"
+
+
 
 function UserBio() {
   const state = useSelector(getRegistrationState);
@@ -47,70 +50,71 @@ function UserBio() {
     onSubmit: handleSub,
     validationSchema: userBioData,
   });
-
   return (
-    <div>
-      <form onSubmit={formik.handleSubmit}>
-        <div>
-        <label htmlFor="fName">First Name</label>
-          <InputBox
-            id="fName" 
-            value={formik.values.firstName}
-            onChange={formik.handleChange}
-            placeholder="First name"
-            name="firstName"
-            type="text"
-          />
-          {formik.touched.firstName && formik.errors.firstName ? (
-            <small className={style.text_danger}>{formik.errors.firstName}</small>
-          ) : null}
-        </div>
-        <div>
-        <label htmlFor="sName">Second Name</label>
-          <InputBox
-            id="sName"
-            value={formik.values.lastName}
-            onChange={formik.handleChange}
-            placeholder="Last name"
-            name="lastName"
-            type="text"
-          />
+    <CSSTransition classNames="fade" in={state.stage === 1} unmountOnExit timeout={200}>
+      <div >
+        <form onSubmit={formik.handleSubmit}>
+          <div>
+            <label htmlFor="fName">First Name</label>
+            <InputBox
+              id="fName"
+              value={formik.values.firstName}
+              onChange={formik.handleChange}
+              placeholder="First name"
+              name="firstName"
+              type="text"
+            />
+            {formik.touched.firstName && formik.errors.firstName ? (
+              <small className={style.text_danger}>{formik.errors.firstName}</small>
+            ) : null}
+          </div>
+          <div>
+            <label htmlFor="sName">Second Name</label>
+            <InputBox
+              id="sName"
+              value={formik.values.lastName}
+              onChange={formik.handleChange}
+              placeholder="Last name"
+              name="lastName"
+              type="text"
+            />
 
-          {formik.touched.lastName && formik.errors.lastName ? (
-            <small className={style.text_danger}>{formik.errors.lastName}</small>
-          ) : null}
-        </div>
-        <div>
-        <label htmlFor="email">Email</label>
-          <InputBox
-            id="email"
-            value={formik.values.Email}
-            onChange={formik.handleChange}
-            placeholder="JohnDoe@test.com"
-            name="Email"
-            type="email"
-          />
-          {formik.touched.Email && formik.errors.Email ? (
-            <small className={style.text_danger}>{formik.errors.Email}</small>
-          ) : null}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
+            {formik.touched.lastName && formik.errors.lastName ? (
+              <small className={style.text_danger}>{formik.errors.lastName}</small>
+            ) : null}
+          </div>
+          <div>
+            <label htmlFor="email">Email</label>
+            <InputBox
+              id="email"
+              value={formik.values.Email}
+              onChange={formik.handleChange}
+              placeholder="JohnDoe@test.com"
+              name="Email"
+              type="email"
+            />
+            {formik.touched.Email && formik.errors.Email ? (
+              <small className={style.text_danger}>{formik.errors.Email}</small>
+            ) : null}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
 
-          <Button className=" btn_light invisible">
-            Back
+            <Button className=" btn_light invisible">
+              Back
             </Button>
 
-          <Button>
-            Next
+            <Button>
+              Next
           </Button>
-        </div>
-      </form>
-    </div>
+          </div>
+        </form>
+      </div>
+    </CSSTransition>
   );
 }
 

@@ -1,0 +1,29 @@
+
+.fade-enter {
+    opacity: 0;
+    display: none;
+    
+  }
+  .fade-enter-active {
+    opacity: 1;
+   
+   
+  }
+  .fade-enter-done {
+    opacity: 1;
+  
+  }
+  
+  .fade-exit {
+    opacity: 1;
+    
+  }
+  .fade-exit-active {
+    opacity: 0;
+    transition: all .2s;
+    
+  }
+  .fade-exit-done {
+    opacity: 0;
+  }
+ 

@@ -12,6 +12,8 @@ import {
   RegisterNewUser
 } from "../../../../state/slices/registration";
 import { Button } from "../../../button/index"
+import {CSSTransition} from "react-transition-group"
+
 
 function UserAddress() {
   const state = useSelector(getRegistrationState);
@@ -44,9 +46,10 @@ function UserAddress() {
     onSubmit: handleSub,
     validationSchema: AddressInfo,
   });
-
+ 
   return (
-    <div>
+    <CSSTransition classNames="fade" in={state.stage === 3} unmountOnExit timeout={200}>
+    <div >
       <form onSubmit={formik.handleSubmit}>
         <div>
           <label htmlFor="street">street</label>
@@ -119,6 +122,7 @@ function UserAddress() {
         </div>
       </form>
     </div>
+    </CSSTransition>
   );
 }
 

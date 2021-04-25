@@ -4,48 +4,23 @@ import BackGround from "../../background";
 import { Github, Google } from "../../vectors/Vectors";
 import Footer from "../../footer/Footer";
 import { Link } from "react-router-dom";
-
+import "./transition.css";
 import UserBio from "./RegistrationForm/UserBio";
 import AdditionalInfo from "./RegistrationForm/AdditionalInfo";
 import AddressInfo from "./RegistrationForm/UserAddress";
 import { useSelector } from "react-redux";
 import { getStage } from "../../../state/slices/registration";
-function Register() {
+
+
+const Register = () => {
   const stage = useSelector(getStage);
 
-   switch (stage) {
-    case 1:
-      return (
-        <RegistrationWrapper stage={stage}>
-          <UserBio />
-        </RegistrationWrapper>
-      );
-    case 2:
-      return (
-        <RegistrationWrapper stage={stage}>
-          <AdditionalInfo />
-        </RegistrationWrapper>
-      );
-    case 3:
-      return (
-        <RegistrationWrapper stage={stage}>
-          <AddressInfo />
-        </RegistrationWrapper>
-      );
-    default:
-      break;
-  }
-}
-
-export default Register;
-
-const RegistrationWrapper = ({ children, stage }) => {
   return (
     <BackGround>
       <div className={styles.auth}>
         <div className={styles.glass_form}>
           <h2 className={styles.header}>Register</h2>
-          <div className={styles.form_step}>
+          <div className={styles.form_step} id="top">
             <div className={styles.container}>
               <ul className={styles.progressbar}>
                 <li className={stage > 1 ? styles.active : ""}>Step 1</li>
@@ -54,7 +29,12 @@ const RegistrationWrapper = ({ children, stage }) => {
               </ul>
             </div>
           </div>
-          {children}
+        {/* multiple step  form  */}
+          <div className={styles.multistep_form}>
+            <UserBio />
+            <AdditionalInfo />
+            <AddressInfo />
+          </div>
 
           <span className={styles.auth_alt}>OR</span>
           <div className={styles.social_auth}>
@@ -78,7 +58,8 @@ const RegistrationWrapper = ({ children, stage }) => {
           </strong>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </BackGround>
   );
 };
+export default Register;

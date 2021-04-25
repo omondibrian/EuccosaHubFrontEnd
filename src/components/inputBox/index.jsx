@@ -39,7 +39,7 @@ const PasswordAddon = ({ toggle }) => {
             toggle(e);
             setSate(!state)
         }}>
-            <span class="material-icons">
+            <span className="material-icons">
                 {state ? "visibility_off" : "visibility"}
             </span></div>)
 }

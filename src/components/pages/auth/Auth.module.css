@@ -80,6 +80,12 @@
   .social_auth {
     justify-content: space-between;
   }
+  .glass_form{
+    padding: 10px;
+  }
+  .auth{
+    padding: 15px;
+  }
 }
 
 .errors {
@@ -149,4 +155,13 @@
 }
 .progressbar li.active + li:after {
   background-color:  #fd0079 ;
+}
+
+/*register form transitions*/
+.multistep_form{
+  position: relative;
+}
+.multistep_form>div{
+  position: relative;
+  top: 0;
 }
