@@ -4,7 +4,9 @@ import { registerNewUser } from "../../services/auth.service";
 export const RegisterNewUser = createAsyncThunk(
   "registration/RegisterNewUser",
   async (state) => {
-    registerNewUser(state);
+    const startDate = state.startDate.toString();
+    const completionDate = state.completionDate.toString();
+    await registerNewUser({ ...state, startDate, completionDate,email:state.Email });
   }
 );
 
@@ -26,8 +28,8 @@ const registration = createSlice({
     google_id: "",
     profilePic: "",
     stage: 1,
-    isRegistered:false,
-    loading:false
+    isRegistered: false,
+    loading: false,
   },
   reducers: {
     setBioData: (state, action) => {
@@ -58,12 +60,12 @@ const registration = createSlice({
     },
   },
   extraReducers: {
-    [RegisterNewUser.pending]:(state,action)=>{
-      state.loading = true
+    [RegisterNewUser.pending]: (state, action) => {
+      state.loading = true;
     },
-    [RegisterNewUser.fulfilled]:(state,action)=>{
-      state.loading =false
-      state.isRegistered=true
+    [RegisterNewUser.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.isRegistered = true;
     },
   },
 });

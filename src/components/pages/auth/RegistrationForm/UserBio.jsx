@@ -15,7 +15,6 @@ import style from "./index.module.css"
 import { CSSTransition } from "react-transition-group"
 
 
-
 function UserBio() {
   const state = useSelector(getRegistrationState);
   const dispatch = useDispatch();

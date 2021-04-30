@@ -3,7 +3,6 @@ import { FetchUser } from "../../services/auth.service";
 import countries from "../../data/countries";
 import AvatorImg from "../../assets/images/avatar.svg";
 
-
 const State = {
   countries,
   title: "Account Details",
@@ -54,13 +53,16 @@ const userSlice = createSlice({
       state.loading = true;
     },
     [fetchUserProfile.fulfilled]: (state, { payload }) => {
-      console.log('fetchProfile',payload);
+      console.log("fetchProfile", payload);
       state.firstName = payload.firstName;
       state.lastName = payload.lastName;
       state.Email = payload.email;
-      state.avatar = 'http://192.168.43.154:3001/auth/uploads/'+payload.profilePic;
+      state.avatar =
+        "http://192.168.43.154:3001/auth/uploads/" + payload.profilePic;
       state.phoneNumber = payload.phoneNumber;
       state.loading = false;
+      state.startDate = new Date(payload.startDate);
+      state.completionDate = new Date(payload.completionDate);
     },
   },
 });
