@@ -1,4 +1,4 @@
-const createDefaultProfilePic = async (name) => {
+const createDefaultProfilePic = (name) => {
   const colors = ["#ff006e", "#006dd7", "#7400b8", "#219ebc"];
   const random = Math.floor(Math.random() * 4);
   let svgElement = document.createElementNS(
@@ -27,7 +27,10 @@ const createDefaultProfilePic = async (name) => {
   const url = window.URL.createObjectURL(blob);
   const image = new Image();
   image.src = url;
-  const ImageBlob = await ImageFromSvg(image, `${name}.jpeg`);
+  let ImageBlob;
+  image.onload = async () => {
+    ImageBlob = await ImageFromSvg(image, `${name}.jpeg`);
+  };
   return ImageBlob;
 };
 export default createDefaultProfilePic;
@@ -36,14 +39,16 @@ const ImageFromSvg = (image, fileName) => {
   let fileUrl, file;
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
+  canvas.setAttribute("width", "200px");
+  canvas.setAttribute("height", "200px");
   ctx.drawImage(image, 0, 0, 200, 200, 0, 0, 200, 200);
   return new Promise((resolve, reject) => {
     canvas.toBlob((blob) => {
       blob.name = fileName;
-      window.URL.revokeObjectURL(fileUrl);
-      fileUrl = window.URL.createObjectURL(blob);
-      file = blob;
-      resolve(file);
+      // window.URL.revokeObjectURL(fileUrl);
+      // fileUrl = window.URL.createObjectURL(blob);
+      // file = blob;
+      resolve(blob);
     }, "image/jpeg");
   });
 };
