@@ -10,9 +10,9 @@ const State = {
   lastName: "",
   Email: "",
   Address: {
-    city: "Malindi",
-    street: "Jiwe Leupe",
-    country: "Kenya",
+    city: "",
+    street: "",
+    country: "",
   },
   role: "Vice chairman",
   testimonial: "test testimonial",
@@ -63,6 +63,7 @@ const userSlice = createSlice({
       state.loading = false;
       state.startDate = new Date(payload.startDate);
       state.completionDate = new Date(payload.completionDate);
+      state.Address = payload.Address
     },
   },
 });
