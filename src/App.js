@@ -3,7 +3,7 @@ import PageNotFound from "./components/pages/404_page/404_page";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Home from "./components/pages/home/Home";
 import { MobileNav } from "./components/navigation/navbar/index";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/styles/dashboard.css";
 import DashBoard from "./components/dashboard";
 import ImageCrop from "./components/dashboard/imageCrop/ImageCrop";
@@ -12,7 +12,7 @@ import DashBoardStats from "./components/dashboard/statsOverview";
 import { getApplicationState } from "./state/slices/Application";
 import Register from "./components/pages/auth/Register";
 import Logout from "./components/pages/auth/Logout";
-
+ 
 function App() {
   const { application } = useSelector(getApplicationState);
 
