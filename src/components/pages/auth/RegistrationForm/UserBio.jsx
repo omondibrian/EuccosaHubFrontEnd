@@ -20,12 +20,12 @@ function UserBio() {
   const state = useSelector(getRegistrationState);
   const dispatch = useDispatch();
 
-  const handleSub = () => {
+  const handleSub =async () => {
     if (!formik.isValidating && formik.isValid) {
       formik.setSubmitting(true);
       console.log("submitted");
       console.log("submit: ", formik.values);
-      const profile = CreateDefaultProfile(
+      const profile = await CreateDefaultProfile(
         formik.values.firstName[0] + formik.values.lastName[0]
       );
       dispatch(
@@ -36,7 +36,7 @@ function UserBio() {
           profilePic: profile,
         })
       );
-      dispatch(forward({ stage: state.stage + 1 }));
+      dispatch(forward({ stage: 2 }));
       console.log(state);
       formik.setSubmitting(false);
     }
@@ -55,7 +55,7 @@ function UserBio() {
       <div >
         <form onSubmit={formik.handleSubmit}>
           <div>
-            <label htmlFor="fName">First Name</label>
+            <label htmlFor="fName">First Name <sup className={style.red}>*</sup></label>
             <InputBox
               id="fName"
               value={formik.values.firstName}
@@ -69,7 +69,7 @@ function UserBio() {
             ) : null}
           </div>
           <div>
-            <label htmlFor="sName">Second Name</label>
+            <label htmlFor="sName">Second Name <sup className={style.red}>*</sup></label>
             <InputBox
               id="sName"
               value={formik.values.lastName}
@@ -84,7 +84,7 @@ function UserBio() {
             ) : null}
           </div>
           <div>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email <sup className={style.red}>*</sup></label>
             <InputBox
               id="email"
               value={formik.values.Email}
