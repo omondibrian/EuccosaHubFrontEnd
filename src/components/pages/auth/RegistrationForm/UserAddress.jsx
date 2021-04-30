@@ -23,8 +23,6 @@ function UserAddress() {
   const handleSub = () => {
     if (!formik.isValidating && formik.isValid) {
       formik.setSubmitting(true);
-      console.log("submitted");
-      console.log("submit: ", formik.values);
       dispatch(
         setAddressDetails({
           street: formik.values.street,
@@ -32,6 +30,7 @@ function UserAddress() {
           country: formik.values.country,
         })
       );
+      console.log("testing ")
       dispatch(RegisterNewUser(state));
       // dispatch(forward({ stage: state.stage + 1 }));
       formik.setSubmitting(false);

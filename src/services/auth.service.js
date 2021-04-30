@@ -55,6 +55,7 @@ export const FetchUser = async (id) => {
 };
 
 export const registerNewUser = async (user) => {
+  
   const formData = new FormData();
   for (const field in user) {
     if (Object.hasOwnProperty.call(user, field)) {
@@ -67,11 +68,11 @@ export const registerNewUser = async (user) => {
   formData.append("profilePic", user.profilePic, `${user.firstName}.jpeg`);
 
   let request = new XMLHttpRequest();
+ 
   let result;
   request.open("POST", "http://192.168.43.154:3001/auth/register");
   request.send(formData);
-  request.onload = (res) => {
-    console.log(request.response);
+  request.onload = () => {
     result = request.response;
   };
   return result;
