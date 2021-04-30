@@ -59,7 +59,7 @@ const ImageCrop = ({ Profile }) => {
     }
     setState({ ...state, crop: crop });
   };
-
+  
   const getCroppedImg = (image, fileName) => {
     const canvas = document.createElement("canvas");
     const scaleX = image.naturalWidth / image.width;

@@ -1,4 +1,4 @@
-const createDefaultProfilePic = (name) => {
+const createDefaultProfilePic = async (name) => {
   const colors = ["#ff006e", "#006dd7", "#7400b8", "#219ebc"];
   const random = Math.floor(Math.random() * 4);
   let svgElement = document.createElementNS(
@@ -11,7 +11,7 @@ const createDefaultProfilePic = (name) => {
   text.setAttribute("y", "60");
   text.setAttribute("fill", "#fff");
   text.setAttribute("style", "font-size:36px;font-family:Arial;");
-  text.textContent = name;
+  text.textContent = name.toUpperCase();
   rect.setAttribute("fill", colors[random]);
   rect.setAttribute("x", "0");
   rect.setAttribute("y", "0");
@@ -24,6 +24,26 @@ const createDefaultProfilePic = (name) => {
   svgElement.appendChild(text);
   let xml = new XMLSerializer().serializeToString(svgElement);
   const blob = new Blob([xml], { type: "image/svg+xml;charset=utf-8" });
-  return blob;
+  const url = window.URL.createObjectURL(blob);
+  const image = new Image();
+  image.src = url;
+  const ImageBlob = await ImageFromSvg(image, `${name}.jpeg`);
+  return ImageBlob;
 };
 export default createDefaultProfilePic;
+
+const ImageFromSvg = (image, fileName) => {
+  let fileUrl, file;
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+  ctx.drawImage(image, 0, 0, 200, 200, 0, 0, 200, 200);
+  return new Promise((resolve, reject) => {
+    canvas.toBlob((blob) => {
+      blob.name = fileName;
+      window.URL.revokeObjectURL(fileUrl);
+      fileUrl = window.URL.createObjectURL(blob);
+      file = blob;
+      resolve(file);
+    }, "image/jpeg");
+  });
+};

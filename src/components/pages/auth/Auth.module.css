@@ -1,8 +1,12 @@
 .auth {
   padding: 20px 20px;
   color: white;
+  min-height: calc(100vh - 200px);
 }
 
+.auth div {
+  transition: height 0.3s linear;
+}
 .glass_form {
   box-sizing: border-box;
   border-bottom: 2px rgba(40, 40, 40, 0.35) solid;
@@ -18,7 +22,8 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
   border-radius: 10px;
-  transition: height .5s ease;
+  transition: height 0.5s ease;
+  min-height: 500px;
 }
 
 .header {
@@ -80,10 +85,10 @@
   .social_auth {
     justify-content: space-between;
   }
-  .glass_form{
+  .glass_form {
     padding: 10px;
   }
-  .auth{
+  .auth {
     padding: 15px;
   }
 }
@@ -128,7 +133,7 @@
   text-align: center;
   margin: 0 auto 10px auto;
   background-color: #fff;
-  color:var(--black)
+  color: var(--black);
 }
 .progressbar li:after {
   content: "";
@@ -144,24 +149,23 @@
   content: none;
 }
 
-.active::before{
-  background-color: #fd0079  !important;
+.active::before {
+  background-color: #fd0079 !important;
   color: #fff !important;
-  
 }
 .progressbar li.active:before {
-  border-color:  #fd0079 ;
-  transition: all .3s ease;
+  border-color: #fd0079;
+  transition: all 0.3s ease;
 }
 .progressbar li.active + li:after {
-  background-color:  #fd0079 ;
+  background-color: #fd0079;
 }
 
 /*register form transitions*/
-.multistep_form{
+.multistep_form {
   position: relative;
 }
-.multistep_form>div{
+.multistep_form > div {
   position: relative;
   top: 0;
 }

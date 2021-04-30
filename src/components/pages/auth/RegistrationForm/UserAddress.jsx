@@ -107,7 +107,7 @@ function UserAddress() {
           <Button
             onClick={(e) => {
               e.preventDefault();
-              dispatch(reverse({ stage: state.stage - 1 }));
+              dispatch(reverse({ stage: 2 }));
             }}
             className=" btn_light"
           >

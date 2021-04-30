@@ -10,6 +10,7 @@ import AdditionalInfo from "./RegistrationForm/AdditionalInfo";
 import AddressInfo from "./RegistrationForm/UserAddress";
 import { useSelector } from "react-redux";
 import { getStage } from "../../../state/slices/registration";
+import RegistrationComplete from "./RegistrationForm/RegistrationComplete";
 
 
 const Register = () => {
@@ -25,7 +26,7 @@ const Register = () => {
               <ul className={styles.progressbar}>
                 <li className={stage > 1 ? styles.active : ""}>Step 1</li>
                 <li className={stage > 2 ? styles.active : ""}>Step 2</li>
-                <li>Step 3</li>
+                <li className={stage > 3 ? styles.active : ""}>Step 3</li>
               </ul>
             </div>
           </div>
@@ -34,10 +35,11 @@ const Register = () => {
             <UserBio />
             <AdditionalInfo />
             <AddressInfo />
+            <RegistrationComplete/>
           </div>
 
-          <span className={styles.auth_alt}>OR</span>
-          <div className={styles.social_auth}>
+          {/*<span className={styles.auth_alt}>OR</span>
+           <div className={styles.social_auth}>
             <a
               href="http://euccosabackend.ddns.net:3001/auth/google"
               className={styles.social_auth__icon}
@@ -52,7 +54,7 @@ const Register = () => {
             >
               Register with <Github />
             </a>
-          </div>
+          </div> */}
           <strong>
             Have an account? <Link to="/login">Login</Link>
           </strong>

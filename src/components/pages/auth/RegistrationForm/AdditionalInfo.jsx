@@ -36,7 +36,7 @@ function AdditionalInfo() {
           confirmPassword: formik.values.confirmPassword,
         })
       );
-      dispatch(forward({ stage: state.stage + 1 }));
+      dispatch(forward({ stage: 3 }));
       formik.setSubmitting(false);
     }
   };
@@ -63,7 +63,7 @@ function AdditionalInfo() {
         <form onSubmit={formik.handleSubmit}>
           <div>
             <label style={{ display: "block" }} htmlFor="regNumber">
-              Registration Number
+              Registration Number <sup className={styles.red}>*</sup>
           </label>
             <InputBox
               value={formik.values.regNumber}
@@ -80,7 +80,7 @@ function AdditionalInfo() {
           {/* startDate */}
           <div>
             <label style={{ display: "block" }} htmlFor="startDate">
-              Start Date
+              Registration Date <sup className={styles.red}>*</sup>
           </label>
             <DatePicker
               className={styles.formControl}
@@ -99,7 +99,7 @@ function AdditionalInfo() {
           {/* completionDate */}
           <div>
             <label style={{ display: "block" }} htmlFor="completionDate">
-              Completion Date
+              Graduation Date <sup className={styles.red}>*</sup>
           </label>
             <DatePicker
               locale="en"
@@ -120,7 +120,7 @@ function AdditionalInfo() {
 
           <div>
             <label style={{ display: "block" }} htmlFor="phoneNumber">
-              phone Number
+              phone Number <sup className={styles.red}>*</sup>
           </label>
             <InputBox
               value={formik.values.phoneNumber}
@@ -137,7 +137,7 @@ function AdditionalInfo() {
 
           <div>
             <label style={{ display: "block" }} htmlFor="password">
-              Password
+              Password <sup className={styles.red}>*</sup>
           </label>
             <InputBox
               value={formik.values.password}
@@ -154,7 +154,7 @@ function AdditionalInfo() {
 
           <div>
             <label style={{ display: "block" }} htmlFor="password">
-              Confirm Password
+              Confirm Password <sup className={styles.red}>*</sup>
           </label>
             <InputBox
               value={formik.values.confirmPassword}
@@ -183,7 +183,7 @@ function AdditionalInfo() {
 
               onClick={(e) => {
                 e.preventDefault();
-                dispatch(reverse({ stage: state.stage - 1 }));
+                dispatch(reverse({ stage:  1 }));
               }}
               className="btn_light"
             >
