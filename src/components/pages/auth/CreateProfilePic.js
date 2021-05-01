@@ -1,3 +1,4 @@
+
 const createDefaultProfilePic = async (firstName, lastName) => {
   /*create an svg with name initials as text
     random string is appended to filename to make it totaly unique

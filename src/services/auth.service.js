@@ -56,6 +56,22 @@ export const FetchUser = async (id) => {
   }
 };
 
+export const FetchUsers = async () => {
+  const result = await fetch("http://192.168.43.154:3001/auth/users" , {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+  });
+  if (result.ok) {
+    const data = await result.json();
+    return data;
+  } else {
+    //TODO:add display incase of server error or any other errors
+    console.log(result.statusText);
+  }
+};
+
 export const registerNewUser = async (user) => {
   const profile = await createDefaultProfilePic(user.firstName, user.lastName);
   const formData = new FormData();
@@ -87,3 +103,24 @@ export const registerNewUser = async (user) => {
     };
   });
 };
+
+
+ export const updateProfile = async (updates) =>{
+  const result = await fetch("http://192.168.43.154:3001/auth/profile", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify(updates),
+  }).catch((e) => {
+    return e;
+  });
+  const data = await result.json();
+  if (result.ok) {
+    return data;
+  }else{
+    return {
+      message:'Error updating profile please retry'
+    }
+  }
+}
