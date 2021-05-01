@@ -19,7 +19,7 @@ export const formValidationSchema = yup.object().shape({
   city: yup.string().nullable(),
   country: yup.string().nullable(),
   testimony: yup.string().max(500).nullable(),
-  Email: yup.string().email().required("Email is a required field"),
+  email: yup.string().email().required("email is a required field"),
 });
 
 export const passWordValidationSchema = yup.object().shape({

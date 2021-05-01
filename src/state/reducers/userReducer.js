@@ -18,7 +18,7 @@ export default userReducer;
 
 
 function updateProfileData(Action, state) {
-  const { Email, street, city, country } = Action.payload;
+  const { email, street, city, country } = Action.payload;
   let metaData = [];
   if (street && city && country) {
     metaData.push({
@@ -26,10 +26,10 @@ function updateProfileData(Action, state) {
       metaValue: `${street} ${city} ,${country}`,
     });
   }
-  if (Email) {
+  if (email) {
     metaData.push({
-      metaTitle: "Email",
-      metaValue: Email,
+      metaTitle: "email",
+      metaValue: email,
     });
   }
 

@@ -16,7 +16,7 @@ const UserAccountDetails = () => {
   const initialState = {
     firstName: user.firstName,
     lastName: user.lastName,
-    Email: user.Email,
+    email: user.email,
     street: user.Address.street,
     city: user.Address.city,
     country: user.Address.country,
@@ -94,22 +94,22 @@ const UserAccountDetails = () => {
                   </div>
                 </div>
                 <div className="row form-group">
-                  {/* Email */}
+                  {/* email */}
                   <div className="col-md-6 form-group">
-                    <label htmlFor="feEmail">Email</label>
+                    <label htmlFor="feemail">email</label>
                     <input
                       className="form-control"
                       type="email"
-                      placeholder="Email Address"
-                      id="Email"
-                      name="Email"
-                      value={formik.values.Email}
+                      placeholder="email Address"
+                      id="email"
+                      name="email"
+                      value={formik.values.email}
                       onChange={formik.handleChange}
                       autoComplete="email"
                     />
-                    {formik.touched.Email && formik.errors.Email ? (
+                    {formik.touched.email && formik.errors.email ? (
                       <small className="text-danger">
-                        {formik.errors.Email}
+                        {formik.errors.email}
                       </small>
                     ) : null}
                   </div>

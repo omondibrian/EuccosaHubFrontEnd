@@ -25,7 +25,7 @@ function UserBio() {
         setBioData({
           firstName: formik.values.firstName,
           lastName: formik.values.lastName,
-          Email: formik.values.Email,
+          email: formik.values.email,
           
         })
       );
@@ -38,7 +38,7 @@ function UserBio() {
     initialValues: {
       firstName: state.firstName,
       lastName: state.lastName,
-      Email: state.Email,
+      email: state.email,
     },
     onSubmit: handleSub,
     validationSchema: userBioData,
@@ -77,17 +77,17 @@ function UserBio() {
             ) : null}
           </div>
           <div>
-            <label htmlFor="email">Email <sup className={style.red}>*</sup></label>
+            <label htmlFor="email">email <sup className={style.red}>*</sup></label>
             <InputBox
               id="email"
-              value={formik.values.Email}
+              value={formik.values.email}
               onChange={formik.handleChange}
               placeholder="JohnDoe@test.com"
-              name="Email"
+              name="email"
               type="email"
             />
-            {formik.touched.Email && formik.errors.Email ? (
-              <small className={style.text_danger}>{formik.errors.Email}</small>
+            {formik.touched.email && formik.errors.email ? (
+              <small className={style.text_danger}>{formik.errors.email}</small>
             ) : null}
           </div>
           <div

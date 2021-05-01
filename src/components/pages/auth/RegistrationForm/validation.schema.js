@@ -11,7 +11,7 @@ export const userBioData = yup.object().shape({
     .required("Your Last Name is required")
     .min(2, "Name must be at least 2 characters"),
 
-  Email: yup.string().email().required("Email is a required field"),
+  email: yup.string().email().required("email is a required field"),
 });
 
 export const AdditionalInfo = yup.object().shape({

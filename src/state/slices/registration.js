@@ -10,7 +10,7 @@ export const RegisterNewUser = createAsyncThunk(
       ...state,
       startDate,
       completionDate,
-      email: state.Email,
+      email: state.email,
     });
     return res;
   }
@@ -21,7 +21,7 @@ const registration = createSlice({
   initialState: {
     firstName: "",
     lastName: "",
-    Email: "",
+    email: "",
     street: "",
     city: "",
     country: "",
@@ -40,7 +40,7 @@ const registration = createSlice({
   },
   reducers: {
     setBioData: (state, action) => {
-      state.Email = action.payload.Email;
+      state.email = action.payload.email;
       state.firstName = action.payload.firstName;
       state.lastName = action.payload.lastName;
       state.profilePic = action.payload.profilePic;
