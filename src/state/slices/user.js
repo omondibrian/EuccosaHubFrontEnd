@@ -8,7 +8,7 @@ const State = {
   title: "Account Details",
   firstName: "",
   lastName: "",
-  Email: "",
+  email: "",
   Address: {
     city: "",
     street: "",
@@ -27,7 +27,7 @@ const State = {
       metaValue: `Jiwe Leupe Malindi,  Kenya `,
     },
     {
-      metaTitle: "Email",
+      metaTitle: "email",
       metaValue: "omondibrian392@gmail.com ",
     },
   ],
@@ -56,7 +56,7 @@ const userSlice = createSlice({
       console.log("fetchProfile", payload);
       state.firstName = payload.firstName;
       state.lastName = payload.lastName;
-      state.Email = payload.email;
+      state.email = payload.email;
       state.avatar =
         "http://192.168.43.154:3001/auth/uploads/" + payload.profilePic;
       state.phoneNumber = payload.phoneNumber;
