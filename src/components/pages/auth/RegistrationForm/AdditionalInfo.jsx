@@ -89,7 +89,6 @@ function AdditionalInfo() {
               dateFormat="MM/dd/yyyy"
               placeholderText="MM/dd/yyyy"
               selected={formik.values.startDate}
-              onSelect={() => console.log("day changed")} //when day is clicked
               onChange={(val) => formik.setFieldValue("startDate", val)} //only when value has changed
             />
             {formik.touched.startDate && formik.errors.startDate ? (
@@ -108,7 +107,6 @@ function AdditionalInfo() {
               dateFormat="MM/dd/yyyy"
               placeholderText="MM/dd/yyyy"
               selected={formik.values.completionDate}
-              onSelect={() => console.log("day changed")} //when day is clicked
               onChange={(val) => formik.setFieldValue("completionDate", val)} //only when value has changed
             />
             {formik.touched.completionDate && formik.errors.completionDate ? (
@@ -180,7 +178,6 @@ function AdditionalInfo() {
 
 
             <Button
-
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(reverse({ stage:  1 }));

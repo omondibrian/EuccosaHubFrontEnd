@@ -9,7 +9,6 @@ import {
   setBioData,
 
 } from "../../../../state/slices/registration";
-import CreateDefaultProfile from "../CreateProfilePic";
 import { useSelector, useDispatch } from "react-redux";
 import style from "./index.module.css"
 import { CSSTransition } from "react-transition-group"
@@ -21,18 +20,13 @@ function UserBio() {
 
   const handleSub =async () => {
     if (!formik.isValidating && formik.isValid) {
-      formik.setSubmitting(true);
-      console.log("submitted");
-      console.log("submit: ", formik.values);
-      const profile = await CreateDefaultProfile(
-        formik.values.firstName[0] + formik.values.lastName[0]
-      );
+      formik.setSubmitting(true); 
       dispatch(
         setBioData({
           firstName: formik.values.firstName,
           lastName: formik.values.lastName,
           Email: formik.values.Email,
-          profilePic: profile,
+          
         })
       );
       dispatch(forward({ stage: 2 }));
@@ -103,11 +97,11 @@ function UserBio() {
             }}
           >
 
-            <Button className=" btn_light invisible">
+            <Button className="btn_light invisible">
               Back
             </Button>
 
-            <Button>
+            <Button type="submit">
               Next
           </Button>
           </div>

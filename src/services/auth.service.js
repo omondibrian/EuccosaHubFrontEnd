@@ -1,3 +1,5 @@
+import createDefaultProfilePic from "../components/pages/auth/CreateProfilePic";
+
 export const login = async (credentials) => {
   const result = await fetch("http://192.168.43.154:3001/auth/login", {
     method: "POST",
@@ -55,7 +57,7 @@ export const FetchUser = async (id) => {
 };
 
 export const registerNewUser = async (user) => {
-  
+  const profile = await createDefaultProfilePic(user.firstName, user.lastName);
   const formData = new FormData();
   for (const field in user) {
     if (Object.hasOwnProperty.call(user, field)) {
@@ -65,15 +67,23 @@ export const registerNewUser = async (user) => {
       }
     }
   }
-  formData.append("profilePic", user.profilePic, `${user.firstName}.jpeg`);
+  formData.append("profilePic", profile, profile.name);
 
   let request = new XMLHttpRequest();
- 
   let result;
   request.open("POST", "http://192.168.43.154:3001/auth/register");
   request.send(formData);
-  request.onload = () => {
-    result = request.response;
-  };
-  return result;
+
+  return new Promise((resolve, reject) => {
+    request.onload = () => {
+      result = request.response;
+      resolve(result);
+    };
+    request.onerror = () => {
+      reject({ message: "an error occured" });
+    };
+    request.ontimeout = () => {
+      reject({ message: "an error occured" });
+    };
+  });
 };

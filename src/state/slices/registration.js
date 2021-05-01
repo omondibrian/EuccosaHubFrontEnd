@@ -6,7 +6,13 @@ export const RegisterNewUser = createAsyncThunk(
   async (state) => {
     const startDate = state.startDate.toString();
     const completionDate = state.completionDate.toString();
-    await registerNewUser({ ...state, startDate, completionDate,email:state.Email });
+    const res = await registerNewUser({
+      ...state,
+      startDate,
+      completionDate,
+      email: state.Email,
+    });
+    return res;
   }
 );
 
@@ -30,6 +36,7 @@ const registration = createSlice({
     stage: 1,
     isRegistered: false,
     loading: false,
+    registrationReport: "",
   },
   reducers: {
     setBioData: (state, action) => {
@@ -63,9 +70,10 @@ const registration = createSlice({
     [RegisterNewUser.pending]: (state, action) => {
       state.loading = true;
     },
-    [RegisterNewUser.fulfilled]: (state, action) => {
+    [RegisterNewUser.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.isRegistered = true;
+      state.registrationReport = JSON.parse(payload).message;
     },
   },
 });
