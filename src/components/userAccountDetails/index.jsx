@@ -62,7 +62,7 @@ const UserAccountDetails = () => {
                   <div className="col-md-6 form-group">
                     <label htmlFor="firstName">First Name</label>
                     <input
-                    className="form-control"
+                      className="form-control"
                       id="firstName"
                       placeholder="First Name"
                       name="firstName"
@@ -79,7 +79,7 @@ const UserAccountDetails = () => {
                   <div className="col-md-6 form-group">
                     <label htmlFor="lastName">Last Name</label>
                     <input
-                    className="form-control"
+                      className="form-control"
                       placeholder="Last Name"
                       id="lastName"
                       name="lastName"
@@ -98,7 +98,7 @@ const UserAccountDetails = () => {
                   <div className="col-md-6 form-group">
                     <label htmlFor="feEmail">Email</label>
                     <input
-                    className="form-control"
+                      className="form-control"
                       type="email"
                       placeholder="Email Address"
                       id="Email"
@@ -117,7 +117,7 @@ const UserAccountDetails = () => {
                   <div className="col-md-6 form-group">
                     <label htmlFor="phoneNumber">PhoneNumber</label>
                     <input
-                    className="form-control"
+                      className="form-control"
                       type="text"
                       placeholder="+2547123456"
                       id="phoneNumber"
@@ -184,7 +184,7 @@ const UserAccountDetails = () => {
                   <div className="col-md-4 form-group">
                     <label htmlFor="street">street</label>
                     <input
-                    className="form-control"
+                      className="form-control"
                       id="street"
                       name="street"
                       value={formik.values.street}
@@ -200,7 +200,7 @@ const UserAccountDetails = () => {
                   <div className="col-md-4 form-group">
                     <label htmlFor="city">City</label>
                     <input
-                    className="form-control"
+                      className="form-control"
                       id="city"
                       name="city"
                       value={formik.values.city}
@@ -271,3 +271,4 @@ const UserAccountDetails = () => {
 };
 
 export default UserAccountDetails;
+

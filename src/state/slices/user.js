@@ -32,12 +32,34 @@ const State = {
     },
   ],
 };
+
 export const fetchUserProfile = createAsyncThunk(
   "User/fetchUserProfile",
   async ({ id }, { dispath }) => {
     console.log("loading ......");
     const response = await FetchUser(id);
     return response;
+  }
+);
+const getUpdatedUserField = createAsyncThunk(
+  "User/getUpdatedUserField",
+  async (initialState, { action }) => {
+    const state = action.payload;
+    let changedState = {
+      id: initialState.id,
+      payload: [],
+    };
+    for (const stateProp in state) {
+      if (Object.hasOwnProperty.call(state, stateProp)) {
+        const statePropValue = state[stateProp];
+        if (statePropValue !== initialState[stateProp]) {
+          changedState.payload.push({
+            field: stateProp,
+            value: statePropValue,
+          });
+        }
+      }
+    }
   }
 );
 const userSlice = createSlice({
@@ -63,7 +85,7 @@ const userSlice = createSlice({
       state.loading = false;
       state.startDate = new Date(payload.startDate);
       state.completionDate = new Date(payload.completionDate);
-      state.Address = payload.Address
+      state.Address = payload.Address;
     },
   },
 });
