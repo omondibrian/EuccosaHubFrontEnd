@@ -5,17 +5,17 @@
   left: 0;
   top: 0;
   padding: 0 1rem 1rem 1rem;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 9999;
 }
-.crop-container{
-border: none;
-box-shadow: none;
-padding: 0;
-max-height: 400px;
-overflow: hidden;
-border-radius: 0  !important;
-margin: 0 !important;
+.crop-container {
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  max-height: 400px;
+  overflow: hidden;
+  border-radius: 0 !important;
+  margin: 0 !important;
 }
 .image-crop .card {
   max-width: 400px;
@@ -26,8 +26,7 @@ margin: 0 !important;
   padding: 1rem 0 0 0;
 }
 .image-crop .profile {
-  width: 110px;
-
+  width: 300px;
 }
 .image-crop .card-body {
   justify-content: center;
@@ -36,7 +35,6 @@ margin: 0 !important;
 .file {
   position: relative;
   display: flex;
-  
 }
 
 .file > input[type="file"] {
@@ -63,7 +61,6 @@ margin: 0 !important;
   margin-left: auto;
   margin-right: auto;
   border-radius: 999px;
-  
 }
 
 .file > label:hover {
@@ -88,7 +85,6 @@ margin: 0 !important;
   background-color: hsl(204, 86%, 96%);
 }
 .crop-btn i {
- 
   font-size: 1.5rem;
 }
 .ReactCrop__image {
@@ -97,14 +93,11 @@ margin: 0 !important;
   margin: auto;
 }
 
-.controls >button{
- border-radius: 999px;
- font-weight: bold;
-
+.controls > button {
+  border-radius: 999px;
+  font-weight: bold;
 }
 .controls .btn-secondary {
-  background: rgba(150,150,150,0.9);
-  border: rgba(150,150,150,0.9);
+  background: rgba(150, 150, 150, 0.9);
+  border: rgba(150, 150, 150, 0.9);
 }
-
-

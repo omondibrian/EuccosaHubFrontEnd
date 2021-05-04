@@ -1,7 +1,8 @@
 import React from "react";
 import style from "../Home.module.css";
-import anime from "animejs/lib/anime.es";
+import "./transition.css"
 import TestimonialCard from "../../../cards/testimonial/TestimonialCard";
+import { CSSTransition } from "react-transition-group";
 
 function TestimonialSection({
   testimonials,
@@ -13,19 +14,9 @@ function TestimonialSection({
     if (currentIndex > testimonials.length - 1) {
       currentIndex = 0;
     }
-    anime({
-      targets: ".testimonial_card",
-      duration: 500,
-      opacity: [0.2, 1],
-    });
     setActiveTestimonialIndex(currentIndex);
   };
   const prev = () => {
-    anime({
-      targets: ".testimonial_card",
-      duration: 500,
-      opacity: [0.2, 1],
-    });
     let currentIndex = activeTestimonialIndex - 1;
     if (currentIndex < 0) {
       currentIndex = testimonials.length - 1;
@@ -52,7 +43,17 @@ function TestimonialSection({
             &rsaquo;
           </button>
         </div>
-        <TestimonialCard testimonial={testimonials[activeTestimonialIndex]} />
+        {testimonials.map((testimonial, index) => (
+          <CSSTransition
+            classNames="fade"
+            in={index === activeTestimonialIndex}
+            unmountOnExit
+            timeout={200}
+            key={index}
+          >
+            <TestimonialCard testimonial={testimonial} />
+          </CSSTransition>
+        ))}
       </div>
     </section>
   );

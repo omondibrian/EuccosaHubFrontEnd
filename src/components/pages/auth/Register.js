@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Auth.module.css";
 import BackGround from "../../background";
-import { Github, Google } from "../../vectors/Vectors";
 import Footer from "../../footer/Footer";
 import { Link } from "react-router-dom";
 import "./transition.css";
@@ -11,7 +10,6 @@ import AddressInfo from "./RegistrationForm/UserAddress";
 import { useSelector } from "react-redux";
 import { getStage } from "../../../state/slices/registration";
 import RegistrationComplete from "./RegistrationForm/RegistrationComplete";
-
 
 const Register = () => {
   const stage = useSelector(getStage);
@@ -30,31 +28,14 @@ const Register = () => {
               </ul>
             </div>
           </div>
-        {/* multiple step  form  */}
+          {/* multiple step  form  */}
           <div className={styles.multistep_form}>
             <UserBio />
             <AdditionalInfo />
             <AddressInfo />
-            <RegistrationComplete/>
+            <RegistrationComplete />
           </div>
 
-          {/*<span className={styles.auth_alt}>OR</span>
-           <div className={styles.social_auth}>
-            <a
-              href="http://euccosabackend.ddns.net:3001/auth/google"
-              className={styles.social_auth__icon}
-              title="register with google"
-            >
-              Register with <Google />
-            </a>
-            <a
-              title="Register with github"
-              href="http://euccosabackend.ddns.net:3001/auth/github"
-              className={styles.social_auth__icon}
-            >
-              Register with <Github />
-            </a>
-          </div> */}
           <strong>
             Have an account? <Link to="/login">Login</Link>
           </strong>

@@ -39,7 +39,6 @@
 }
 .nav__toggler {
   display: none;
-  margin-right: 2rem;
 }
 
 .nav__toggler > button {
@@ -47,10 +46,13 @@
   outline: none;
   border: none;
 }
+.nav__toggler:hover rect{
+  fill: var(--blue);
+}
 @media (min-width: 719.98px) {
   .nav__scrolled {
-    background: white;
-    color: var(--dark-blue);
+    background: var(--white);
+    color: var(--dark-black);
     box-shadow: 0 5px 7px -10px rgba(0, 0, 0, 0.75);
   }
 }
@@ -63,12 +65,12 @@
   }
   .navbar {
     background: white;
-    color: var(--dark-blue);
+    color: var(--dark-black);
     box-shadow: 0 5px 7px -10px rgba(0, 0, 0, 0.75);
   }
 }
 .nav__text {
-  color: var(--dark-blue);
+  color: var(--dark-black);
   display: block;
 }
 .mobile_nav {

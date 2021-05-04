@@ -6,12 +6,15 @@ import en from "date-fns/locale/en-GB";
 import "react-datepicker/dist/react-datepicker.css";
 import { formValidationSchema } from "./validationSchema";
 import { useSelector } from "react-redux";
+import { Ellipsis } from "../loader"
 
 import { getState } from "../../state/slices/user";
+import { getApplicationState } from "../../state/slices/Application";
 registerLocale("en", en);
 
 const UserAccountDetails = () => {
   const { user } = useSelector(getState);
+  const { application } = useSelector(getApplicationState);
   // const dispatch = useDispatch()
   const initialState = {
     firstName: user.firstName,
@@ -30,15 +33,15 @@ const UserAccountDetails = () => {
     if (!formik.isValidating && formik.isValid) {
       formik.setSubmitting(true);
       // make async call
-      setTimeout(() => {
-        console.log("submitted");
-        console.log("submit: ", formik.values);
-        // dispatch({
-        //   type: UPDATE_PROFILE,
-        //   payload: { ...formik.values },
-        // });
-        formik.setSubmitting(false);
-      }, 5000);
+      // dispatch({
+      //   type: UPDATE_PROFILE,
+      //   payload: { ...formik.values },
+      // });
+      let updatedFields = getUpdatedUserField(user, formik.values)
+      updatedFields.id = application.userID
+      updatedFields.token = application.userToken
+      formik.setSubmitting(false);
+
     }
   };
   const formik = useFormik({
@@ -259,7 +262,8 @@ const UserAccountDetails = () => {
                   className="btn btn-primary"
 
                 >
-                  {formik.isSubmitting ? "updating..." : "Update Account"}
+                  {formik.isSubmitting ? <Ellipsis text="updating" />
+                    : "Update Account"}
                 </button>
               </form>
             </div>
@@ -272,3 +276,39 @@ const UserAccountDetails = () => {
 
 export default UserAccountDetails;
 
+
+
+const getUpdatedUserField = (initialState, state) => {
+  let changedState = {
+    id: "",
+    token: "",
+    payload: [],
+  };
+  const addressFields = ['city', 'country', 'street']
+  let addressObj = {}
+
+  for (const stateProp in state) {
+    if (Object.hasOwnProperty.call(state, stateProp)) {
+      const statePropValue = state[stateProp];
+      if ((statePropValue !== initialState[stateProp]) && !addressFields.includes(stateProp)) {
+        changedState.payload.push({
+          field: stateProp,
+          value: statePropValue,
+        });
+      } else if (addressFields.includes(stateProp)) {
+
+        if (statePropValue !== initialState.Address[stateProp]) {
+          addressObj[stateProp] = statePropValue
+        }
+      }
+    }
+  }
+  if (Object.entries(addressObj).length > 0) {
+    changedState.payload.push({
+      field: 'Address', value: addressObj
+    })
+  }
+
+
+  return changedState;
+}

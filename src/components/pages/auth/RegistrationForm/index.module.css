@@ -37,10 +37,10 @@
   display: none;
 }
 .text_danger {
-  color: #c4183c !important;
+  color: var(--danger) !important;
 }
 .red {
-  color: #c4183c;
+  color: var(--red);
 }
 .info {
   color: #856404;

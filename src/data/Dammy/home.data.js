@@ -1,5 +1,5 @@
 import Img from "../../assets/images/im.jpg";
-import avator from "../../assets/images/avatar.svg";
+import avator from "../../assets/images/profile/index.svg";
 import Img2 from "../../assets/images/profile/2.jpeg";
 import Img3 from "../../assets/images/profile/3.jpeg";
 
@@ -38,7 +38,7 @@ export const myEvent = {
   time: "8:30 am",
   location: "Nakuru",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.",
+    "Lorem ipsum dolor sit amet🚀, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.😀",
   img: Img,
 };
 

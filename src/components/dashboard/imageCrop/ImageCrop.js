@@ -59,7 +59,7 @@ const ImageCrop = ({ Profile }) => {
     }
     setState({ ...state, crop: crop });
   };
-  
+
   const getCroppedImg = (image, fileName) => {
     const canvas = document.createElement("canvas");
     const scaleX = image.naturalWidth / image.width;
@@ -155,7 +155,7 @@ const ImageCrop = ({ Profile }) => {
     };
     document.querySelector(".image-crop").classList.add("d-none");
   };
-  const cropRef = useRef();
+
   const cropBtnClasses = classNames(
     "btn btn-info rounded crop-btn",
     state.isCroping ? "visible" : "invisible"
@@ -164,6 +164,7 @@ const ImageCrop = ({ Profile }) => {
     "btn btn-primary my-0 px-4 my-2",
     state.cropDone ? "visible" : "invisible"
   );
+  const cropRef = useRef();
   return (
     <div className="image-crop d-none" ref={cropRef}>
       <div className="card pt-3">

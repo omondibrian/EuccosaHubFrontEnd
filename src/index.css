@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "museo-sans-rounded";
+  src: url("./assets/fonts/l.woff2") format("woff2");
+}
 html {
   box-sizing: border-box;
 }
@@ -5,7 +9,6 @@ html {
   box-sizing: border-box;
 }
 :root {
-  --primary: #0a73fa;
   --background: rgb(237, 242, 244);
   --white: #fff;
   --black: #0b090a;
@@ -13,17 +16,44 @@ html {
   --gray: #718096;
   --purple: #b86dde;
   --muted: #868e96;
+  --dark-black: #000;
+  --blue: #007bff;
+  --indigo: #674eec;
+  --pink: #ff4169;
+  --red: #c4183c;
+  --orange: #fb7906;
+  --yellow: #ffb400;
+  --green: #17c671;
+  --teal: #1adba2;
+  --cyan: #00b8d8;
+  --white: #fff;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #5a6169;
+  --success: #17c671;
+  --info: #00b8d8;
+  --warning: #ffb400;
+  --danger: #c4183c;
+  --light: #fbfbfb;
+  --dark: #212529;
+  /* --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px; */
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-monospace: "Roboto Mono", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family:var(--font-family-sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
-  background-color: var(--background);
+  background-color: var(--background) !important;
   color: var(--black);
   box-sizing: border-box;
   line-height: normal !important;
@@ -41,5 +71,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Montserrat;
+  font-weight: 800;
+  font-family: Arial, Helvetica, sans-serif;
 }
+
+

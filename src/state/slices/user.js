@@ -41,27 +41,6 @@ export const fetchUserProfile = createAsyncThunk(
     return response;
   }
 );
-const getUpdatedUserField = createAsyncThunk(
-  "User/getUpdatedUserField",
-  async (initialState, { action }) => {
-    const state = action.payload;
-    let changedState = {
-      id: initialState.id,
-      payload: [],
-    };
-    for (const stateProp in state) {
-      if (Object.hasOwnProperty.call(state, stateProp)) {
-        const statePropValue = state[stateProp];
-        if (statePropValue !== initialState[stateProp]) {
-          changedState.payload.push({
-            field: stateProp,
-            value: statePropValue,
-          });
-        }
-      }
-    }
-  }
-);
 const userSlice = createSlice({
   name: "User",
   initialState: { ...State },

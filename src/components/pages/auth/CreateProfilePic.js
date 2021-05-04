@@ -1,13 +1,10 @@
-
 const createDefaultProfilePic = async (firstName, lastName) => {
-  /*create an svg with name initials as text
+  /*
     random string is appended to filename to make it totaly unique
   */
-
   let name = firstName[0] + lastName[0];
   let fileName = firstName + lastName + randomString();
-
-  let svgElement = generateSVGElement(name);
+  let svgElement = createSVGElement(name);
   /*create image with svg Blob as src */
   let xml = new XMLSerializer().serializeToString(svgElement);
   const blob = new Blob([xml], { type: "image/svg+xml;charset=utf-8" });
@@ -22,7 +19,6 @@ const createDefaultProfilePic = async (firstName, lastName) => {
     };
   });
 };
-
 export default createDefaultProfilePic;
 
 const ImageFromSvg = (image, fileName) => {
@@ -51,18 +47,18 @@ const randomString = () => {
   const c = "0912iVDMZXQAWRYTYUJ_H-FDSAXBJO92djee77yTG967BVRRWKNB851230983012";
   return `${c[Int()]}${c[Int()]}${c[Int()]}${c[Int()]}${c[Int()]}`;
 };
-function generateSVGElement(name) {
+
+function createSVGElement(name) {
+  /*
+   create an svg with name initials as text
+  and a random  color as background 
+  */
   const colors = ["#ff006e", "#006dd7", "#7400b8", "#219ebc"];
   const random = Math.floor(Math.random() * 4);
   let svgElement = document.createElementNS(
     "http://www.w3.org/2000/svg",
     "svg"
   );
-  createSVGElement(name, colors, random, svgElement);
-  return svgElement;
-}
-
-function createSVGElement(name, colors, random, svgElement) {
   let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
   let rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
   text.setAttribute("x", "23");
@@ -80,4 +76,5 @@ function createSVGElement(name, colors, random, svgElement) {
   svgElement.setAttribute("viewBox", "0 0 100 100");
   svgElement.appendChild(rect);
   svgElement.appendChild(text);
+  return svgElement;
 }

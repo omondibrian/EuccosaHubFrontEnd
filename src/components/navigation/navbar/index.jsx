@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import style from './Navbar.module.css'
 import { Link } from "react-router-dom"
-import {scrollTo} from "../../../utils/scroll"
+import { scrollTo } from "../../../utils/scroll"
 //import { Logo } from '../../vectors/Vectors'
 
 
@@ -69,9 +69,9 @@ function Navbar() {
             <div className={style.nav__toggler}>
                 <button onClick={openNav}>
                     <svg width="50" height="30" viewBox="0 0 73 30" fill="none" >
-                        <rect width="50" height="5" rx="3" fill="#0A73FA" />
-                        <rect width="50" height="5" rx="3" y="12.5" fill="#0A73FA" />
-                        <rect width="50" height="5" rx="3" y="25" fill="#0A73FA" />
+                        <rect width="50" height="5" rx="3" fill="var(--dark-black)" />
+                        <rect width="50" height="5" rx="3" y="12.5" fill="var(--dark-black)" />
+                        <rect width="50" height="5" rx="3" y="25" fill="var(--dark-black)" />
                     </svg>
                 </button>
             </div>
