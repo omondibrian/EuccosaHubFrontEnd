@@ -3,7 +3,7 @@ import React from "react";
 import classNames from "classnames";
 import NavbarNav from "./navbarNav";
 import NavbarToggle from "./NavbarToggle";
-import "./navbar.css"
+
 
 export default function MainNavbar({ layout, stickyTop }) {
   const classes = classNames(

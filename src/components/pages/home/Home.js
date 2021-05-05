@@ -11,7 +11,7 @@ import { ourTeam, testimonials, myEvent } from "../../../data/Dammy/home.data";
 function Home() {
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
   return (
-    <div className={style.home}>
+    <div className={style.home} id="home">
       <SiteHeroSection />
       <EventSection events={[myEvent, myEvent]} />
       <AboutSection ourTeam={ourTeam} />

@@ -24,13 +24,11 @@ function AdditionalInfo() {
   const handleSub = () => {
     if (!formik.isValidating && formik.isValid) {
       formik.setSubmitting(true);
-      console.log("submitted");
-      console.log("submit: ", formik.values);
       dispatch(
         setUserAdditionalInfo({
           regNumber: formik.values.regNumber,
-          startDate: formik.values.startDate,
-          completionDate: formik.values.completionDate,
+          startDate: formik.values.startDate.toString(),
+          completionDate: formik.values.completionDate.toString(),
           phoneNumber: formik.values.phoneNumber,
           password: formik.values.password,
           confirmPassword: formik.values.confirmPassword,
@@ -87,7 +85,7 @@ function AdditionalInfo() {
               locale="en"
               name="startDate"
               dateFormat="MM/yyyy"
-              placeholderText="MM/yyyy"
+              placeholderText="12/2020"
               showMonthYearPicker
               showFullMonthYearPicker
               selected={formik.values.startDate}
@@ -107,7 +105,7 @@ function AdditionalInfo() {
               className={styles.formControl}
               name="completionDate"
               dateFormat="MM/yyyy"
-              placeholderText="MM/yyyy"
+              placeholderText="12/2020"
               showMonthYearPicker
               showFullMonthYearPicker
               selected={formik.values.completionDate}

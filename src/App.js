@@ -2,9 +2,8 @@ import Login from "./components/pages/auth/Login";
 import PageNotFound from "./components/pages/404_page/404_page";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Home from "./components/pages/home/Home";
-import { MobileNav } from "./components/navigation/navbar/index";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "./assets/styles/dashboard.css";
+import "./assets/styles/main.css"
 import DashBoard from "./components/dashboard";
 import ImageCrop from "./components/dashboard/imageCrop/ImageCrop";
 import { useSelector } from "react-redux";
@@ -15,10 +14,9 @@ import Logout from "./components/pages/auth/Logout";
  
 function App() {
   const { application } = useSelector(getApplicationState);
-
   return (
     <div className="App">
-      <MobileNav />
+      {/* <MobileNav /> */}
       <BrowserRouter>
         <Switch>
           <Route path="/login/" render={(prop) => <Login {...prop} />} />

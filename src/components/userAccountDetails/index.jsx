@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { formValidationSchema } from "./validationSchema";
 import { useSelector } from "react-redux";
 import { Ellipsis } from "../loader"
-
+import { updateProfile } from "../../services/auth.service"
 import { getState } from "../../state/slices/user";
 import { getApplicationState } from "../../state/slices/Application";
 registerLocale("en", en);
@@ -29,19 +29,14 @@ const UserAccountDetails = () => {
     completionDate: user.completionDate,
   };
 
-  const handleSub = () => {
+  const handleSub = async () => {
     if (!formik.isValidating && formik.isValid) {
       formik.setSubmitting(true);
-      // make async call
-      // dispatch({
-      //   type: UPDATE_PROFILE,
-      //   payload: { ...formik.values },
-      // });
       let updatedFields = getUpdatedUserField(user, formik.values)
       updatedFields.id = application.userID
-      updatedFields.token = application.userToken
-      formik.setSubmitting(false);
-
+      const result = await updateProfile(updatedFields)
+      formik.isSubmitting(false)
+      console.log(result)
     }
   };
   const formik = useFormik({
@@ -146,12 +141,12 @@ const UserAccountDetails = () => {
                       locale="en"
                       name="startDate"
                       dateFormat="MM/yyyy"
-                      placeholderText="MM/yyyy"
+                      placeholderText="12/2020"
                       showMonthYearPicker
                       showFullMonthYearPicker
                       selected={formik.values.startDate}
                       onSelect={() => console.log("day changed")} //when day is clicked
-                      onChange={(val) => formik.setFieldValue("startDate", val.toString())} //only when value has changed
+                      onChange={(val) => formik.setFieldValue("startDate", val)} //only when value has changed
                     />
                     {formik.touched.startDate && formik.errors.startDate ? (
                       <small className="text-danger">
@@ -171,12 +166,12 @@ const UserAccountDetails = () => {
                       className={"form-control "}
                       locale="en"
                       dateFormat="MM/yyyy"
-                      placeholderText="MM/yyyy"
+                      placeholderText="12/2020"
                       showMonthYearPicker
                       showFullMonthYearPicker
                       selected={formik.values.completionDate}
                       onChange={(val) =>
-                        formik.setFieldValue("completionDate", val.toString())
+                        formik.setFieldValue("completionDate", val)
                       } //only when value has changed
                     />
                     {formik.touched.completionDate &&
@@ -297,10 +292,9 @@ const getUpdatedUserField = (initialState, state) => {
       if ((statePropValue !== initialState[stateProp]) && !addressFields.includes(stateProp)) {
         changedState.payload.push({
           field: stateProp,
-          value: statePropValue,
+          value: statePropValue.toString() || statePropValue,
         });
       } else if (addressFields.includes(stateProp)) {
-
         if (statePropValue !== initialState.Address[stateProp]) {
           addressObj[stateProp] = statePropValue
         }

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import style from './Navbar.module.css'
 import { Link } from "react-router-dom"
 import { scrollTo } from "../../../utils/scroll"
-//import { Logo } from '../../vectors/Vectors'
+import DropDown from "./DropDown"
 
 
 
@@ -23,7 +23,7 @@ const navScroll = () => {
 }
 
 
-export const MobileNav = () => {
+export const MobileNavItems = ({ user }) => {
     const closeNav = () => {
         document.getElementById('mobile-nav').style.transform = "scaleY(0)"
     }
@@ -33,8 +33,38 @@ export const MobileNav = () => {
                 &times;
             </button>
         </div>
+        <ul className={""}>
+            <li className={style.nav_link}>
+                <a href="#home">Home</a>
+            </li>
+            <li className={style.nav_link}>
+                <a href="#about">About</a>
+            </li>
+            <li className={style.nav_link}>
+                <a href="#contact">Contact</a>
+            </li>
+            <li className={style.nav_link}>
+                <Link to="/shop">Shop</Link>
+            </li>
+            <li className={style.nav_link}>
+                <Link to="/donate">Donate</Link>
+            </li>
+            {
+                user ? <>
+                    <li className={style.nav_link}>
+                        <Link to="/dashoard">Dashoard</Link>
+                    </li>
+                    <li className={style.nav_link}>
+                        <Link to="/logout">Logout</Link>
+                    </li>
+                </> : <li className={style.nav_link}>
+                    <Link to="/login">Login</Link>
+                </li>
+            }
+        </ul>
     </div>
 }
+
 
 function Navbar() {
     const openNav = () => {
@@ -44,38 +74,51 @@ function Navbar() {
         requestAnimationFrame(navScroll)
         scrollTo()
     }, [])
+    let user;
+    try {
+        user = localStorage.getItem("ID")
+    }
+    catch (e) {
+    }
+    console.log(user)
     return (
-        <div className={style.navbar} >
-            <div className={style.logo}>
-                Eucossa
+        <>
+            <div className={style.navbar} >
+                <div className={style.logo}>
+                    Eucossa
             </div>
-            <ul className={style.nav}>
-                <li className={style.nav_link}>
-                    <a href="#home">Home</a>
-                </li>
-                <li className={style.nav_link}>
-                    <a href="#about">About</a>
-                </li>
-                <li className={style.nav_link}>
-                    <a href="#contact">Contact</a>
-                </li>
-                <li className={style.nav_link}>
-                    <Link to="/shop">Shop</Link>
-                </li>
-                <li className={style.nav_link}>
-                    <Link to="/donate">Donate</Link>
-                </li>
-            </ul>
-            <div className={style.nav__toggler}>
-                <button onClick={openNav}>
-                    <svg width="50" height="30" viewBox="0 0 73 30" fill="none" >
-                        <rect width="50" height="5" rx="3" fill="var(--dark-black)" />
-                        <rect width="50" height="5" rx="3" y="12.5" fill="var(--dark-black)" />
-                        <rect width="50" height="5" rx="3" y="25" fill="var(--dark-black)" />
-                    </svg>
-                </button>
+                <ul className={style.nav}>
+                    <li className={style.nav_link}>
+                        <a href="#home">Home</a>
+                    </li>
+                    <li className={style.nav_link}>
+                        <a href="#about">About</a>
+                    </li>
+                    <li className={style.nav_link}>
+                        <a href="#contact">Contact</a>
+                    </li>
+                    <li className={style.nav_link}>
+                        <Link to="/shop">Shop</Link>
+                    </li>
+                    <li className={style.nav_link}>
+                        <Link to="/donate">Donate</Link>
+                    </li>
+                    <li className={style.nav_link}>
+                        <DropDown user={user}/>
+                    </li>
+                </ul>
+                <div className={style.nav__toggler}>
+                    <button onClick={openNav}>
+                        <svg width="50" height="30" viewBox="0 0 73 30" fill="none" >
+                            <rect width="50" height="5" rx="3" fill="var(--white)" />
+                            <rect width="50" height="5" rx="3" y="12.5" fill="var(--white)" />
+                            <rect width="50" height="5" rx="3" y="25" fill="var(--white)" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-        </div>
+            <MobileNavItems user={user} />
+        </>
     )
 }
 

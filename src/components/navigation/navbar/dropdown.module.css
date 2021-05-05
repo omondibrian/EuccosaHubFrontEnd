@@ -1,0 +1,47 @@
+.dropdown {
+  color: inherit;
+}
+.dropdown .dropbtn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-weight: inherit;
+  color: inherit;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: transparent;
+}
+
+.dropdown_content {
+  display: none;
+  position: absolute;
+  background-color: transparent;
+  min-width: 160px;
+  z-index: 1;
+  
+}
+
+.dropdown_content a {
+  color: inherit;
+  margin: 5px 16px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.dropdown__link:hover {
+  color: inherit !important;
+}
+
+.dropdown:hover .dropdown_content {
+  display: block;
+}
+
+.dropdown i  {
+  color: inherit !important;
+  margin-right: 0.25rem;
+  font-size: inherit;
+  position: relative;
+  top: 2px;
+}
