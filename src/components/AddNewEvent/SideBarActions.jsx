@@ -1,7 +1,7 @@
 import React from "react";
 
 const SidebarActions = ({ title }) => (
-  <div small className="card mb-3">
+  <div className="card mb-3">
     <div className="border-bottom card-header">
       <h6 className="m-0">{title}</h6>
     </div>

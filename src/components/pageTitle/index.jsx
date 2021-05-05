@@ -11,7 +11,6 @@ const PageTitle = ({ title, subtitle, className, ...attrs }) => {
     "text-md-left",
     "mb-sm-0",
     "col-12",
-    "col-sm-4"
   );
   const { application } = useSelector(getApplicationState)
   return (

@@ -77,7 +77,7 @@ function AdditionalInfo() {
               <small className="text-danger">{formik.errors.regNumber}</small>
             ) : null}
           </div>
-          {/* startDate */}
+          {/* registration Date */}
           <div>
             <label style={{ display: "block" }} htmlFor="startDate">
               Registration Date <sup className={styles.red}>*</sup>
@@ -86,8 +86,10 @@ function AdditionalInfo() {
               className={styles.formControl}
               locale="en"
               name="startDate"
-              dateFormat="MM/dd/yyyy"
-              placeholderText="MM/dd/yyyy"
+              dateFormat="MM/yyyy"
+              placeholderText="MM/yyyy"
+              showMonthYearPicker
+              showFullMonthYearPicker
               selected={formik.values.startDate}
               onChange={(val) => formik.setFieldValue("startDate", val)} //only when value has changed
             />
@@ -104,8 +106,10 @@ function AdditionalInfo() {
               locale="en"
               className={styles.formControl}
               name="completionDate"
-              dateFormat="MM/dd/yyyy"
-              placeholderText="MM/dd/yyyy"
+              dateFormat="MM/yyyy"
+              placeholderText="MM/yyyy"
+              showMonthYearPicker
+              showFullMonthYearPicker
               selected={formik.values.completionDate}
               onChange={(val) => formik.setFieldValue("completionDate", val)} //only when value has changed
             />

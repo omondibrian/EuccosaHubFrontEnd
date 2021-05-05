@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Home from "./components/pages/home/Home";
 import { MobileNav } from "./components/navigation/navbar/index";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import "./assets/styles/dashboard.css";
+// import "./assets/styles/dashboard.css";
 import DashBoard from "./components/dashboard";
 import ImageCrop from "./components/dashboard/imageCrop/ImageCrop";
 import { useSelector } from "react-redux";

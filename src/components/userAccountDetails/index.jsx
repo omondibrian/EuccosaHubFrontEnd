@@ -145,10 +145,13 @@ const UserAccountDetails = () => {
                       className="form-control"
                       locale="en"
                       name="startDate"
-                      dateFormat="MM/dd/yyyy"
+                      dateFormat="MM/yyyy"
+                      placeholderText="MM/yyyy"
+                      showMonthYearPicker
+                      showFullMonthYearPicker
                       selected={formik.values.startDate}
                       onSelect={() => console.log("day changed")} //when day is clicked
-                      onChange={(val) => formik.setFieldValue("startDate", val)} //only when value has changed
+                      onChange={(val) => formik.setFieldValue("startDate", val.toString())} //only when value has changed
                     />
                     {formik.touched.startDate && formik.errors.startDate ? (
                       <small className="text-danger">
@@ -167,12 +170,13 @@ const UserAccountDetails = () => {
                     <DatePicker
                       className={"form-control "}
                       locale="en"
-                      name="completionDate"
-                      dateFormat="MM/dd/yyyy"
+                      dateFormat="MM/yyyy"
+                      placeholderText="MM/yyyy"
+                      showMonthYearPicker
+                      showFullMonthYearPicker
                       selected={formik.values.completionDate}
-                      onSelect={() => console.log("day changed")} //when day is clicked
                       onChange={(val) =>
-                        formik.setFieldValue("completionDate", val)
+                        formik.setFieldValue("completionDate", val.toString())
                       } //only when value has changed
                     />
                     {formik.touched.completionDate &&
