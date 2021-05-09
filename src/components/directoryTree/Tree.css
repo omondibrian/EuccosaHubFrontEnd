@@ -1,0 +1,59 @@
+.tree{
+  background-color: rgb(48, 10, 36);
+  width: 100vw;
+  min-height: 100vh;
+  color: #fff;
+  padding-bottom: 3rem;
+}
+
+.tree ul {
+  margin: 0px 0px 0px 20px;
+  list-style: none;
+  line-height: 2em;
+  font-family: Arial;
+  transition: height .5s ease;
+  overflow: hidden;
+}
+.file_directory_name{
+  cursor: pointer;
+}
+.tree ul li {
+  font-size: 16px;
+  position: relative;
+}
+.tree ul li:before {
+  position: absolute;
+  left: -15px;
+  top: 0px;
+  content: "";
+  display: block;
+  border-left: 1px solid #ddd;
+  height: 1em;
+  border-bottom: 1px solid #ddd;
+  width: 10px;
+}
+.tree ul li:after {
+  position: absolute;
+  left: -15px;
+  bottom: -7px;
+  content: "";
+  display: block;
+  border-left: 1px solid #ddd;
+  height: 100%;
+}
+.tree ul li.root {
+  margin: 0px 0px 0px -20px;
+}
+.tree ul li.root:before {
+  display: none;
+}
+.tree ul li.root:after {
+  display: none;
+}
+.tree ul li:last-child:after {
+  display: none;
+}
+
+.tree .colapsed{
+  height: 0;
+}

@@ -1,6 +1,6 @@
 import React from "react";
 
-import NavLink from "../../NavLink";
+import NavLink from "../../navigation/NavLink";
 
 
 const SidebarNavItem = ({ item }) => (
@@ -10,7 +10,7 @@ const SidebarNavItem = ({ item }) => (
       icon={item.icon}
       after={item.htmlAfter}
       to={item.to}
-      
+
     />
   </div>
 );

@@ -23,7 +23,7 @@ export default createDefaultProfilePic;
 
 const ImageFromSvg = (image, fileName) => {
   /*creates a new jpeg image from image object provided */
-  let fileUrl, file;
+  let fileUrl;
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
   canvas.setAttribute("width", "200px");
@@ -34,7 +34,6 @@ const ImageFromSvg = (image, fileName) => {
       blob.name = fileName;
       window.URL.revokeObjectURL(fileUrl);
       fileUrl = window.URL.createObjectURL(blob);
-      file = blob;
       resolve(blob);
     }, "image/jpeg");
   });

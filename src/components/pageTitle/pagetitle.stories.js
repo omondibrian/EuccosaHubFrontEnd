@@ -1,13 +1,17 @@
 import React from "react";
 import PageTitle from "./index";
 import { withDesign } from "storybook-addon-designs";
+import StoryBookReduxWrapper from "../storyBookReduxWrapper";
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
+const config = {
   title: "Components/Dashboard/PageTitle",
   component: PageTitle,
-  decorators: [withDesign],
+  decorators: [
+    (story) => <StoryBookReduxWrapper>{story()}</StoryBookReduxWrapper>,
+  ],
 };
+
+export default config;
 
 export const PageTitleComponent = () => (
   <PageTitle

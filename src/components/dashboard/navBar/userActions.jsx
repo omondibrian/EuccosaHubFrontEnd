@@ -11,6 +11,7 @@ export default function UserActions({ state, toggleUserActions }) {
 
   return (
     <div className="nav-item dropdown">
+      {/* eslint-disable-next-line */}
       <a className="text-nowrap px-3 dropdown-toggle nav-link" onClick={toggleUserActions}>
         <img
           className="user-avatar rounded-circle mr-2"

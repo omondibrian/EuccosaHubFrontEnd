@@ -1,19 +1,21 @@
-import EventCard from './EventCard'
-import { withDesign } from 'storybook-addon-designs'
-
-
+import EventCard from "./EventCard";
+import { myEvent } from "../../../data/Dammy/home.data";
 
 export default {
-    title: 'EventCard',
-    component: EventCard,
-    decorators: [withDesign],
+  title: "components/cards/event",
+  argTypes:{
+    event:{
+      description:"event object",
+      typecheck:{required:true}
+    }
+  }
+  
 };
 
-export const EventCardPage = () => <EventCard />;
-
-EventCardPage.parameters = {
-    design: {
-        type: 'figma',
-        url: "https://www.figma.com/file/Dy1ewi9vPzrN2s215vujSE/EuccosaHub?node-id=30%3A1",
-    },
+export const eventCard = (args) => <EventCard {...args} />;
+eventCard.args={
+  event:myEvent
+}
+eventCard.parameters = {
+  docs:{source:{code:`import 'EventCard' from "./cards/EventCard";\n<EventCard event={${JSON.stringify(myEvent,null,"\t")}} />`}}
 }

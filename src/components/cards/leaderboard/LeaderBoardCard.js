@@ -2,7 +2,7 @@ import style from "./Profile.module.css";
 
 import React from "react";
 
-function Profile({ profile, index }) {
+function LeaderBoardCard({ profile, index }) {
   return (
     <div className={`${style.profile} .splide__slide`} data-order={index + 1}>
       <div className={style.profile__top}>
@@ -35,4 +35,4 @@ function Profile({ profile, index }) {
   );
 }
 
-export default Profile;
+export default LeaderBoardCard;

@@ -12,6 +12,7 @@ const PageTitle = ({ title, subtitle, className, ...attrs }) => {
     "mb-sm-0",
     "col-12",
   );
+  
   const { application } = useSelector(getApplicationState)
   return (
     <div className={classes} { ...attrs }>

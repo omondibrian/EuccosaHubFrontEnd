@@ -12,6 +12,7 @@ const SidebarActions = ({ title }) => (
           <span className="d-flex mb-2">
             <i className="material-icons mr-1">flag</i>
             <strong className="mr-1">Status:</strong> Draft{" "}
+            {/* eslint-disable-next-line */}
             <a className="ml-auto" href="#">
               Edit
             </a>
@@ -20,7 +21,7 @@ const SidebarActions = ({ title }) => (
             <i className="material-icons mr-1">visibility</i>
             <strong className="mr-1">Visibility:</strong>{" "}
             <strong className="text-success">Public</strong>{" "}
-            {/* */}
+            {/* eslint-disable-next-line */}
             <a className="ml-auto" href="#">
               Edit
             </a>
@@ -28,6 +29,7 @@ const SidebarActions = ({ title }) => (
           <span className="d-flex mb-2">
             <i className="material-icons mr-1">calendar_today</i>
             <strong className="mr-1">Schedule:</strong> Now{" "}
+            {/* eslint-disable-next-line */}
             <a className="ml-auto" href="#">
               Edit
             </a>

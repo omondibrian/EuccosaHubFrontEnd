@@ -10,7 +10,7 @@ import {
 } from "../../../state/slices/Application";
 import classNames from "classnames";
 
-const ImageCrop = ({ Profile }) => {
+const ImageCrop = ({ Profile, className }) => {
   let fileUrl, file;
   const dispatch = useDispatch();
   const { application } = useSelector(getApplicationState);
@@ -164,9 +164,10 @@ const ImageCrop = ({ Profile }) => {
     "btn btn-primary my-0 px-4 my-2",
     state.cropDone ? "visible" : "invisible"
   );
+  const cropClasses = classNames(className, "image-crop");
   const cropRef = useRef();
   return (
-    <div className="image-crop d-none" ref={cropRef}>
+    <div className={cropClasses} ref={cropRef}>
       <div className="card pt-3">
         <div className="controls d-flex justify-content-between mx-2">
           <button

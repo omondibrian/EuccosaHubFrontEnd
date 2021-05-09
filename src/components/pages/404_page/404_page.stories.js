@@ -2,8 +2,7 @@ import PageNotFound from './404_page'
 import { withDesign } from 'storybook-addon-designs'
 
 export default {
-    title: '404_page',
-    component:PageNotFound,
+    title: 'Components/pages/404_page',
     decorators: [withDesign]
 
 }
