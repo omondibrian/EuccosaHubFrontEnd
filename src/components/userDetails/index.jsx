@@ -31,7 +31,7 @@ const UserDetails = () => {
         <div className="list-group-item p-4">
           {metaData.map((data, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="mb-5">
                 <strong className="text-muted d-block mb-2">
                   {data.metaTitle}
                 </strong>

@@ -14,23 +14,18 @@ const State = {
     street: "",
     country: "",
   },
-  role: "Vice chairman",
-  testimonial: "test testimonial",
+  role: "",
+  testimonial: "",
   avatar: AvatorImg,
   phoneNumber: "",
   startDate: "",
   completionDate: "",
   loading: false,
-  metaData: [
-    {
-      metaTitle: "Address",
-      metaValue: `Jiwe Leupe Malindi,  Kenya `,
-    },
-    {
-      metaTitle: "email",
-      metaValue: "omondibrian392@gmail.com ",
-    },
-  ],
+  fetchStatus: {
+    code: "",
+    message: "",
+  },
+  metaData: [],
 };
 
 export const fetchUserProfile = createAsyncThunk(
@@ -54,17 +49,36 @@ const userSlice = createSlice({
       state.loading = true;
     },
     [fetchUserProfile.fulfilled]: (state, { payload }) => {
-      console.log("fetchProfile", payload);
-      state.firstName = payload.firstName;
-      state.lastName = payload.lastName;
-      state.email = payload.email;
-      state.avatar =
-        "http://192.168.43.154:3001/auth/uploads/" + payload.profilePic;
-      state.phoneNumber = payload.phoneNumber;
+      if (payload.status < 400) {
+        state.firstName = payload.firstName;
+        state.lastName = payload.lastName;
+        state.email = payload.email;
+        state.avatar =
+          "http://192.168.43.154:3001/auth/uploads/" + payload.profilePic;
+        state.phoneNumber = payload.phoneNumber;
+        state.loading = false;
+        state.startDate = new Date(payload.startDate);
+        state.completionDate = new Date(payload.completionDate);
+        state.Address = payload.Address;
+        state.metaData.push({
+          metaTitle: "Email",
+          metaValue:state.email,
+        })
+        if (state.Address.city) {
+          state.metaData.push({
+            metaTitle: "Address",
+            metaValue: `${state.Address.street} ${state.Address.city}, ${state.Address.country}`,
+          });
+        }
+      }
+      state.fetchStatus.code = payload.status;
+      state.fetchStatus.message = payload.message;
+    },
+    [fetchUserProfile.rejected]: (state) => {
+      state.fetchStatus.code = 500;
+      state.fetchStatus.message =
+        "An error occured, please check your internet connection";
       state.loading = false;
-      state.startDate = new Date(payload.startDate);
-      state.completionDate = new Date(payload.completionDate);
-      state.Address = payload.Address;
     },
   },
 });

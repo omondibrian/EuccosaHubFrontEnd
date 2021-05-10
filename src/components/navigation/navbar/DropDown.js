@@ -5,16 +5,16 @@ import { Link } from "react-router-dom";
 function DropDown({ user }) {
   return (
     <div className={style.dropdown}>
-      <button class={style.dropbtn}>
+      <button className={style.dropbtn}>
         Account
         <span
-          class="material-icons"
+          className="material-icons"
           style={{ color: "inherit", fontSize: "inherit" }}
         >
           expand_more
         </span>
       </button>
-      <div class={style.dropdown_content}>
+      <div className={style.dropdown_content}>
         {user ? (
           <>
             <Link to="/dashboard/userProfile" className={style.dropdown__link}>

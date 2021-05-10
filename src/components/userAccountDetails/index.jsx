@@ -5,17 +5,17 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import en from "date-fns/locale/en-GB";
 import "react-datepicker/dist/react-datepicker.css";
 import { formValidationSchema } from "./validationSchema";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Ellipsis } from "../loader"
 import { updateProfile } from "../../services/auth.service"
 import { getState } from "../../state/slices/user";
-import { getApplicationState } from "../../state/slices/Application";
+import { createFlushMessage, getApplicationState } from "../../state/slices/Application";
 registerLocale("en", en);
 
 const UserAccountDetails = () => {
   const { user } = useSelector(getState);
   const { application } = useSelector(getApplicationState);
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const initialState = {
     firstName: user.firstName,
     lastName: user.lastName,
@@ -35,8 +35,12 @@ const UserAccountDetails = () => {
       let updatedFields = getUpdatedUserField(user, formik.values)
       updatedFields.id = application.userID
       const result = await updateProfile(updatedFields)
+      dispatch(
+        createFlushMessage({
+          className: "alert-success",
+          message: "Your profile has been updated",
+        }))
       formik.isSubmitting(false)
-      console.log(result)
     }
   };
   const formik = useFormik({

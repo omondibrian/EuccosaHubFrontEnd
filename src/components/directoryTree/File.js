@@ -10,7 +10,6 @@ import svg from "../../assets/fileIcons/file_type_svg.svg";
 // import code from "../../assets/fileIcons/file_type_source.svg";
 import imageIcon from "../../assets/fileIcons/file_type_image.svg";
 
-
 function File({ fileName }) {
   return (
     <li>
@@ -28,24 +27,23 @@ function File({ fileName }) {
 export default File;
 const getFileIcon = (fileName) => {
   let fileIcon;
-  if (/test/.test(fileName)) {
-    fileIcon = test;
+  if (/svg/.test(fileName)) {
+    fileIcon = svg;
   } else if (/.css/.test(fileName)) {
     fileIcon = css;
   } else if (/.json/.test(fileName)) {
     fileIcon = json;
   } else if (/.stories/.test(fileName)) {
     fileIcon = storybook;
+  } else if (/test/.test(fileName)) {
+    fileIcon = test;
   } else if (/.jsx/.test(fileName)) {
     fileIcon = jsx;
   } else if (/\w+\.\w+\.js/.test(fileName)) {
     fileIcon = jsconfig;
   } else if (/.js/.test(fileName)) {
     fileIcon = js;
-  } else if (/.svg/.test(fileName)) {
-    fileIcon = svg;
-  } 
-  else {
+  } else {
     fileIcon = imageIcon;
   }
 

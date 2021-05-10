@@ -1,11 +1,12 @@
 [
-  {"type":"directory","name":"src","contents":[
+  {"type":"directory","name":"./src","contents":[
     {"type":"file","name":"App.css"},
     {"type":"file","name":"App.js"},
     {"type":"file","name":"App.test.js"},
     {"type":"directory","name":"assets","contents":[
       {"type":"directory","name":"fileIcons","contents":[
         {"type":"file","name":"file_type_css.svg"},
+        {"type":"file","name":"file_type_image.svg"},
         {"type":"file","name":"file_type_js.svg"},
         {"type":"file","name":"file_type_light_jsconfig.svg"},
         {"type":"file","name":"file_type_light_json.svg"},
@@ -15,9 +16,9 @@
         {"type":"file","name":"file_type_storybook.svg"},
         {"type":"file","name":"file_type_style.svg"},
         {"type":"file","name":"file_type_svg.svg"},
-        {"type":"file","name":"file_type_testts.svg"}
+        {"type":"file","name":"file_type_testts.svg"},
+        {"type":"file","name":"file_type_vscode.svg"}
       ]},
-      {"type":"file","name":"file_type_vscode.svg"},
       {"type":"directory","name":"icons","contents":[
       ]},
       {"type":"directory","name":"images","contents":[
@@ -319,5 +320,5 @@
       {"type":"file","name":"xmhRequest.js"}
     ]}
   ]},
-  {"type":"report","directories":64,"files":190}
+  {"type":"report","directories":64,"files":191}
 ]

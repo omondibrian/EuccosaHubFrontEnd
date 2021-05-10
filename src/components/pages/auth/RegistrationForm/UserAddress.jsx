@@ -31,9 +31,8 @@ function UserAddress() {
           country: formik.values.country,
         })
       );
-
-      dispatch(RegisterNewUser(state));
       dispatch(forward({ stage: 4 }));
+      dispatch(RegisterNewUser(state));
       formik.setSubmitting(false);
     }
   };
