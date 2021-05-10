@@ -12,13 +12,13 @@ export default function UserActions({ state, toggleUserActions }) {
   return (
     <div className="nav-item dropdown">
       {/* eslint-disable-next-line */}
-      <a className="text-nowrap px-3 dropdown-toggle nav-link" onClick={toggleUserActions}>
+      <a className="text-nowrap  dropdown-toggle nav-link" onClick={toggleUserActions}>
         <img
           className="user-avatar rounded-circle mr-2"
           src={user.avatar}
           alt="User Avatar"
         />
-        <span className="d-none d-md-inline-block">{`${user.firstName} ${user.lastName}`}</span>
+        <span className=" d-md-inline-block">{`${user.firstName} ${user.lastName}`}</span>
       </a>
       <div className={menuClasses}>
         <DropdownItem icon="&#xE7FD;" title="Profile" to="/userProfile" />
@@ -29,11 +29,7 @@ export default function UserActions({ state, toggleUserActions }) {
           to="/editUserProfile"
         />
 
-        <DropdownItem icon="&#xE2C7;" title="Files" to="/fileManager" />
-
-        <DropdownItem icon="&#xE896;" title="Transactions" to="/Transactions" />
-
-        <DropdownItem
+          <DropdownItem
           icon="&#xE879;"
           title="Log out"
           to="/logout"

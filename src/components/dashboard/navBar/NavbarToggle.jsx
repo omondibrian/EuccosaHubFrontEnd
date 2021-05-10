@@ -9,7 +9,7 @@ export default function NavbarToggle() {
     dispatch(toggleMenu())
   };
   return (
-    <nav className="nav">
+    <nav className="nav" style={{overflow:"hidden",maxHeight:'60px'}}>
       {/*  eslint-disable-next-line jsx-a11y/anchor-is-valid */}
       <a
         href="#"
