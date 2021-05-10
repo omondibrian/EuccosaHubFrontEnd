@@ -8,7 +8,7 @@ const AddNewEvent = () => (
   <div className="container-fulid main-content-container px-4 pb-4">
     {/* Page Header */}
     <div className="row page-header py-4">
-      <PageTitle sm="4" title="Add New Post" subtitle="Blog Posts" className="text-sm-left" />
+      <PageTitle sm="4" title="Add New Event" subtitle="New Event" className="text-sm-left" />
     </div>
 
     <div className="row">
@@ -19,8 +19,8 @@ const AddNewEvent = () => (
 
       {/* Sidebar Widgets */}
       <div className="col-lg-3 col-md-12">
-        <SidebarActions />
         <SidebarCategories />
+        <SidebarActions />
       </div>
     </div>
   </div>

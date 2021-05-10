@@ -93,6 +93,7 @@ h6 {
 .nav-link {
   font-size: 0.8125rem;
   font-weight: 400;
+  overflow: hidden;
 }
 .nav-link-icon {
   color: #818ea3;
@@ -115,7 +116,8 @@ h6 {
   background-color: #007bff;
 }
 .main-navbar .navbar {
-  height: 3.75rem;
+  height: 3.75rem ;
+ 
 }
 .main-navbar .navbar > * {
   display: -ms-flexbox;

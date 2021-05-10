@@ -1,4 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { addNewEvent } from "../../services/events.service";
+export const addEvent = createAsyncThunk(
+  "application/addEvent",
+  async (event) => {
+    const res = await addNewEvent(event);
+    return res;
+  }
+);
 
 export const getToken = () => {
   try {
@@ -15,13 +23,11 @@ export const getId = () => {
     return "";
   }
 };
-export const clearLocalStorage=()=>{
-  try{
-    localStorage.clear()
-  }
-  catch (e){    
-  }
-}
+export const clearLocalStorage = () => {
+  try {
+    localStorage.clear();
+  } catch (e) {}
+};
 const id = getId();
 const token = getToken();
 const Application = createSlice({
@@ -32,6 +38,8 @@ const Application = createSlice({
     flushMessage: false,
     userToken: token,
     userID: id,
+    events:[],
+    loading:false
   },
   reducers: {
     toggleMenu: (state, action) => {
@@ -50,6 +58,15 @@ const Application = createSlice({
     logOutUser: (state) => {
       state.isAuthenticated = false;
     },
+    extraReducers: {
+      [addEvent.pending]: (state, action) => {
+        state.loading = true;
+      },
+      [addEvent.fulfilled]: (state, { payload }) => {
+        state.loading = false;
+        state.events = state.events.push(payload.events);
+      },
+    }
   },
 });
 export const getApplicationState = (state) => state;
