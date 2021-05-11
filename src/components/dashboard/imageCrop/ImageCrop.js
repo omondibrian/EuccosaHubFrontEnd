@@ -9,6 +9,7 @@ import {
   createFlushMessage,
 } from "../../../state/slices/Application";
 import classNames from "classnames";
+import FileUploader from "../../button/fileUploader";
 
 const ImageCrop = ({ Profile, className }) => {
   let fileUrl, file;
@@ -213,7 +214,7 @@ const ImageCrop = ({ Profile, className }) => {
           alt="profile"
         />
         <div className="card-body mt-4 py-1">
-          <div className="file file--upload">
+          {/* <div className="file file--upload">
             <label htmlFor="input-file">
               <i className="material-icons">cloud_upload</i>Upload Image
             </label>
@@ -223,7 +224,13 @@ const ImageCrop = ({ Profile, className }) => {
               accept="image/*"
               onChange={onSelectFile}
             />
-          </div>
+          </div> */}
+          <FileUploader
+            id="input-file"
+            type="file"
+            accept="image/*"
+            onChange={onSelectFile}
+          />
         </div>
       </div>
     </div>
