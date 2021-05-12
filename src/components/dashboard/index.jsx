@@ -16,9 +16,9 @@ export default function DashBoard() {
     <div className="dashboard">
       <DefaultLayout {...defaultLayoutProps}>
         <Route exact path="/dashboard" render={() => <DashboardStats />} />
-        <Route path="/dashboard/userProfile" render={() => <UserProfile />} />
-        <Route path="/dashboard/addNewEvent" render={() => <AddNewEvent />} />
-        <Route path="/dashboard/Users" render={() => <Users />} />
+        <Route path="/dashboard/user-profile" render={() => <UserProfile />} />
+        <Route path="/dashboard/add-new-event" render={() => <AddNewEvent />} />
+        <Route path="/dashboard/users" render={() => <Users />} />
       </DefaultLayout>
     </div>
   );

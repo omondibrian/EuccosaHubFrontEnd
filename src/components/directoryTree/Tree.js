@@ -7,7 +7,7 @@ import TreeData from "../../assets/tree.json";
 function Tree() {
   return (
     <div className="tree">
-      <h5 className="text-center">//npm run tree - to update this project tree structure</h5>
+      <h5 className="text-center">npm run tree - to update this project tree structure</h5>
       <ul>
         <Directory directory={TreeData[0]} />
       </ul>
