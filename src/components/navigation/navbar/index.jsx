@@ -52,7 +52,7 @@ export const MobileNavItems = ({ user }) => {
             {
                 user ? <>
                     <li className={style.nav_link}>
-                        <Link to="/dashboard">Dashoard</Link>
+                        <Link to="/dashboard">DashBoard</Link>
                     </li>
                     <li className={style.nav_link}>
                         <Link to="/logout">Logout</Link>

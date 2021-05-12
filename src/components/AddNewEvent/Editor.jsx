@@ -1,8 +1,5 @@
 import React from "react";
-
-import "react-quill/dist/quill.snow.css";
-import "./quill.css";
-
+// import FileUploader from ''
 const Editor = () => (
   <div small className="card mb-3">
     <div className="card-body">
@@ -36,11 +33,13 @@ const Editor = () => (
           rows="10"
           cols="80"
         />
-        <input
+        {/* <input
           type="file"
           className="form-control-file form-control-lg mb-3"
           placeholder="image"
-        />
+        /> */}
+
+        <FileUploader />
       </form>
     </div>
   </div>
