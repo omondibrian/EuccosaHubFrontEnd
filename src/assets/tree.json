@@ -64,7 +64,8 @@
         {"type":"file","name":"Editor.jsx"},
         {"type":"file","name":"quill.css"},
         {"type":"file","name":"SideBarActions.jsx"},
-        {"type":"file","name":"SideBarCategory.jsx"}
+        {"type":"file","name":"SideBarCategory.jsx"},
+        {"type":"file","name":"style.css"}
       ]},
       {"type":"directory","name":"AnimatedAction","contents":[
         {"type":"file","name":"failure.stories.js"},
@@ -84,6 +85,11 @@
       ]},
       {"type":"directory","name":"button","contents":[
         {"type":"file","name":"button.css"},
+        {"type":"directory","name":"fileUploader","contents":[
+          {"type":"file","name":"index.css"},
+          {"type":"file","name":"index.js"},
+          {"type":"file","name":"index.stories.js"}
+        ]},
         {"type":"file","name":"index.js"},
         {"type":"file","name":"index.stories.js"}
       ]},
@@ -176,6 +182,7 @@
       {"type":"directory","name":"directoryTree","contents":[
         {"type":"file","name":"Directory.js"},
         {"type":"file","name":"File.js"},
+        {"type":"file","name":"index.stories.js"},
         {"type":"file","name":"Tree.css"},
         {"type":"file","name":"Tree.js"}
       ]},
@@ -295,19 +302,21 @@
       ]},
       {"type":"file","name":"sidebar.js"}
     ]},
+    {"type":"directory","name":"error","contents":[
+      {"type":"file","name":"index.js"},
+      {"type":"file","name":"index.module.css"}
+    ]},
     {"type":"file","name":"index.css"},
     {"type":"file","name":"index.js"},
     {"type":"file","name":"logo.svg"},
     {"type":"file","name":"reportWebVitals.js"},
     {"type":"directory","name":"services","contents":[
-      {"type":"file","name":"auth.service.js"}
+      {"type":"file","name":"auth.service.js"},
+      {"type":"file","name":"events.service.js"}
     ]},
     {"type":"file","name":"setupTests.js"},
     {"type":"directory","name":"state","contents":[
       {"type":"file","name":"Actions.js"},
-      {"type":"directory","name":"reducers","contents":[
-        {"type":"file","name":"userReducer.js"}
-      ]},
       {"type":"directory","name":"slices","contents":[
         {"type":"file","name":"Application.js"},
         {"type":"file","name":"registration.js"},
@@ -320,5 +329,5 @@
       {"type":"file","name":"xmhRequest.js"}
     ]}
   ]},
-  {"type":"report","directories":64,"files":191}
+  {"type":"report","directories":65,"files":198}
 ]

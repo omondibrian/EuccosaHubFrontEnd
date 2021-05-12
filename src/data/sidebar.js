@@ -14,12 +14,12 @@ export default function sideBarItems() {
     {
       title: "Add New Event",
       icon: "note_add",
-      to: "/dashboard/addNewEvent",
+      to: "/dashboard/add-new-event",
     },
     {
       title: "User Profile",
       icon: "person",
-      to: "/dashboard/userProfile",
+      to: "/dashboard/user-profile",
     },
     {
       title: "Modules",
@@ -29,7 +29,7 @@ export default function sideBarItems() {
     {
       title: "Users",
       icon: "table_chart",
-      to: "/dashboard/Users",
+      to: "/dashboard/users",
     },
     {
       title: "Transcations",

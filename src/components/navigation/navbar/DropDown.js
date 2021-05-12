@@ -17,7 +17,7 @@ function DropDown({ user }) {
       <div className={style.dropdown_content}>
         {user ? (
           <>
-            <Link to="/dashboard/userProfile" className={style.dropdown__link}>
+            <Link to="/dashboard/user-profile" className={style.dropdown__link}>
               <i className="material-icons">info_outline</i>
               Dashboard
             </Link>

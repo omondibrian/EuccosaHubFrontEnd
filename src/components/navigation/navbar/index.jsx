@@ -3,6 +3,7 @@ import style from './Navbar.module.css'
 import { Link } from "react-router-dom"
 import { scrollTo } from "../../../utils/scroll"
 import DropDown from "./DropDown"
+import { Logo } from "../../vectors/Vectors"
 
 
 
@@ -74,19 +75,19 @@ function Navbar() {
         requestAnimationFrame(navScroll)
         scrollTo()
     }, [])
+
     let user;
     try {
         user = localStorage.getItem("ID")
     }
     catch (e) {
     }
-    console.log(user)
     return (
         <>
             <div className={style.navbar} >
                 <div className={style.logo}>
-                    Eucossa
-            </div>
+                    <Logo />
+                </div>
                 <ul className={style.nav}>
                     <li className={style.nav_link}>
                         <a href="#home">Home</a>
@@ -104,15 +105,15 @@ function Navbar() {
                         <Link to="/donate">Donate</Link>
                     </li>
                     <li className={style.nav_link}>
-                        <DropDown user={user}/>
+                        <DropDown user={user} />
                     </li>
                 </ul>
                 <div className={style.nav__toggler}>
                     <button onClick={openNav}>
-                        <svg width="50" height="30" viewBox="0 0 73 30" fill="none" >
-                            <rect width="50" height="5" rx="3" fill="var(--white)" />
-                            <rect width="50" height="5" rx="3" y="12.5" fill="var(--white)" />
-                            <rect width="50" height="5" rx="3" y="25" fill="var(--white)" />
+                        <svg width="50" height="30" viewBox="0 0 73 30" fill="currentColor" >
+                            <rect width="50" height="5" rx="3" />
+                            <rect width="50" height="5" rx="3" y="12.5" />
+                            <rect width="50" height="5" rx="3" y="25" />
                         </svg>
                     </button>
                 </div>
