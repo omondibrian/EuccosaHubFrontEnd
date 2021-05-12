@@ -20,7 +20,7 @@
    }
    
    .switch label input[type=checkbox]:checked + .lever {
-     background-color: #84c7c1;
+     background-color:  rgba(0, 0, 0, 0.38)
    }
    
    .switch label input[type=checkbox]:checked + .lever:before, .switch label input[type=checkbox]:checked + .lever:after {
@@ -28,7 +28,7 @@
    }
    
    .switch label input[type=checkbox]:checked + .lever:after {
-     background-color: #26a69a;
+     background-color:var(--blue);
    }
    
    .switch label .lever {
@@ -55,9 +55,9 @@
      border-radius: 50%;
      left: 0;
      top: -3px;
-     -webkit-transition: left 0.3s ease, background .3s ease, -webkit-box-shadow 0.1s ease, -webkit-transform .1s ease;
-     transition: left 0.3s ease, background .3s ease, -webkit-box-shadow 0.1s ease, -webkit-transform .1s ease;
-     transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease, transform .1s ease;
+     /* -webkit-transition: left 0.3s ease, background .3s ease, -webkit-box-shadow 0.1s ease, -webkit-transform 0.01s ease;
+     transition: left 0.3s ease, background .3s ease, -webkit-box-shadow 0.1s ease, -webkit-transform .0.01s ease;
+     transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease, transform .1s ease; */
      transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease, transform .1s ease, -webkit-box-shadow 0.1s ease, -webkit-transform .1s ease;
    }
    
