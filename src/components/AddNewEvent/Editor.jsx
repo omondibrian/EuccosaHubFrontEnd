@@ -2,7 +2,7 @@ import React from "react";
 import FileUploader from "../button/fileUploader";
 import { EventsContext } from "../dashboard/NewEvent/newEventProvider";
 const Editor = () => {
-  const { newEvent, handleChange, handleSubmit, handleFile } = React.useContext(
+  const { newEvent, handleChange, handleSubmit, handleFileSelected } = React.useContext(
     EventsContext
   );
   console.log(newEvent);
@@ -52,11 +52,11 @@ const Editor = () => {
             <FileUploader
               name="pictorials"
               id="pictorials"
-              onChange={handleFile}
+              onChange={handleFileSelected}
               type="file"
               accept="image/*"
               title="Upload Event Cover Photo "
-              value={newEvent.pictorials}
+              files={newEvent.pictorials}
               multiple
             />
           </div>
