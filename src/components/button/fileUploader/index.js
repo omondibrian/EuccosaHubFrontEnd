@@ -10,7 +10,7 @@ function FileUploader(props) {
       </label>
       <input type='file'  {...props} />
     </div>
-  );
+  ); 
 }
 
 export default FileUploader;
