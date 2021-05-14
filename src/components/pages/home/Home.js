@@ -8,10 +8,12 @@ import TestimonialSection from "./sections/Testimonial";
 import { ourTeam, testimonials, myEvent } from "../../../data/Dammy/home.data";
 
 
+
 function Home() {
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
   return (
     <div className={style.home} id="home">
+    {/* <Menu /> */}
       <SiteHeroSection />
       <EventSection events={[myEvent, myEvent]} />
       <AboutSection ourTeam={ourTeam} />
@@ -21,6 +23,7 @@ function Home() {
         setActiveTestimonialIndex={setActiveTestimonialIndex}
       />
       <Footer />
+      
     </div>
   );
 }

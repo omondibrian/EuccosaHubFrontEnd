@@ -1,4 +1,4 @@
-export const scrollTo = (link_selector="a[href*='#']") => {
+export const smoothScroll = (link_selector="a[href*='#']") => {
     const links = document.querySelectorAll(link_selector)
     links.forEach((element) => {
         const link = element.getAttribute('href')

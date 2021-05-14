@@ -16,7 +16,7 @@ export const login = async (credentials) => {
       try {
         localStorage.setItem("ID", data._id);
         localStorage.setItem("TOKEN", data.token);
-      } catch (e) {}
+      } catch (e) { }
       return {
         message: data.message,
         status: 200,
@@ -62,7 +62,7 @@ export const FetchUsers = async () => {
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
-  });
+  }).catch(e => e);
   if (result.ok) {
     const data = await result.json();
     data["status"] = 200;
@@ -74,7 +74,6 @@ export const FetchUsers = async () => {
 };
 
 export const registerNewUser = async (user) => {
-  console.log("user", user);
   const profile = await createDefaultProfilePic(user.firstName, user.lastName);
   const formData = new FormData();
   for (const field in user) {
@@ -98,10 +97,10 @@ export const registerNewUser = async (user) => {
       resolve(result);
     };
     request.onerror = () => {
-      reject({ message: "an error occured" });
+      resolve({ message: "An error occured please check your internet connection", status: request.status });
     };
     request.ontimeout = () => {
-      reject({ message: "an error occured" });
+      resolve({ message: "An error occured please check your internet connection", status: request.status });
     };
   });
 };
@@ -121,7 +120,7 @@ export const updateProfile = async (updates) => {
     return data;
   } else {
     return {
-      message: "Error updating profile please retry",
+      message: data.message || "Error updating profile please retry",
     };
   }
 };

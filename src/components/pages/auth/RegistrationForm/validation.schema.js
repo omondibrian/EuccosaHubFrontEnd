@@ -2,6 +2,7 @@ import * as yup from "yup";
 
 //creating the validation schema
 export const userBioData = yup.object().shape({
+  regNumber: yup.string().required("Please supply your registration Number").min(10),
   firstName: yup
     .string()
     .required("Your First Name is required")
@@ -15,7 +16,7 @@ export const userBioData = yup.object().shape({
 });
 
 export const AdditionalInfo = yup.object().shape({
-  regNumber: yup.string().required("Please supply your registration Number").min(10),
+
   phoneNumber: yup.number().required("Please supply your phoneNumber").min(10),
   startDate: yup.string().required("please add your date of admision"),
   completionDate: yup
@@ -40,7 +41,7 @@ export const AdditionalInfo = yup.object().shape({
 
 //creating the validation schema
 export const AddressInfo = yup.object().shape({
-    street: yup.string().nullable(),
-    city: yup.string().nullable(),
-    country: yup.string().nullable(),
-  });
+  street: yup.string().nullable(),
+  city: yup.string().nullable(),
+  country: yup.string().nullable(),
+});

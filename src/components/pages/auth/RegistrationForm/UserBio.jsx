@@ -18,24 +18,25 @@ function UserBio() {
   const state = useSelector(getRegistrationState);
   const dispatch = useDispatch();
 
-  const handleSub =async () => {
+  const handleSub = async () => {
     if (!formik.isValidating && formik.isValid) {
-      formik.setSubmitting(true); 
+      formik.setSubmitting(true);
       dispatch(
         setBioData({
           firstName: formik.values.firstName,
           lastName: formik.values.lastName,
           email: formik.values.email,
-          
+          regNumber: formik.values.regNumber,
+
         })
       );
       dispatch(forward({ stage: 2 }));
-      console.log(state);
       formik.setSubmitting(false);
     }
   };
   const formik = useFormik({
     initialValues: {
+      regNumber: state.regNumber,
       firstName: state.firstName,
       lastName: state.lastName,
       email: state.email,
@@ -47,6 +48,7 @@ function UserBio() {
     <CSSTransition classNames="fade" in={state.stage === 1} unmountOnExit timeout={200}>
       <div >
         <form onSubmit={formik.handleSubmit}>
+          {/* first name */}
           <div>
             <label htmlFor="fName">First Name <sup className={style.red}>*</sup></label>
             <InputBox
@@ -61,8 +63,9 @@ function UserBio() {
               <small className={style.text_danger}>{formik.errors.firstName}</small>
             ) : null}
           </div>
+          {/* last name */}
           <div>
-            <label htmlFor="sName">Second Name <sup className={style.red}>*</sup></label>
+            <label htmlFor="sName">Last Name <sup className={style.red}>*</sup></label>
             <InputBox
               id="sName"
               value={formik.values.lastName}
@@ -76,6 +79,7 @@ function UserBio() {
               <small className={style.text_danger}>{formik.errors.lastName}</small>
             ) : null}
           </div>
+          {/* email */}
           <div>
             <label htmlFor="email">email <sup className={style.red}>*</sup></label>
             <InputBox
@@ -88,6 +92,23 @@ function UserBio() {
             />
             {formik.touched.email && formik.errors.email ? (
               <small className={style.text_danger}>{formik.errors.email}</small>
+            ) : null}
+          </div>
+          {/* reg number */}
+          <div>
+            <label style={{ display: "block" }} htmlFor="regNumber">
+              Registration Number <sup className={style.red}>*</sup>
+            </label>
+            <InputBox
+              value={formik.values.regNumber}
+              onChange={formik.handleChange}
+              placeholder="Registration Number"
+              name="regNumber"
+              type="text"
+            />
+
+            {formik.touched.regNumber && formik.errors.regNumber ? (
+              <small className="text-danger">{formik.errors.regNumber}</small>
             ) : null}
           </div>
           <div

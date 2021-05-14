@@ -49,7 +49,23 @@
   position: relative;
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
-  border: 1px solid transparent;
-
   border-radius: 0.25rem;
+}
+.success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+}
+.terms {
+  height: 200px;
+  overflow-y: auto;
+  background-color: var(--white);
+  color: var(--black);
+  border: 2px solid #dcd7ca;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 4px;
 }

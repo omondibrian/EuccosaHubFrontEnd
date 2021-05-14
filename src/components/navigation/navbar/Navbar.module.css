@@ -11,8 +11,8 @@
   width: 100%;
   font-size: 1rem;
   padding-bottom: 1rem;
-  padding-top: 0.8rem;
-  
+  padding-top: 0.8rem;  
+  color: inherit;
 }
 
 .nav {
@@ -27,7 +27,6 @@
   margin-left: 1rem;
   margin-right: 1rem;
   color: inherit;
-  
 }
 .nav_link a {
   cursor: pointer;
@@ -41,10 +40,10 @@
   bottom: 0;
   content: "";
   display: block;
-  height: 3px;
+  height: 2px;
   left: 50%;
   position: absolute;
-  background: #222;
+  background: currentColor;
   transition: width 0.5s ease 0s, left 0.5s ease 0s;
   width: 0;
 }
@@ -59,6 +58,7 @@
 }
 .nav__toggler {
   display: none;
+  pointer-events:all;
 }
 
 .nav__toggler > button {
@@ -67,19 +67,12 @@
   color: currentColor;
   border: none;
 }
-/* .nav__toggler:hover rect {
-  fill: var(--blue);
-} */
 
 .nav__scrolled {
   background: var(--white);
   color: #295eee;
   box-shadow: 0 5px 7px -10px rgba(0, 0, 0, 0.75);
 }
-
-/* .nav__scrolled rect {
-  fill: var(--dark-black);
-} */
 
 @media (max-width: 720px) {
   .nav {
@@ -89,10 +82,7 @@
     display: block;
   }
 }
-/* .nav__text {
-  color: var(--dark-black);
-  display: block;
-} */
+
 .mobile_nav {
   position: fixed;
   top: 0;

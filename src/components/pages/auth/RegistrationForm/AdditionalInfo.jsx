@@ -26,7 +26,6 @@ function AdditionalInfo() {
       formik.setSubmitting(true);
       dispatch(
         setUserAdditionalInfo({
-          regNumber: formik.values.regNumber,
           startDate: formik.values.startDate.toString(),
           completionDate: formik.values.completionDate.toString(),
           phoneNumber: formik.values.phoneNumber,
@@ -40,7 +39,6 @@ function AdditionalInfo() {
   };
   const formik = useFormik({
     initialValues: {
-      regNumber: state.regNumber,
       startDate: state.startDate,
       completionDate: state.completionDate,
       phoneNumber: state.phoneNumber,
@@ -59,27 +57,11 @@ function AdditionalInfo() {
     <CSSTransition classNames="fade" in={state.stage === 2} unmountOnExit timeout={200}>
       <div >
         <form onSubmit={formik.handleSubmit}>
-          <div>
-            <label style={{ display: "block" }} htmlFor="regNumber">
-              Registration Number <sup className={styles.red}>*</sup>
-          </label>
-            <InputBox
-              value={formik.values.regNumber}
-              onChange={formik.handleChange}
-              placeholder="Registration Number"
-              name="regNumber"
-              type="text"
-            />
-
-            {formik.touched.regNumber && formik.errors.regNumber ? (
-              <small className="text-danger">{formik.errors.regNumber}</small>
-            ) : null}
-          </div>
           {/* registration Date */}
           <div>
             <label style={{ display: "block" }} htmlFor="startDate">
               Registration Date <sup className={styles.red}>*</sup>
-          </label>
+            </label>
             <DatePicker
               className={styles.formControl}
               locale="en"
@@ -99,7 +81,7 @@ function AdditionalInfo() {
           <div>
             <label style={{ display: "block" }} htmlFor="completionDate">
               Graduation Date <sup className={styles.red}>*</sup>
-          </label>
+            </label>
             <DatePicker
               locale="en"
               className={styles.formControl}
@@ -121,7 +103,7 @@ function AdditionalInfo() {
           <div>
             <label style={{ display: "block" }} htmlFor="phoneNumber">
               phone Number <sup className={styles.red}>*</sup>
-          </label>
+            </label>
             <InputBox
               value={formik.values.phoneNumber}
               onChange={formik.handleChange}
@@ -138,7 +120,7 @@ function AdditionalInfo() {
           <div>
             <label style={{ display: "block" }} htmlFor="password">
               Password <sup className={styles.red}>*</sup>
-          </label>
+            </label>
             <InputBox
               value={formik.values.password}
               onChange={formik.handleChange}
@@ -155,7 +137,7 @@ function AdditionalInfo() {
           <div>
             <label style={{ display: "block" }} htmlFor="password">
               Confirm Password <sup className={styles.red}>*</sup>
-          </label>
+            </label>
             <InputBox
               value={formik.values.confirmPassword}
               onChange={formik.handleChange}
@@ -182,7 +164,7 @@ function AdditionalInfo() {
             <Button
               onClick={(e) => {
                 e.preventDefault();
-                dispatch(reverse({ stage:  1 }));
+                dispatch(reverse({ stage: 1 }));
               }}
               className="btn_light"
             >

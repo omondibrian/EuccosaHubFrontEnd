@@ -34,6 +34,7 @@ const UserAccountDetails = () => {
       formik.setSubmitting(true);
       let updatedFields = getUpdatedUserField(user, formik.values)
       updatedFields.id = application.userID
+      // eslint-disable-next-line
       const result = await updateProfile(updatedFields)
       dispatch(
         createFlushMessage({

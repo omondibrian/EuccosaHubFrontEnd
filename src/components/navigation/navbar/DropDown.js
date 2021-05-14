@@ -2,7 +2,7 @@ import React from "react";
 import style from "./dropdown.module.css";
 import { Link } from "react-router-dom";
 
-function DropDown({ user }) {
+function DropDown({ isUserLoggedIn }) {
   return (
     <div className={style.dropdown}>
       <button className={style.dropbtn}>
@@ -15,7 +15,7 @@ function DropDown({ user }) {
         </span>
       </button>
       <div className={style.dropdown_content}>
-        {user ? (
+        {isUserLoggedIn ? (
           <>
             <Link to="/dashboard/user-profile" className={style.dropdown__link}>
               <i className="material-icons">info_outline</i>

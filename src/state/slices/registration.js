@@ -6,6 +6,7 @@ export const RegisterNewUser = createAsyncThunk(
   async (state) => {
     const startDate = state.startDate.toString();
     const completionDate = state.completionDate.toString();
+    // console.log(state)
     const res = await registerNewUser({
       ...state,
       startDate,
@@ -37,6 +38,7 @@ const registration = createSlice({
     isRegistered: false,
     loading: false,
     registrationReport: "",
+    isFormFillComplete: false
   },
   reducers: {
     setBioData: (state, action) => {
@@ -45,6 +47,7 @@ const registration = createSlice({
       state.lastName = action.payload.lastName;
       state.profilePic = action.payload.profilePic;
       state.google_id = action.payload.google_id;
+      state.regNumber = action.payload.regNumber;
     },
     forward: (state, action) => {
       state.stage = action.payload.stage;
@@ -53,7 +56,6 @@ const registration = createSlice({
       state.stage = action.payload.stage;
     },
     setUserAdditionalInfo: (state, action) => {
-      state.regNumber = action.payload.regNumber;
       state.startDate = action.payload.startDate;
       state.completionDate = action.payload.completionDate;
       state.phoneNumber = action.payload.phoneNumber;
@@ -64,16 +66,22 @@ const registration = createSlice({
       state.street = action.payload.street;
       state.city = action.payload.city;
       state.country = action.payload.country;
+      state.isFormFillComplete = true
     },
   },
   extraReducers: {
     [RegisterNewUser.pending]: (state, action) => {
       state.loading = true;
+      state.registrationReport = { message: "We are processing your registration request, please wait" }
     },
     [RegisterNewUser.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.isRegistered = true;
-      state.registrationReport = JSON.parse(payload).message;
+      state.registrationReport = payload;
+    },
+    [RegisterNewUser.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.registrationReport = payload;
     },
   },
 });

@@ -69,9 +69,13 @@ export default function SiteHeroSection() {
       <SiteHero id="A_S" />
       <div className={style.site_hero__animate} ref={ref}>
         <BackGround>
-          <SiteHero />
+          <SiteHero id="site_hero_animate" />
         </BackGround>
       </div>
+      <svg className="shape-overlays" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path className="shape-overlays__path" />
+        <path className="shape-overlays__path" />
+      </svg>
     </section>
   );
 }

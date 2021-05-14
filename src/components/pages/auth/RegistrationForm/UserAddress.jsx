@@ -9,7 +9,6 @@ import {
   getRegistrationState,
   reverse,
   setAddressDetails,
-  RegisterNewUser,
   forward
 } from "../../../../state/slices/registration";
 import { Button } from "../../../button/index"
@@ -32,7 +31,6 @@ function UserAddress() {
         })
       );
       dispatch(forward({ stage: 4 }));
-      dispatch(RegisterNewUser(state));
       formik.setSubmitting(false);
     }
   };
