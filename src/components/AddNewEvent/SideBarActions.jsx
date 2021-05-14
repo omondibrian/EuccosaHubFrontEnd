@@ -1,12 +1,22 @@
 import React from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import en from "date-fns/locale/en-GB";
-import Switch from '../AnimatedAction/switch'
+import Switch from "../AnimatedAction/switch";
 import "react-datepicker/dist/react-datepicker.css";
+import { EventsContext } from "../dashboard/NewEvent/newEventProvider";
 registerLocale("en", en);
 
 const SidebarActions = ({ title }) => {
   const [showModal, toogleModal] = React.useState(false);
+  const {
+
+    toggleDraft,
+    isVisible,
+    draft,
+    toggleVisibility,
+    handleSubmit,
+  } = React.useContext(EventsContext);
+  console.log(`draft ${draft}`);
   return (
     <div className="card mb-3">
       <div className="border-bottom card-header">
@@ -20,114 +30,45 @@ const SidebarActions = ({ title }) => {
               <i className="material-icons mr-1">flag</i>
               <strong className="mr-1">Status:</strong> Draft
               <div className="ml-auto">
-              <Switch />
+                <Switch value={draft} onChange={toggleDraft} />
               </div>
             </span>
             <span className="d-flex mb-2">
-              <i className="material-icons mr-1">visibility</i>
-              <strong className="mr-1">Visibility:</strong>{" "}
-              <strong className="text-success">Public</strong>{" "}
+              <i className="material-icons mr-1">
+                {isVisible ? "visibility" : "visibility_off"}
+              </i>
+              <strong className="mr-1">
+                Visibility<sup className="text-danger">*</sup>
+              </strong>
+              {isVisible ? (
+                <strong className="text-success">Public</strong>
+              ) : (
+                <strong className="text-primary">Private</strong>
+              )}
               <div className="ml-auto">
-              <Switch />
+                <Switch value={isVisible} onChange={toggleVisibility} />
               </div>
             </span>
             <span className="d-flex mb-2">
               <i className="material-icons mr-1">calendar_today</i>
-              <strong className="mr-1">Schedule:</strong> Now{" "}
-              <div className="ml-auto">
-                <button
-                  style={{
-                    color: "#007bff",
-                    background: "transparent",
-                    border: "none",
-                    fontSize: "1rem",
-                  }}
-                  type="button"
-                  className="btn btn-primary "
-                  data-toggle="modal"
-                  data-target="#schedule"
-                  onClick={() => toogleModal(!showModal)}
-                >
-                  Edit
-                </button>
-                {
-                  <div
-                    className="modal"
-                    style={{
-                      display: showModal ? "block" : "none",
-                    }}
-                    id="exampleModal"
-                    tabIndex={-1}
-                    role="dialog"
-                    aria-labelledby="#schedule"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog" role="document">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="schedule">
-                            Event Schedule
-                          </h5>
-                          <button
-                            type="button"
-                            className="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            <span
-                              aria-hidden="true"
-                              onClick={() => toogleModal(!showModal)}
-                            >
-                              ×
-                            </span>
-                          </button>
-                        </div>
-                        <div className="modal-body">
-                          <label htmlFor="venue">Venue</label>
-                          <input
-                            className="form-control form-control mb-3"
-                            name="venue"
-                            placeholder="Event venue"
-                          />
-                          <label htmlFor="Date">Date </label>
-                          <DatePicker
-                            className="form-control"
-                            locale="en"
-                            name="startDate"
-                            dateFormat="dd/mm/yyyy"
-                            placeholderText="12/12/2020"
-                            showTimeInput
-                            customTimeInput={<TimeInput />}
-                            // selected={formik.values.startDate}
-                            // onSelect={() => console.log("day changed")} //when day is clicked
-                            // onChange={(val) => formik.setFieldValue("startDate", val)} //only when value has changed
-                          />
-                        </div>
-                        <div className="modal-footer">
-                          <button
-                            type="button"
-                            className="btn btn-secondary"
-                            data-dismiss="modal"
-                            onClick={() => toogleModal(!showModal)}
-                          >
-                            Close
-                          </button>
-                          <button type="button" className="btn btn-primary">
-                            Save changes
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                }
-              </div>
+              <strong className="mr-1">
+                Schedule<sup className="text-danger">*</sup>
+              </strong>
+              <Modal
+                toogleModal={toogleModal}
+                showModal={showModal}
+               
+              />
             </span>
           </li>
           <li className="list-group-item d-flex px-3 border-0">
             {/* <button className="btn btn-outline-primary accent">
               <i className="material-icons">save</i> Save  as Draft
             </button> */}
-            <button className="btn btn-primary py-3 px-5 mr-auto">
+            <button
+              className="btn btn-primary py-3 px-5 mr-auto"
+              onClick={handleSubmit}
+            >
               <i className="material-icons">file_copy</i> Save
             </button>
           </li>
@@ -139,10 +80,120 @@ const SidebarActions = ({ title }) => {
 
 export default SidebarActions;
 
-const TimeInput = ({value, onChange }) => (
-  <input
-    className='form-control'
-    value={value}
-    onChange={(e) => onChange(e.target.value)}
-  />
-);
+function Modal({ toogleModal, showModal }) {
+  const [schedule, SetSchedule] = React.useState({});
+  const { newEvent,updateSchedule } = React.useContext(EventsContext);
+  const handleSubmit = (schedule) => {
+    updateSchedule(schedule);
+  };
+  React.useEffect(()=>{
+    console.log(newEvent)
+    SetSchedule({...newEvent.schedule})
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+  const handleChange = (e) => {
+    SetSchedule({
+      ...schedule,
+      [e.target.name]: e.target.value,
+    });
+    console.log(schedule);
+  };
+  return (
+    <div className="ml-auto ">
+      <button
+        style={{
+          color: "#007bff",
+          background: "transparent",
+          border: "none",
+          fontSize: "1rem",
+        }}
+        type="button"
+        className="btn btn-primary "
+        data-toggle="modal"
+        data-target="#schedule"
+        onClick={() => toogleModal(!showModal)}
+      >
+        Edit
+      </button>
+      {
+        <div
+          className="modal "
+          style={{
+            display: showModal ? "block" : "none",
+            backgroundColor: "rgba(0,0,0,0.5)",
+            marginTop: "60px",
+          }}
+          id="exampleModal"
+          tabIndex={-1}
+          role="dialog"
+          aria-labelledby="#schedule"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="schedule">
+                  Event Schedule
+                </h5>
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span
+                    aria-hidden="true"
+                    onClick={() => toogleModal(!showModal)}
+                  >
+                    ×
+                  </span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <label htmlFor="venue">Venue</label>
+                <input
+                  className="form-control form-control mb-3"
+                  name="venue"
+                  value={schedule.venue}
+                  placeholder="Event venue"
+                  onChange={handleChange}
+                />
+                <label htmlFor="Date">Date </label>
+                <DatePicker
+                  className="form-control"
+                  locale="en"
+                  name="Date"
+                  dateFormat="dd/mm/yyyy "
+                  timeFormat="HH:mm"
+                  timeIntervals={15}
+                  onChange={(val) => {
+                    SetSchedule({ ...schedule, Date: val });
+                  }}
+                  selected={schedule.Date}
+                  showTimeSelect
+                />
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                  onClick={() => toogleModal(!showModal)}
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleSubmit(schedule)}
+                  className="btn btn-primary"
+                >
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  );
+}

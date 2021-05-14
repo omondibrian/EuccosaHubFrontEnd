@@ -15,7 +15,11 @@ export const getToken = () => {
     return "";
   }
 };
-
+export const saveToLocalstorage = async(event)=>{
+  console.log('event',event)
+  localStorage.setItem('event',JSON.stringify(event));
+  localStorage.setItem('draft',true);
+}
 export const getId = () => {
   try {
     return localStorage.getItem("ID");
@@ -34,7 +38,7 @@ const Application = createSlice({
   name: "application",
   initialState: {
     isMenuOpen: false,
-    isAuthenticated: token && id ? true : false,
+    isAuthenticated: token && id ,
     flushMessage: false,
     userToken: token,
     userID: id,
@@ -76,6 +80,7 @@ export const {
   createFlushMessage,
   Authenticate,
   logOutUser,
+
 } = Application.actions;
 
 export default Application.reducer;
