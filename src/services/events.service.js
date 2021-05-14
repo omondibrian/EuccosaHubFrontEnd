@@ -1,5 +1,5 @@
 export const addNewEvent = async (event) => {
-    const result = await fetch("http://192.168.43.154:3001/events" , {
+    const result = await fetch("http://192.168.43.154:3001/event" , {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
@@ -14,3 +14,7 @@ export const addNewEvent = async (event) => {
       console.log(result.statusText);
     }
   };
+
+  export const saveToLocalstorage = async(event)=>{
+    localStorage.setItem('event',event)
+  }
