@@ -15,10 +15,33 @@ export const getToken = () => {
     return "";
   }
 };
-export const saveToLocalstorage = async(event)=>{
-  console.log('event',event)
-  localStorage.setItem('event',JSON.stringify(event));
-  localStorage.setItem('draft',true);
+export const saveToLocalstorage = async (event) => {
+  console.log("files",event)
+  if (event.pictorials) {
+    console.log("reading files")
+    event.pictorials = readFiles(event.pictorials)
+  }
+  try {
+    localStorage.setItem('event', JSON.stringify(event));
+    localStorage.setItem('draft', true);
+  }
+  catch (e) {
+  }
+}
+export const readFiles = (files) => {
+  let fileArray = []
+  for (let file in files) {
+    let reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => {
+      fileArray.push(reader.result)
+    }
+    return fileArray
+  }
+
+
+
+
 }
 export const getId = () => {
   try {
@@ -30,7 +53,7 @@ export const getId = () => {
 export const clearLocalStorage = () => {
   try {
     localStorage.clear();
-  } catch (e) {}
+  } catch (e) { }
 };
 const id = getId();
 const token = getToken();
@@ -38,12 +61,12 @@ const Application = createSlice({
   name: "application",
   initialState: {
     isMenuOpen: false,
-    isAuthenticated: token && id ,
+    isAuthenticated: token && id,
     flushMessage: false,
     userToken: token,
     userID: id,
-    events:[],
-    loading:false
+    events: [],
+    loading: false
   },
   reducers: {
     toggleMenu: (state, action) => {

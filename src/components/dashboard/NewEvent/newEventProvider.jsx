@@ -29,7 +29,7 @@ export const EventsContextProvider = (props) => {
         },
       });
 
-      setVisibility(event["isVisible"] === "true");
+      setVisibility(event["isVisible"]);
       setDraft(localStorage.getItem("draft") === "true");
     }
   }, []);
