@@ -16,10 +16,9 @@ export const getToken = () => {
   }
 };
 export const saveToLocalstorage = async (event) => {
-  console.log("files",event)
   if (event.pictorials) {
-    console.log("reading files")
-    event.pictorials = readFiles(event.pictorials)
+    let files = await readFiles(event.pictorials)
+    event.pictorials = files
   }
   try {
     localStorage.setItem('event', JSON.stringify(event));
@@ -30,19 +29,20 @@ export const saveToLocalstorage = async (event) => {
 }
 export const readFiles = (files) => {
   let fileArray = []
-  for (let file in files) {
-    let reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onload = () => {
-      fileArray.push(reader.result)
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < files.length; i++) {
+      let reader = new FileReader()
+      reader.readAsDataURL(files[i])
+      reader.onload = () => {
+        fileArray.push(reader.result)
+        if (i === files.length - 1) {
+          resolve(fileArray)
+        }
+      }
     }
-    return fileArray
-  }
-
-
-
-
+  })
 }
+
 export const getId = () => {
   try {
     return localStorage.getItem("ID");
