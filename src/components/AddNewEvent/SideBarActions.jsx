@@ -1,8 +1,8 @@
 import React from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import en from "date-fns/locale/en-GB";
+import Switch from '../AnimatedAction/switch'
 import "react-datepicker/dist/react-datepicker.css";
-import "./style.css";
 registerLocale("en", en);
 
 const SidebarActions = ({ title }) => {
@@ -20,12 +20,7 @@ const SidebarActions = ({ title }) => {
               <i className="material-icons mr-1">flag</i>
               <strong className="mr-1">Status:</strong> Draft
               <div className="ml-auto">
-                <div className="switch">
-                  <label>
-                    <input type="checkbox" />
-                    <span className="lever" />
-                  </label>
-                </div>
+              <Switch />
               </div>
             </span>
             <span className="d-flex mb-2">
@@ -33,12 +28,7 @@ const SidebarActions = ({ title }) => {
               <strong className="mr-1">Visibility:</strong>{" "}
               <strong className="text-success">Public</strong>{" "}
               <div className="ml-auto">
-                <div className="switch">
-                  <label>
-                    <input type="checkbox" />
-                    <span className="lever" />
-                  </label>
-                </div>
+              <Switch />
               </div>
             </span>
             <span className="d-flex mb-2">

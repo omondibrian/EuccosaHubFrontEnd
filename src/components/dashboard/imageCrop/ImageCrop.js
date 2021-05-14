@@ -214,17 +214,7 @@ const ImageCrop = ({ Profile, className }) => {
           alt="profile"
         />
         <div className="card-body mt-4 py-1">
-          {/* <div className="file file--upload">
-            <label htmlFor="input-file">
-              <i className="material-icons">cloud_upload</i>Upload Image
-            </label>
-            <input
-              id="input-file"
-              type="file"
-              accept="image/*"
-              onChange={onSelectFile}
-            />
-          </div> */}
+
           <FileUploader
             id="input-file"
             type="file"
