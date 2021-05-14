@@ -11,6 +11,10 @@ const config = {
       description: "function to call when input value changes",
       type: { required: true },
     },
+    id: {
+      description: "jsx id attribute",
+      type: { required: true },
+    },
   },
 };
 
@@ -22,7 +26,7 @@ fileUploader.args = {
   id: "input-file",
   type: "file",
   accept: "image/*",
-  onChange: (event) => {},
+  onChange: (event) => { },
 };
 fileUploader.parameters = {
   docs: {

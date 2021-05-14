@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile, isLoading } from "../../../state/slices/user";
 import { getApplicationState } from "../../../state/slices/Application"
 import ProfilePageSkeleton from "../../skeletons/dashboardSkeletons/profilePageSkeleton";
-import ErrorText from "../../../error";
+import ErrorText from "../../error";
 
 
 const UserProfile = () => {

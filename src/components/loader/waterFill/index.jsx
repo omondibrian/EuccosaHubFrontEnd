@@ -12,7 +12,7 @@ function WaterFill() {
         interval = setInterval(function () {
             percent++;
             cnt.current.innerHTML = percent;
-            {/*eslint-disable-next-line */}
+            // eslint-disable-next-line 
             water.current.style.transform = `translate(0, ${(100 - percent)}%)`;
             if (percent === 100) {
                 clearInterval(interval);

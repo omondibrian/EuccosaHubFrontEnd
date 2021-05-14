@@ -1,7 +1,7 @@
 import React from "react";
 import FileUploader from "../button/fileUploader";
 const Editor = ({ handleChange, handleSubmit, handleFile }) => (
-  <div small className="card mb-3">
+  <div className="card mb-3">
     <div className="card-body">
       <form className="add-new-event" onSubmit={handleSubmit}>
         <input
@@ -47,6 +47,7 @@ const Editor = ({ handleChange, handleSubmit, handleFile }) => (
             type="file"
             accept="image/*"
             title="Upload Event Cover Photo "
+            multiple
           />
         </div>
       </form>

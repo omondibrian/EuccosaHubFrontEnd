@@ -5,10 +5,10 @@ import "./index.css";
 function FileUploader(props) {
   return (
     <div className="file file--upload">
-      <label htmlFor="input-file">
+      <label htmlFor={props.id}>
         <i className="material-icons">cloud_upload</i> {props.title || `Upload Image`}
       </label>
-      <input {...props} type='file' />
+      <input type='file'  {...props} />
     </div>
   );
 }
