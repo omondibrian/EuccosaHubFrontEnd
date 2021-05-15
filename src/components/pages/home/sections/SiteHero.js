@@ -47,6 +47,7 @@ export default function SiteHeroSection() {
   const query = width < 500 ? "smallDevices" : "largeDevices";
   const clipPathPoints = AnimationData[query];
   const animate = () => {
+    ref.current.style.display = "block"
     ref.current.animate(
       [
         { clipPath: clipPathPoints["startPath"] },
@@ -56,6 +57,7 @@ export default function SiteHeroSection() {
       ],
       {
         duration: 2000,
+        
       }
     );
   };
