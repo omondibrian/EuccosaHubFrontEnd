@@ -1,20 +1,21 @@
 export const addNewEvent = async (event) => {
-    const result = await fetch("http://192.168.43.154:3001/event" , {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(event),
-    });
-    if (result.ok) {
-      const data = await result.json();
-      return data;
-    } else {
-      //TODO:add display incase of server error or any other errors
-      console.log(result.statusText);
+  const formData = new FormData();
+  for (const field in event) {
+    if (Object.hasOwnProperty.call(event, field)) {
+      const value = event[field];
+      if (field !== "pictorials") {
+        formData.append(field, value);
+      } else {
+        for (let i = 0; i < event.pictorials.length; i++) {
+          const pic = event.pictorials[i];
+          console.log(pic)
+          formData.append(i + "", pic, pic.name);
+        }
+      }
     }
-  };
-
-  export const saveToLocalstorage = async(event)=>{
-    localStorage.setItem('event',event)
   }
+
+  let request = new XMLHttpRequest();
+  request.open("POST", "http://192.168.43.154:3001/event");
+  request.send(formData);
+};

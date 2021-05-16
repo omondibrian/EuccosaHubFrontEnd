@@ -2,6 +2,8 @@ import React, { createContext } from "react";
 import {
   addEvent,
   saveToLocalstorage,
+ readFilesFromLocalStorage 
+
 } from "../../../state/slices/Application";
 import { useDispatch } from "react-redux";
 export const EventsContext = createContext();
@@ -15,13 +17,14 @@ export const EventsContextProvider = (props) => {
     //initialise events state with the stored event draft from localstorage if it exists
     const event = JSON.parse(localStorage.getItem("event"));
     if (event) {
+      // const pictorials = readFilesFromLocalStorage(event.pictorials)
       const date = new Date(event["date"]);
       setEvent({
         name: event["name"],
         description: event["description"],
         host: event["host"],
         hostUrl: event["hostUrl"],
-        pictorials: event["pictorial"],
+        pictorials:event.pictorials,
         category: event["category"],
         schedule: {
           venue: event["venue"],

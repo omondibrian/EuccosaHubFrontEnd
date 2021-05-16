@@ -17,31 +17,40 @@ export const getToken = () => {
 };
 export const saveToLocalstorage = async (event) => {
   if (event.pictorials) {
-    let files = await readFiles(event.pictorials)
-    event.pictorials = files
+    let files = await readFiles(event.pictorials);
+    event.pictorials = files;
   }
   try {
-    localStorage.setItem('event', JSON.stringify(event));
-    localStorage.setItem('draft', true);
-  }
-  catch (e) {
-  }
-}
+    localStorage.setItem("event", JSON.stringify(event));
+    localStorage.setItem("draft", true);
+  } catch (e) {}
+};
 export const readFiles = (files) => {
-  let fileArray = []
+  let fileArray = [];
   return new Promise((resolve, reject) => {
     for (let i = 0; i < files.length; i++) {
-      let reader = new FileReader()
-      reader.readAsDataURL(files[i])
+      let reader = new FileReader();
+      reader.readAsDataURL(files[i]);
       reader.onload = () => {
-        fileArray.push(reader.result)
+        fileArray.push(reader.result);
         if (i === files.length - 1) {
-          resolve(fileArray)
+          resolve(fileArray);
         }
-      }
+      };
     }
-  })
-}
+  });
+};
+
+export const readFilesFromLocalStorage = (files) => {
+  let fileList = [];
+  files.forEach((file, index) => {
+    console.log(file);
+    console.log(index);
+    const newFileObj = new Blob(file, index + "");
+    fileList.push(newFileObj);
+  });
+  return fileList;
+};
 
 export const getId = () => {
   try {
@@ -53,7 +62,7 @@ export const getId = () => {
 export const clearLocalStorage = () => {
   try {
     localStorage.clear();
-  } catch (e) { }
+  } catch (e) {}
 };
 const id = getId();
 const token = getToken();
@@ -66,7 +75,7 @@ const Application = createSlice({
     userToken: token,
     userID: id,
     events: [],
-    loading: false
+    loading: false,
   },
   reducers: {
     toggleMenu: (state, action) => {
@@ -93,7 +102,7 @@ const Application = createSlice({
         state.loading = false;
         state.events = state.events.push(payload.events);
       },
-    }
+    },
   },
 });
 export const getApplicationState = (state) => state;
@@ -103,7 +112,6 @@ export const {
   createFlushMessage,
   Authenticate,
   logOutUser,
-
 } = Application.actions;
 
 export default Application.reducer;
