@@ -15,7 +15,7 @@
   pointer-events: none;
   z-index: 11;
 }
-.close {
+.global-menu .close {
   position: absolute;
   left: 20px;
   top: 20px;

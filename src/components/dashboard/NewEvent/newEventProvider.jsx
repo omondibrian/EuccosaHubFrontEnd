@@ -107,4 +107,5 @@ export const EventsContextProvider = (props) => {
       {props.children}
     </EventsContext.Provider>
   );
+
 };

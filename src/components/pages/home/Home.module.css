@@ -26,6 +26,7 @@
   left: 0;
   width: 100vw;
   color: var(--white) !important;
+  display: none;
 }
 
 .site_hero__text {

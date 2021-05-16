@@ -8,16 +8,16 @@ import { Provider } from "react-redux";
 // import WaterFill from "./components/loader/waterFill"
 
 // const App = React.lazy(() => import('./App'))
-
+const root = document.getElementById("root")
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       {/* <Suspense fallback={<WaterFill />}> */}
-        <App />
+      <App />
       {/* </Suspense> */}
     </Provider>
   </React.StrictMode>,
-  document.getElementById("root")
+  root
 );
 
 // If you want to start measuring performance in your app, pass a function
