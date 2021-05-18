@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 import {
   addEvent,
   saveToLocalstorage,
- readFilesFromLocalStorage 
+  readFilesFromLocalStorage
 
 } from "../../../state/slices/Application";
 import { useDispatch } from "react-redux";
@@ -17,14 +17,14 @@ export const EventsContextProvider = (props) => {
     //initialise events state with the stored event draft from localstorage if it exists
     const event = JSON.parse(localStorage.getItem("event"));
     if (event) {
-      // const pictorials = readFilesFromLocalStorage(event.pictorials)
+      // event.pictorials = await readFilesFromLocalStorage(event.pictorials)
       const date = new Date(event["date"]);
       setEvent({
         name: event["name"],
         description: event["description"],
         host: event["host"],
         hostUrl: event["hostUrl"],
-        pictorials:event.pictorials,
+        pictorials: event.pictorials,
         category: event["category"],
         schedule: {
           venue: event["venue"],
@@ -33,7 +33,7 @@ export const EventsContextProvider = (props) => {
       });
 
       setVisibility(event["isVisible"]);
-      setDraft(localStorage.getItem("draft") === "true");
+      setDraft(event['draft']);
     }
   }, []);
   const handleChange = (e) => {
@@ -52,7 +52,6 @@ export const EventsContextProvider = (props) => {
   //handle the selected file to be uploaded to the backend api
   const handleFileSelected = (event) => {
     setEvent({ ...newEvent, pictorials: event.target.files });
-    console.log(newEvent);
   };
   const handleSubmit = () => {
     const event = {
@@ -72,7 +71,6 @@ export const EventsContextProvider = (props) => {
       localStorage.removeItem("draft");
     } else {
       saveToLocalstorage(event);
-      console.log("saving event to local storage");
     }
     console.log({ ...newEvent, draft, isVisible });
   };

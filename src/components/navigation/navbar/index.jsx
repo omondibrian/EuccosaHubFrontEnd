@@ -29,34 +29,36 @@ const navScroll = () => {
 
 
 function Navbar(props) {
-    let gNavItems, elmOverlay, overlay;
+
+    let elementsRef = useRef({ gNavItems: null, elmOverlay: null, overlay: null })
     const elmHamburger = useRef()
-    const openSideNav = () => {
-        if (overlay.isAnimating) {
+    const openNav = () => {
+        // open navigation menu on mobile devices
+        if (elementsRef.current.overlay.isAnimating) {
             return false;
         }
-        overlay.toggle();
-        overlay.open()
+        elementsRef.current.overlay.toggle();
+        elementsRef.current.overlay.open()
         elmHamburger.current.classList.add('is-opened-navi');
-        for (let i = 0; i < gNavItems.length; i++) {
-            gNavItems[i].classList.add('is-opened');
+        for (let i = 0; i < elementsRef.current.gNavItems.length; i++) {
+            elementsRef.current.gNavItems[i].classList.add('is-opened');
         }
 
     }
-    const closeSideNav = () => {
-        overlay.toggle()
+    const closeNav = () => {
+        //close navigation menu
+        elementsRef.current.overlay.toggle()
         elmHamburger.current.classList.remove('is-opened-navi');
-        for (let i = 0; i < gNavItems.length; i++) {
-            gNavItems[i].classList.remove('is-opened');
+        for (let i = 0; i < elementsRef.current.gNavItems.length; i++) {
+            elementsRef.current.gNavItems[i].classList.remove('is-opened');
         }
-        overlay.close()
+        elementsRef.current.overlay.close()
     }
 
     useEffect(() => {
-        gNavItems = document.querySelectorAll('.global-menu__item');
-        elmOverlay = document.querySelector('.shape-overlays');
-        // eslint-disable-next-line
-        overlay = new ShapeOverlays(elmOverlay);
+        elementsRef.current.gNavItems = document.querySelectorAll('.global-menu__item');
+        elementsRef.current.elmOverlay = document.querySelector('.shape-overlays');
+        elementsRef.current.overlay = new ShapeOverlays(elementsRef.current.elmOverlay);
         requestAnimationFrame(navScroll)
         smoothScroll()
     }, [])
@@ -89,7 +91,7 @@ function Navbar(props) {
                     </li>
                 </ul>
                 <div className={style.nav__toggler}>
-                    <button onClick={() => openSideNav(overlay)} ref={elmHamburger}>
+                    <button onClick={openNav} ref={elmHamburger}>
                         <svg width="50" height="30" viewBox="0 0 73 30" fill="currentColor" >
                             <rect width="50" height="5" rx="3" />
                             <rect width="50" height="5" rx="3" y="12.5" />
@@ -98,7 +100,8 @@ function Navbar(props) {
                     </button>
                 </div>
             </div>
-            <Menu closeNav={closeSideNav} isUserLoggedIn={user} />
+            {/* navifgation menu on small devices */}
+            <Menu closeNav={closeNav} isUserLoggedIn={user} />
         </>
     )
 }

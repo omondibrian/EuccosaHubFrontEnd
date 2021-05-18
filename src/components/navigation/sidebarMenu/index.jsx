@@ -17,7 +17,7 @@ function Menu({ closeNav, isUserLoggedIn }) {
                     <a href="#contact" className="global-menu__item global-menu__item">Contact</a>
                     <Link to="/shop" className="global-menu__item global-menu__item">Shop</Link>
                     {isUserLoggedIn ? <>
-                        <Link to="/dashboard/user-profile" className="global-menu__item global-menu__item">Dashoard</Link>
+                        <Link to="/dashboard/user-profile" className="global-menu__item global-menu__item">Dashboard</Link>
                         <Link to="/logout" className="global-menu__item global-menu__item">Logout</Link>
                     </> :
                         <Link to="/login" className="global-menu__item global-menu__item">Login</Link>
