@@ -43,6 +43,11 @@ const SiteHero = (props) => {
 };
 
 export default function SiteHeroSection() {
+  /* 
+  site hero wave animation is done by overlapping 
+  indentical component but with different styling.
+  css clippath property is used clip some part of front component making it look like a wave
+  */
   const width = window.innerWidth;
   const query = width < 500 ? "smallDevices" : "largeDevices";
   const clipPathPoints = AnimationData[query];
@@ -57,7 +62,6 @@ export default function SiteHeroSection() {
       ],
       {
         duration: 2000,
-        
       }
     );
   };
@@ -68,12 +72,15 @@ export default function SiteHeroSection() {
   const ref = useRef();
   return (
     <section className={style.site_hero}>
-      <SiteHero id="A_S" />
-      <div className={style.site_hero__animate} ref={ref}>
+      {/* back layer of site hero */}
+      <SiteHero id="back_layer" />
+      <div className={style.front_layer} ref={ref}>
+        {/* back layer of site hero */}
         <BackGround>
-          <SiteHero id="site_hero_animate" />
+          <SiteHero />
         </BackGround>
       </div>
+      {/* provides animation when opening/closing navigation menu */}
       <svg className="shape-overlays" viewBox="0 0 100 100" preserveAspectRatio="none">
         <path className="shape-overlays__path" />
         <path className="shape-overlays__path" />

@@ -22,6 +22,6 @@
 .B {
   fill: #0d3885;
 }
-#A_S svg {
-  filter: grayscale();
+#back_layer svg {
+  filter: grayscale(70%);
 }

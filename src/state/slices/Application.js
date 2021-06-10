@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { addNewEvent } from "../../services/events.service";
+
 export const addEvent = createAsyncThunk(
   "application/addEvent",
   async (event) => {
@@ -20,10 +21,10 @@ export const saveToLocalstorage = async (event) => {
     let files = await readFiles(event.pictorials);
     event.pictorials = files;
   }
+  event.draft = true
   try {
     localStorage.setItem("event", JSON.stringify(event));
-    localStorage.setItem("draft", true);
-  } catch (e) {}
+  } catch (e) { }
 };
 export const readFiles = (files) => {
   let fileArray = [];
@@ -34,6 +35,7 @@ export const readFiles = (files) => {
       reader.onload = () => {
         fileArray.push(reader.result);
         if (i === files.length - 1) {
+          //resolve the promise after reading the last image
           resolve(fileArray);
         }
       };
@@ -43,13 +45,13 @@ export const readFiles = (files) => {
 
 export const readFilesFromLocalStorage = (files) => {
   let fileList = [];
-  files.forEach((file, index) => {
-    console.log(file);
-    console.log(index);
-    const newFileObj = new Blob(file, index + "");
-    fileList.push(newFileObj);
+  //fetch all files from local storage
+  files.forEach((file) => {
+    fileList.push(
+      fetch(file).then(res => res.blob())
+    )
   });
-  return fileList;
+  return Promise.all(fileList)
 };
 
 export const getId = () => {
@@ -62,7 +64,7 @@ export const getId = () => {
 export const clearLocalStorage = () => {
   try {
     localStorage.clear();
-  } catch (e) {}
+  } catch (e) { }
 };
 const id = getId();
 const token = getToken();
