@@ -1,0 +1,1 @@
+export const IP_ADDRESS = 'http://192.168.43.154:3001'
