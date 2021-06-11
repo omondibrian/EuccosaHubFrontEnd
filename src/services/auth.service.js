@@ -1,10 +1,8 @@
 import createDefaultProfilePic from "../components/pages/auth/CreateProfilePic";
-import { storeToLocalstorage } from "../state/slices/Application";
-import request from "../utils/xmlRequest";
-
+import { IP_ADDRESS } from "../utils/constants";
 
 export const login = async (credentials) => {
-  const result = await fetch("http://192.168.43.154:3001/auth/login", {
+  const result = await fetch(IP_ADDRESS + "/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -41,7 +39,7 @@ export const login = async (credentials) => {
 };
 
 export const FetchUser = async (id) => {
-  const result = await fetch("http://192.168.43.154:3001/auth/profile/" + id, {
+  const result = await fetch(IP_ADDRESS+ "/auth/profile/" + id, {
     method: "GET",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -57,7 +55,7 @@ export const FetchUser = async (id) => {
 };
 
 export const FetchUsers = async () => {
-  const result = await fetch("http://192.168.43.154:3001/auth/users", {
+  const result = await fetch(IP_ADDRESS+"/auth/users", {
     method: "GET",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -85,7 +83,24 @@ export const registerNewUser = async (user) => {
     }
   }
   formData.append("profilePic", profile, profile.name);
-  return request("http://192.168.43.154:3001/auth/register", "POST", formData)
+
+  let request = new XMLHttpRequest();
+  let result;
+  request.open("POST", IP_ADDRESS+"/auth/register");
+  request.send(formData);
+
+  return new Promise((resolve, reject) => {
+    request.onload = () => {
+      result = request.response;
+      resolve(result);
+    };
+    request.onerror = () => {
+      resolve({ message: "An error occured please check your internet connection", status: request.status });
+    };
+    request.ontimeout = () => {
+      resolve({ message: "An error occured please check your internet connection", status: request.status });
+    };
+  });
 };
 
 /**
@@ -95,7 +110,7 @@ export const registerNewUser = async (user) => {
  */
 
 export const updateProfile = async (updates) => {
-  const result = await fetch("http://192.168.43.154:3001/auth/profile", {
+  const result = await fetch(IP_ADDRESS+"/auth/profile", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json;charset=utf-8",

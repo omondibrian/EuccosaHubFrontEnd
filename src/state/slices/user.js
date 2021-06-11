@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { FetchUser } from "../../services/auth.service";
 import countries from "../../data/countries";
 import AvatorImg from "../../assets/images/avatar.svg";
+import { IP_ADDRESS } from "../../utils/constants";
 
 const State = {
   countries,
@@ -54,7 +55,7 @@ const userSlice = createSlice({
         state.lastName = payload.lastName;
         state.email = payload.email;
         state.avatar =
-          "http://192.168.43.154:3001/auth/uploads/" + payload.profilePic;
+          IP_ADDRESS+"/auth/uploads/" + payload.profilePic;
         state.phoneNumber = payload.phoneNumber;
         state.loading = false;
         state.startDate = new Date(payload.startDate);

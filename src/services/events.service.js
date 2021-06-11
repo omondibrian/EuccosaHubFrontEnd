@@ -1,3 +1,5 @@
+import { IP_ADDRESS } from "../utils/constants";
+
 export const addNewEvent = async (event) => {
   const formData = new FormData();
   for (const field in event) {
@@ -16,6 +18,6 @@ export const addNewEvent = async (event) => {
   }
 
   let request = new XMLHttpRequest();
-  request.open("POST", "http://192.168.43.154:3001/event");
+  request.open("POST", IP_ADDRESS + "/event");
   request.send(formData);
 };
