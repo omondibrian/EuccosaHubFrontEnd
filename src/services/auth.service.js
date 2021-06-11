@@ -33,7 +33,7 @@ export const login = async (credentials) => {
       };
     }
   }
-  console.log(data);
+
   return {
     message: data.message,
     status: result.status,
