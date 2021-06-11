@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { addNewEvent } from "../../services/events.service";
 
+
+
 export const addEvent = createAsyncThunk(
   "application/addEvent",
   async (event) => {

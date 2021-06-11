@@ -6,7 +6,6 @@ export const RegisterNewUser = createAsyncThunk(
   async (state) => {
     const startDate = state.startDate.toString();
     const completionDate = state.completionDate.toString();
-    // console.log(state)
     const res = await registerNewUser({
       ...state,
       startDate,

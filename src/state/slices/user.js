@@ -61,6 +61,7 @@ const userSlice = createSlice({
         state.startDate = new Date(payload.startDate);
         state.completionDate = new Date(payload.completionDate);
         state.Address = payload.Address;
+        state.metaData=[]
         state.metaData.push({
           metaTitle: "Email",
           metaValue:state.email,

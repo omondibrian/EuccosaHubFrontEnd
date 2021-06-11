@@ -1,3 +1,4 @@
+import { randomString } from "../components/pages/auth/CreateProfilePic";
 import { IP_ADDRESS } from "../utils/constants";
 
 export const addNewEvent = async (event) => {
@@ -10,8 +11,7 @@ export const addNewEvent = async (event) => {
       } else {
         for (let i = 0; i < event.pictorials.length; i++) {
           const pic = event.pictorials[i];
-          console.log(pic)
-          formData.append(i + "", pic, pic.name);
+          formData.append(i + "", pic, pic.name || event.name + randomString());
         }
       }
     }

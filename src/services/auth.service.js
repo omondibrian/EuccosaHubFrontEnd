@@ -89,10 +89,9 @@ export const registerNewUser = async (user) => {
   let result;
   request.open("POST", IP_ADDRESS+"/auth/register");
   request.send(formData);
-
   return new Promise((resolve, reject) => {
     request.onload = () => {
-      result = request.response;
+      result =JSON.parse(request.response);
       resolve(result);
     };
     request.onerror = () => {

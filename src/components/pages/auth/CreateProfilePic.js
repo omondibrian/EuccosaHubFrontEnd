@@ -55,7 +55,7 @@ const ImageFromSvg = (image, fileName) => {
  * generates a random string of length 5
  * @returns {string}
  */
-const randomString = () => {
+export const randomString = () => {
   const Int = () => {
     return Math.floor(Math.random() * 60);
   };

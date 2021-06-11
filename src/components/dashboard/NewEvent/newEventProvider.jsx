@@ -14,25 +14,34 @@ export const EventsContextProvider = (props) => {
   const [newEvent, setEvent] = React.useState({});
   const [draft, setDraft] = React.useState(false);
   const [isVisible, setVisibility] = React.useState(false);
+
   React.useEffect(() => {
     //initialise events state with the stored event draft from localstorage if it exists
     const event = JSON.parse(getItemFromLocalStorage("event"));
     if (event) {
-      // event.pictorials = await fileBlobFromDataURL(event.pictorials)
-      const date = new Date(event["date"]);
-      setEvent({
-        name: event["name"],
-        description: event["description"],
-        host: event["host"],
-        hostUrl: event["hostUrl"],
-        pictorials: event.pictorials,
-        category: event["category"],
-        schedule: {
-          venue: event["venue"],
-          Date: date,
-        },
-      });
-
+      /**
+       * read images 
+       */
+      async function loadEventFromLocalStorage() {
+        let files = []
+        if (event.pictorials) {
+          files = await fileBlobFromDataURL(event.pictorials)
+        }
+        const date = new Date(event["date"]);
+        setEvent({
+          name: event["name"],
+          description: event["description"],
+          host: event["host"],
+          hostUrl: event["hostUrl"],
+          pictorials: files,
+          category: event["category"],
+          schedule: {
+            venue: event["venue"],
+            Date: date,
+          },
+        });
+      }
+      loadEventFromLocalStorage()
       setVisibility(event["isVisible"]);
       setDraft(event['draft']);
     }
@@ -68,12 +77,12 @@ export const EventsContextProvider = (props) => {
     };
     if (!draft) {
       dispatch(addEvent(event));
-      localStorage.removeItem("event");
-      localStorage.removeItem("draft");
+      //  localStorage.removeItem("event");
+   
     } else {
       saveToLocalstorage(event);
     }
-    console.log({ ...newEvent, draft, isVisible });
+    
   };
   const updateSchedule = (schedule) => {
     setEvent({
