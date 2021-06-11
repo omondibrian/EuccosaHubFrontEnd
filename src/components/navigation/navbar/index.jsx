@@ -7,7 +7,7 @@ import { Logo } from "../../vectors/Vectors"
 import Menu from '../sidebarMenu'
 import ShapeOverlays from "../../animations/shapeOverlays"
 import classNames from 'classnames'
-import { getId } from '../../../state/slices/Application'
+import { getItemFromLocalStorage } from '../../../state/slices/Application'
 
 
 let windowHeight = window.innerHeight
@@ -63,7 +63,7 @@ function Navbar(props) {
         smoothScroll()
     }, [])
     const navbarClasses = classNames(style.navbar, props.className)
-    const user = getId()
+    const user = getItemFromLocalStorage("ID")
     return (
         <>
             <div className={navbarClasses} id="navbar">

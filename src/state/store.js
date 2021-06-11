@@ -10,7 +10,6 @@ const store = configureStore({
     registration
   },
   devTools:true,
-
 });
 
 export default store;

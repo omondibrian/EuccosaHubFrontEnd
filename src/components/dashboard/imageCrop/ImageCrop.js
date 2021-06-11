@@ -11,6 +11,11 @@ import {
 import classNames from "classnames";
 import FileUploader from "../../button/fileUploader";
 
+/**
+ * This component receives image src and jsx className attribute  as props
+ * @param {string} Profile - image src
+ * @param {string} className - jsx className attribute
+ */
 const ImageCrop = ({ Profile, className }) => {
   let fileUrl, file;
   const dispatch = useDispatch();
@@ -32,6 +37,10 @@ const ImageCrop = ({ Profile, className }) => {
     fileName: null,
     imageRef: null,
   });
+  /**
+   * reads uploaded image from file input
+   * @param {Event} e - jsx event
+   */
   const onSelectFile = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       const reader = new FileReader();
@@ -48,9 +57,10 @@ const ImageCrop = ({ Profile, className }) => {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
-  const onCropChange = (crop, percentCrop) => {
-    // You could also use percentCrop:
-    // setState({ crop: percentCrop });
+  /**
+   * sets current selected region in the image
+   */
+  const onCropChange = (crop) => {
     if (crop.height < 200) {
       crop.height = 200;
       crop.width = 200;

@@ -1,3 +1,12 @@
+
+/**
+ * Creates a jpg image with user first name and last name  initials 
+ * @param {string} firstName - user first name 
+ * @param {string} lastName - user last name
+ * @example
+ * createDefaultProfilePic("Joe","Doe")
+ * @returns {Promise<Blob>} - resolves with image blob 
+ */
 const createDefaultProfilePic = async (firstName, lastName) => {
   /*
     random string is appended to filename to make it totaly unique
@@ -21,9 +30,15 @@ const createDefaultProfilePic = async (firstName, lastName) => {
 };
 export default createDefaultProfilePic;
 
+
+/**
+ * converts svg element to jpeg image
+ * @param {Image} image - js Image object
+ * @param {string} fileName - name to be attached to the image
+ * @returns {Promise<Blob>} - resolves with Blob object
+ */
 const ImageFromSvg = (image, fileName) => {
   /*creates a new jpeg image from image object provided */
-  let fileUrl;
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
   canvas.setAttribute("width", "200px");
@@ -32,14 +47,15 @@ const ImageFromSvg = (image, fileName) => {
   return new Promise((resolve, reject) => {
     canvas.toBlob((blob) => {
       blob.name = fileName;
-      window.URL.revokeObjectURL(fileUrl);
-      fileUrl = window.URL.createObjectURL(blob);
       resolve(blob);
     }, "image/jpeg");
   });
 };
-
-const randomString = () => {
+/**
+ * generates a random string of length 5
+ * @returns {string}
+ */
+export const randomString = () => {
   const Int = () => {
     return Math.floor(Math.random() * 60);
   };
@@ -47,11 +63,12 @@ const randomString = () => {
   return `${c[Int()]}${c[Int()]}${c[Int()]}${c[Int()]}${c[Int()]}`;
 };
 
+/**
+ * creates svg element with name iniials
+ * @param {string} name - name initials to be used to generate the svg 
+ * @returns {SVGAElement}
+ */
 function createSVGElement(name) {
-  /*
-   create an svg with name initials as text
-  and a random  color as background 
-  */
   const colors = ["#ff006e", "#006dd7", "#7400b8", "#219ebc"];
   const random = Math.floor(Math.random() * 4);
   let svgElement = document.createElementNS(

@@ -1,0 +1,44 @@
+/* // $bright-lilac: rgba(195, 148, 255, 1);
+// $turquoise: rgba(29, 222, 203, 1);
+// $eerie-black: rgba(33, 33, 33, 1);
+// $raisin-black: rgba(37, 31, 45, 1);
+// $rich-black-fogra-39: rgba(18, 18, 18, 1);
+// $jet: rgba(56, 56, 56, 1);
+// $silver-chalice: rgba(171, 171, 171, 1);
+// $lavender-floral: rgba(187, 134, 252, 1);
+// $eerie-black-2: rgba(33, 33, 33, 1);
+
+
+// $gainsboro: rgba(218, 217, 217, 1);
+// $space-cadet: rgba(31, 38, 60, 1);
+// $xiketic: rgba(21, 25, 42, 1);
+// $jade: rgba(17, 168, 113, 1);
+// $brink-pink: rgba(242, 96, 125, 1); */
+.dark-1 {
+    --primary: rgba(242, 96, 125, 1);
+    --list-group:#15192A;
+    --secondary: "";
+    --text-color: "";
+    --bg-color: #1F263C;
+    --card-bg: #15192A;
+    --icon-color: "";
+    --form-input-outline: "";
+    --box-shadow: "";
+    --sidebar: "";
+    --navbar: "";
+    --links: "";
+
+}
+
+/* // .dark-2{
+
+// }
+// .dark-3{
+
+// }
+// .light-default{
+
+// }
+// .light-1{
+
+// } */

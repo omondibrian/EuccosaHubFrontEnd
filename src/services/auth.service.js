@@ -1,4 +1,5 @@
 import createDefaultProfilePic from "../components/pages/auth/CreateProfilePic";
+import { storeToLocalstorage } from "../state/slices/Application";
 import { IP_ADDRESS } from "../utils/constants";
 
 export const login = async (credentials) => {
@@ -14,10 +15,8 @@ export const login = async (credentials) => {
   const data = await result.json();
   if (result.ok) {
     if (data._id) {
-      try {
-        localStorage.setItem("ID", data._id);
-        localStorage.setItem("TOKEN", data.token);
-      } catch (e) { }
+      storeToLocalstorage("ID", data._id)
+      storeToLocalstorage("TOKEN", data.token)
       return {
         message: data.message,
         status: 200,
@@ -33,7 +32,6 @@ export const login = async (credentials) => {
       };
     }
   }
-
   return {
     message: data.message,
     status: result.status,
@@ -91,10 +89,9 @@ export const registerNewUser = async (user) => {
   let result;
   request.open("POST", IP_ADDRESS+"/auth/register");
   request.send(formData);
-
   return new Promise((resolve, reject) => {
     request.onload = () => {
-      result = request.response;
+      result =JSON.parse(request.response);
       resolve(result);
     };
     request.onerror = () => {
@@ -105,6 +102,12 @@ export const registerNewUser = async (user) => {
     };
   });
 };
+
+/**
+ * 
+ * @param {Object.<string,any>} updates - user  profile fields to update 
+ * @returns  
+ */
 
 export const updateProfile = async (updates) => {
   const result = await fetch(IP_ADDRESS+"/auth/profile", {

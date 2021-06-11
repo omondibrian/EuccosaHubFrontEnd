@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
-import { getApplicationState } from "../../state/slices/Application"
-import Alert from "../dashboard/alert"
+import { getApplicationState } from "../../../state/slices/Application"
+import Alert from "../alert"
 import {useSelector} from "react-redux"
 
 const PageTitle = ({ title, subtitle, className, ...attrs }) => {

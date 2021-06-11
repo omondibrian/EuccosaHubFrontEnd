@@ -17,7 +17,8 @@ function RegistrationComplete() {
         e.preventDefault()
         dispatch(RegisterNewUser(state));
     }
-
+    
+    
     return (
         <CSSTransition classNames="fade" in={state.stage === 4} unmountOnExit timeout={200}>
             <div className={style.reg_complete}>

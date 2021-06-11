@@ -1,5 +1,5 @@
 import React from 'react'
-import PageTitle from '../../pageTitle'
+import PageTitle from '../../dashboard/pageTitle'
 import UserAccountDetailsSkeleton from './userAccoutDetails'
 import UserProfileSkeleton from './UserProfileSkeleton'
 

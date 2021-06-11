@@ -6,10 +6,10 @@ import en from "date-fns/locale/en-GB";
 import "react-datepicker/dist/react-datepicker.css";
 import { formValidationSchema } from "./validationSchema";
 import { useDispatch, useSelector } from "react-redux";
-import { Ellipsis } from "../loader"
-import { updateProfile } from "../../services/auth.service"
-import { getState } from "../../state/slices/user";
-import { createFlushMessage, getApplicationState } from "../../state/slices/Application";
+import { Ellipsis } from "../../loader"
+import { updateProfile } from "../../../services/auth.service"
+import { getState } from "../../../state/slices/user";
+import { createFlushMessage, getApplicationState } from "../../../state/slices/Application";
 registerLocale("en", en);
 
 const UserAccountDetails = () => {

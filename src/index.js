@@ -5,16 +5,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./state/store";
 import { Provider } from "react-redux";
-// import WaterFill from "./components/loader/waterFill"
 
-// const App = React.lazy(() => import('./App'))
 const root = document.getElementById("root")
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <Suspense fallback={<WaterFill />}> */}
       <App />
-      {/* </Suspense> */}
     </Provider>
   </React.StrictMode>,
   root

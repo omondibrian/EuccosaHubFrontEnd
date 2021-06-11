@@ -1,13 +1,13 @@
 import React from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import en from "date-fns/locale/en-GB";
-import Switch from "../AnimatedAction/switch";
+import Switch from "../../AnimatedAction/switch";
 import "react-datepicker/dist/react-datepicker.css";
-import { EventsContext } from "../dashboard/NewEvent/newEventProvider";
+import { EventsContext } from "../NewEvent/newEventProvider";
 registerLocale("en", en);
 
 const SidebarActions = ({ title }) => {
-  const [showModal, toogleModal] = React.useState(false);
+  const [showModal, toggleModal] = React.useState(false);
   const {
 
     toggleDraft,
@@ -55,7 +55,7 @@ const SidebarActions = ({ title }) => {
                 Schedule<sup className="text-danger">*</sup>
               </strong>
               <Modal
-                toogleModal={toogleModal}
+                toggleModal={toggleModal}
                 showModal={showModal}
                
               />
@@ -80,7 +80,7 @@ const SidebarActions = ({ title }) => {
 
 export default SidebarActions;
 
-function Modal({ toogleModal, showModal }) {
+function Modal({ toggleModal, showModal }) {
   const [schedule, SetSchedule] = React.useState({});
   const { newEvent,updateSchedule } = React.useContext(EventsContext);
   const handleSubmit = (schedule) => {
@@ -111,7 +111,7 @@ function Modal({ toogleModal, showModal }) {
         className="btn btn-primary "
         data-toggle="modal"
         data-target="#schedule"
-        onClick={() => toogleModal(!showModal)}
+        onClick={() => toggleModal(!showModal)}
       >
         Edit
       </button>
@@ -143,7 +143,7 @@ function Modal({ toogleModal, showModal }) {
                 >
                   <span
                     aria-hidden="true"
-                    onClick={() => toogleModal(!showModal)}
+                    onClick={() => toggleModal(!showModal)}
                   >
                     ×
                   </span>
@@ -178,7 +178,7 @@ function Modal({ toogleModal, showModal }) {
                   type="button"
                   className="btn btn-secondary"
                   data-dismiss="modal"
-                  onClick={() => toogleModal(!showModal)}
+                  onClick={() => toggleModal(!showModal)}
                 >
                   Close
                 </button>
