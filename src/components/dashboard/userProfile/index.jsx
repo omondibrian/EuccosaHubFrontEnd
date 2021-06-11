@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import PageTitle from "../../pageTitle";
-import UserDetails from "../../userDetails";
-import UserAccountDetails from "../../userAccountDetails";
+import PageTitle from "../pageTitle";
+import UserDetails from "../userDetails";
+import UserAccountDetails from "../userAccountDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile, isLoading } from "../../../state/slices/user";
 import { getApplicationState } from "../../../state/slices/Application"

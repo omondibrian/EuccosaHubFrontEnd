@@ -1,9 +1,9 @@
 import React from "react";
-import PageTitle from "../../pageTitle";
-import Editor from "../../AddNewEvent/Editor";
+import PageTitle from "../pageTitle";
+import Editor from "../AddNewEvent/Editor";
 import { EventsContextProvider } from "./newEventProvider";
-import SidebarActions from "../../AddNewEvent/SideBarActions";
-import SidebarCategories from "../../AddNewEvent/SideBarCategory";
+import SidebarActions from "../AddNewEvent/SideBarActions";
+import SidebarCategories from "../AddNewEvent/SideBarCategory";
 
 const AddNewEvent = () => {
   return (

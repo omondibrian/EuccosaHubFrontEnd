@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { useSelector } from "react-redux";
-import { getState } from "../../state/slices/user";
-const ImageCrop = React.lazy(() => import("../dashboard/imageCrop/ImageCrop"))
+import { getState } from "../../../state/slices/user";
+const ImageCrop = React.lazy(() => import("../imageCrop/ImageCrop"))
 
 const UserDetails = () => {
   const { user } = useSelector(getState);

@@ -45,8 +45,8 @@ const SiteHero = (props) => {
 export default function SiteHeroSection() {
   /* 
   site hero wave animation is done by overlapping 
-  indentical component but with different styling.
-  css clippath property is used clip some part of front component making it look like a wave
+  indentical component but with different styling and
+  css clippath property to create  wave animation
   */
   const width = window.innerWidth;
   const query = width < 500 ? "smallDevices" : "largeDevices";
@@ -73,9 +73,9 @@ export default function SiteHeroSection() {
   return (
     <section className={style.site_hero}>
       {/* back layer of site hero */}
-      <SiteHero id="back_layer" />
+      <SiteHero />
       <div className={style.front_layer} ref={ref}>
-        {/* back layer of site hero */}
+        {/* front layer of site hero */}
         <BackGround>
           <SiteHero />
         </BackGround>

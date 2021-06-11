@@ -1,4 +1,7 @@
 import createDefaultProfilePic from "../components/pages/auth/CreateProfilePic";
+import { storeToLocalstorage } from "../state/slices/Application";
+import request from "../utils/xmlRequest";
+
 
 export const login = async (credentials) => {
   const result = await fetch("http://192.168.43.154:3001/auth/login", {
@@ -13,10 +16,8 @@ export const login = async (credentials) => {
   const data = await result.json();
   if (result.ok) {
     if (data._id) {
-      try {
-        localStorage.setItem("ID", data._id);
-        localStorage.setItem("TOKEN", data.token);
-      } catch (e) { }
+      storeToLocalstorage("ID", data._id)
+      storeToLocalstorage("TOKEN", data.token)
       return {
         message: data.message,
         status: 200,
@@ -32,7 +33,6 @@ export const login = async (credentials) => {
       };
     }
   }
-  console.log(data);
   return {
     message: data.message,
     status: result.status,
@@ -85,25 +85,14 @@ export const registerNewUser = async (user) => {
     }
   }
   formData.append("profilePic", profile, profile.name);
-
-  let request = new XMLHttpRequest();
-  let result;
-  request.open("POST", "http://192.168.43.154:3001/auth/register");
-  request.send(formData);
-
-  return new Promise((resolve, reject) => {
-    request.onload = () => {
-      result = request.response;
-      resolve(result);
-    };
-    request.onerror = () => {
-      resolve({ message: "An error occured please check your internet connection", status: request.status });
-    };
-    request.ontimeout = () => {
-      resolve({ message: "An error occured please check your internet connection", status: request.status });
-    };
-  });
+  return request("http://192.168.43.154:3001/auth/register", "POST", formData)
 };
+
+/**
+ * 
+ * @param {Object.<string,any>} updates - user  profile fields to update 
+ * @returns  
+ */
 
 export const updateProfile = async (updates) => {
   const result = await fetch("http://192.168.43.154:3001/auth/profile", {

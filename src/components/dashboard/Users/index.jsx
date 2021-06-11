@@ -1,6 +1,6 @@
 import React from "react";
 import {FetchUsers} from '../../../services/auth.service'
-import PageTitle from "../../pageTitle";
+import PageTitle from "../pageTitle";
 
 const UsersData = () => {
   const [users,setUsers] = React.useState([]);

@@ -1,6 +1,6 @@
 import React from "react";
-import FileUploader from "../button/fileUploader";
-import { EventsContext } from "../dashboard/NewEvent/newEventProvider";
+import FileUploader from "../../button/fileUploader";
+import { EventsContext } from "../NewEvent/newEventProvider";
 const Editor = () => {
   const { newEvent, handleChange, handleSubmit, handleFileSelected } = React.useContext(
     EventsContext

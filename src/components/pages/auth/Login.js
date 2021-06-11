@@ -8,12 +8,16 @@ import { login } from "../../../services/auth.service";
 import { useDispatch } from "react-redux";
 import {
   createFlushMessage,
-  loginUser,
   Authenticate,
 } from "../../../state/slices/Application";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+/**
+ * user login page
+ * @param {Object<string,any>} props - react-router dom prop
+ * @returns {JSX.Element}
+ */
 function Login(props) {
   const [state, setState] = useState({
     email: "",
@@ -26,21 +30,23 @@ function Login(props) {
   };
 
   const query = new URLSearchParams(useLocation().search);
+  /**
+   * submit user login details to api
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await login({
       email: state.email.toLowerCase(),
       password: state.password,
     });
-    console.log(result);
-    if (result.status === 200 && result.isAuthenticated === true) {
-      dispatch(loginUser());
+    if (result.status === 200 && result.isAuthenticated) {
       dispatch(
         createFlushMessage({
           className: "alert-success",
           message: `Welcome  ${state.email}`,
         })
       );
+      /**set  isAuthenticated to true, update user Id and token in application state */
       dispatch(Authenticate({ ID: result.ID, TOKEN: result.TOKEN }));
       const next = query.get("next") || "/";
       props.history.push(next);

@@ -1,14 +1,17 @@
+.B {
+  fill: #0d3885;
+}
 .C {
   fill: #0050f0;
 }
 .D {
-  fill: #5a94fd;
+  fill: #fff;
 }
 .E {
-  fill: #1869f8;
+  fill: #5a94fd;
 }
 .F {
-  fill: #fff;
+  fill: #1869f8;
 }
 .G {
   fill: #b2ccfc;
@@ -19,9 +22,7 @@
 .I {
   fill: #f8bea1;
 }
-.B {
-  fill: #0d3885;
-}
-#back_layer svg {
-  filter: grayscale(70%);
+.J {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
 }

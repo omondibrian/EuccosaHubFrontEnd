@@ -2,7 +2,7 @@ import React from "react";
 import SmallStats from "./charts/SmallStats";
 import PieChart from "./charts/Piechart";
 import AcountHistory from "./charts/AccountBalance";
-import PageTitle from "../../pageTitle";
+import PageTitle from "../pageTitle";
 import Draft from "./Draft";
 import Discussions from "./Disscussion";
 import EventPlan from "./EventPlan";

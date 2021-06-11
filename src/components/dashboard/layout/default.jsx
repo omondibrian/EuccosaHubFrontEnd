@@ -1,6 +1,7 @@
 import React from "react";
 import MainNavbar from "../navBar";
 import MainSidebar from "../SideBar";
+import "../../../assets/styles/theme.css"
 
 const navProps = {
   stickyTop: true,
@@ -10,7 +11,7 @@ const sidebarProps = {
   hideLogoText: false,
 };
 const DefaultLayout = ({ children, noNavbar }) => (
-  <div className="container-fluid">
+  <div className="container-fluid dark-1">
     <div className="row">
       <MainSidebar {...sidebarProps} />
       <div

@@ -30,6 +30,7 @@ const Register = () => {
           </div>
           {/* multiple step  form  */}
           <div className={styles.multistep_form}>
+            {/* react-transition-group is used to render the current registration stage */}
             <UserBio />
             <AdditionalInfo />
             <AddressInfo />

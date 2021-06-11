@@ -1,4 +1,4 @@
-import StoryBookReduxWrapper from "../storyBookReduxWrapper";
+import StoryBookReduxWrapper from "../../storyBookReduxWrapper";
 import UserAccountDetails from "./index";
 
 const config = {

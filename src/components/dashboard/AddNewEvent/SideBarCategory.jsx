@@ -1,5 +1,5 @@
 import React from "react";
-import { EventsContext } from "../dashboard/NewEvent/newEventProvider";
+import { EventsContext } from "../NewEvent/newEventProvider";
 
 const SidebarCategories = ({ title }) => {
   const { addCategory } = React.useContext(EventsContext);

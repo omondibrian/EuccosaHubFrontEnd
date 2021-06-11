@@ -2,7 +2,8 @@ import React, { createContext } from "react";
 import {
   addEvent,
   saveToLocalstorage,
-  readFilesFromLocalStorage
+  fileBlobFromDataURL,
+  getItemFromLocalStorage
 
 } from "../../../state/slices/Application";
 import { useDispatch } from "react-redux";
@@ -15,9 +16,9 @@ export const EventsContextProvider = (props) => {
   const [isVisible, setVisibility] = React.useState(false);
   React.useEffect(() => {
     //initialise events state with the stored event draft from localstorage if it exists
-    const event = JSON.parse(localStorage.getItem("event"));
+    const event = JSON.parse(getItemFromLocalStorage("event"));
     if (event) {
-      // event.pictorials = await readFilesFromLocalStorage(event.pictorials)
+      // event.pictorials = await fileBlobFromDataURL(event.pictorials)
       const date = new Date(event["date"]);
       setEvent({
         name: event["name"],
