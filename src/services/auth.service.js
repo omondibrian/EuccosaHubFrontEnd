@@ -1,4 +1,5 @@
 import createDefaultProfilePic from "../components/pages/auth/CreateProfilePic";
+import { storeToLocalstorage } from "../state/slices/Application";
 import { IP_ADDRESS } from "../utils/constants";
 
 export const login = async (credentials) => {
