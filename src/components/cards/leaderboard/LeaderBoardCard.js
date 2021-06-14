@@ -1,14 +1,15 @@
 import style from "./Profile.module.css";
 
 import React from "react";
+import { IP_ADDRESS } from "../../../utils/constants";
 
 function LeaderBoardCard({ profile, index }) {
   return (
     <div className={`${style.profile} .splide__slide`} data-order={index + 1}>
       <div className={style.profile__top}>
         <img
-          src={profile.img_src}
-          alt={profile.fullNname}
+          src={IP_ADDRESS + "/auth/uploads/" + profile.profilePic}
+          alt={profile.firstName + '  ' + profile.lastName}
           className={style.img_fluid}
         />
       </div>
@@ -26,9 +27,11 @@ function LeaderBoardCard({ profile, index }) {
           />
         </svg>
         <div className={style.profile__text}>
-          <span className={style.name}>{profile.fullName}</span>
+          <span className={style.name}>
+          {profile.firstName + '  ' + profile.lastName}
+          </span>
           <br />
-          &mdash;{profile.position}
+          &mdash;{profile.name}
         </div>
       </div>
     </div>

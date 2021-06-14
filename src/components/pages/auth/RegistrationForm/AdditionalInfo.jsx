@@ -158,9 +158,6 @@ function AdditionalInfo() {
               justifyContent: "space-between",
             }}
           >
-
-
-
             <Button
               onClick={(e) => {
                 e.preventDefault();

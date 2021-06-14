@@ -99,8 +99,7 @@
     -o-transform 0.35s, transform 0.35s;
 }
 .event_card__burner .card_details {
-  word-spacing: -0.15em;
-  text-transform: uppercase;
+  font-size: 14px;
   transform: translate3d(30%, 0%, 0);
   transition-delay: 0.3s;
 }

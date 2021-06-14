@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Cards.module.css";
-import { Cal, Timer, Location } from "../../vectors/Vectors";
+
 
 export const EventCard = ({ event = {} }) => {
   return (
@@ -13,14 +13,13 @@ export const EventCard = ({ event = {} }) => {
         />
         <figcaption>
           <div className={style.card_details}>
-            <Cal /> &nbsp;{event.date}
+            <i class="material-icons">date_range</i>&nbsp;{event.date}
           </div>
           <div className={style.card_details}>
-            <Timer /> &nbsp; {event.time}
+          <i class="material-icons">alarm</i> &nbsp;{event.time}
           </div>
           <div className={style.card_details}>
-            <Location />
-            &nbsp; {event.location}
+          <i class="material-icons">location_on</i>&nbsp;{event.location}
           </div>
         </figcaption>
       </div>

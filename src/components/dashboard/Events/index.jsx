@@ -1,5 +1,5 @@
 import React from "react";
-import PageTitle from "../pageTitle";
+import PageTitle from "../../dashboard/pageTitle";
 import EventCard from "../../cards/event/EventCard";
 import { fetchAllEvents } from "../../../services/events.service";
 import { IP_ADDRESS } from "../../../utils/constants";
@@ -22,6 +22,7 @@ function Events() {
           className="ml-sm-auto mr-sm-auto col-12"
         />
       </div>
+      
       <div className="row p-4 mb-3 ">
         {events.length > 0 &&
           events.map((myEvent, i) => (

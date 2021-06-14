@@ -64,7 +64,7 @@ export const FetchUsers = async () => {
   }).catch(e => e);
   if (result.ok) {
     const data = await result.json();
-    data["status"] = 200;
+    data["status"] = 200
     return data;
   } else {
     //TODO:add display incase of server error or any other errors
