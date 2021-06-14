@@ -1,16 +1,22 @@
 import React from 'react'
+import "./index.css"
+import { Link } from "react-router-dom"
+import { IP_ADDRESS } from "../../../utils/constants";
 
-
-function EventCardEdit() {
+function EventCardEdit({ event }) {
     return (
-        <div className="card" style={{ width: '18rem' }}>
-            <div className="d-flex ">
-            <img className="card-img-top" src="..." alt="Card image cap" />
+        <div className="card mx-3" style={{ width: '18rem' }}>
+            <div className="card-img-top d-flex flex-row card-images">
+                {
+                    event.pictorials.map(img => <div className="grid">
+                        <img className="card-img" src={`${IP_ADDRESS}/event/uploads/${img.name}`} alt={img.name} key={img.name}/>
+                    </div>)
+                }
             </div>
             <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" className="btn btn-primary">Go somewhere</a>
+                <h5 className="card-title">{event.name}</h5>
+                <p className="card-text">{event.description}</p>
+                <Link to="/edit" className="btn btn-primary">Edit</Link>
             </div>
         </div>
 

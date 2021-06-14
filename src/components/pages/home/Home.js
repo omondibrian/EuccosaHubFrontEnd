@@ -7,6 +7,7 @@ import SiteHeroSection from "./sections/SiteHero";
 import TestimonialSection from "./sections/Testimonial";
 import { testimonials as fallBackData } from "../../../data/Dammy/home.data";
 import { IP_ADDRESS } from "../../../utils/constants";
+
 import { fetchAllPublicEvents } from "../../../services/events.service";
 import { Request } from "../../../utils/Request";
 
