@@ -1,16 +1,19 @@
 import React from "react";
-import {FetchUsers} from '../../../services/auth.service'
+import { FetchUsers } from '../../../services/auth.service'
 import PageTitle from "../pageTitle";
 
 const UsersData = () => {
-  const [users,setUsers] = React.useState([]);
-  React.useEffect(()=>{
-    async function initializeUsers(){
+  const [users, setUsers] = React.useState([]);
+  React.useEffect(() => {
+    async function initializeUsers() {
       const res = await FetchUsers();
-      setUsers(res)
+      if (res.status === 200) {
+        setUsers(res)
+      }
+
     }
     initializeUsers()
-  },[])
+  }, [])
   
   return (
     <div className="main-content-container px-4 container-fluid">
@@ -21,7 +24,7 @@ const UsersData = () => {
 
       {/* Default Light Table */}
       <div className="row">
-        <div  className="col-12 mb-4">
+        <div className="col-12 mb-4">
           <div className="card-header border-bottom">
             <h6 className="m-0"> Users</h6>
           </div>
@@ -31,22 +34,25 @@ const UsersData = () => {
                 <tr>
                   <th scope="col" className="border-0">
                     #
-                </th>
+                  </th>
                   <th scope="col" className="border-0">
                     First Name
-                </th>
+                  </th>
                   <th scope="col" className="border-0">
                     Last Name
-                </th>
+                  </th>
                   <th scope="col" className="border-0">
                     Country
-                </th>
+                  </th>
                   <th scope="col" className="border-0">
                     Reg No
-                </th>
+                  </th>
                   <th scope="col" className="border-0">
                     Phone
-                </th>
+                  </th>
+                  <th scope="col" className="border-0">
+                    Edit
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -58,15 +64,17 @@ const UsersData = () => {
                     <td>{user.Address.country}</td>
                     <td>{user.regNumber}</td>
                     <td>{user.phoneNumber}</td>
+                    <td><i class="material-icons">edit</i></td>
+                    
                   </tr>
                 )}
               </tbody>
             </table>
           </div>
         </div>
-        </div>
       </div>
-     
+    </div>
+
   )
 }
 export default UsersData;

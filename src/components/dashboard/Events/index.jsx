@@ -1,5 +1,5 @@
 import React from "react";
-import PageTitle from "../../pageTitle";
+import PageTitle from "../../dashboard/pageTitle";
 import EventCard from "../../cards/event/EventCard";
 import { fetchAllEvents } from "../../../services/events.service";
 import { IP_ADDRESS } from "../../../utils/constants";
