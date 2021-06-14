@@ -22,9 +22,8 @@ export const addNewEvent = async (event) => {
   request.send(formData);
 };
 
-
-export const fetchAllEvents = async ()=>{
-  const result = await fetch(IP_ADDRESS+ "/event/all" , {
+export const fetchAllEvents = async () => {
+  const result = await fetch(IP_ADDRESS + "/event/all", {
     method: "GET",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -37,10 +36,10 @@ export const fetchAllEvents = async ()=>{
   } else {
     return { message: result.message, status: result.status };
   }
-}
+};
 
-export const fetchAllPublicEvents = async ()=>{
-  const result = await fetch(IP_ADDRESS+ "/event" , {
+export const fetchAllPublicEvents = async () => {
+  const result = await fetch(IP_ADDRESS + "/event", {
     method: "GET",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -53,4 +52,4 @@ export const fetchAllPublicEvents = async ()=>{
   } else {
     return { message: result.message, status: result.status };
   }
-}
+};

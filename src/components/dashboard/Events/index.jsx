@@ -1,5 +1,5 @@
 import React from "react";
-import PageTitle from "../../pageTitle";
+import PageTitle from "../pageTitle";
 import EventCard from "../../cards/event/EventCard";
 import { fetchAllEvents } from "../../../services/events.service";
 import { IP_ADDRESS } from "../../../utils/constants";
@@ -30,10 +30,9 @@ function Events() {
                 event={{
                   ...myEvent,
                   img:
-                    IP_ADDRESS +
-                    "/event/uploads/" +
-                    myEvent.pictorials[0].name,
+                    IP_ADDRESS + "/event/uploads/" + myEvent.pictorials[0].name,
                   title: myEvent.name,
+                  location: myEvent.venue,
                 }}
               />
             </div>
