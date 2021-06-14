@@ -8,7 +8,7 @@ function Menu({ closeNav, isUserLoggedIn }) {
             <div className="global-menu" onClick={closeNav}>
                 <div className="close">
                     <span className="global-menu__item global-menu__item" >
-                        <span className="material-icons" style={{ fontSize: "2.5rem", cursor: "pointer" }}>close</span>
+                        <i className="material-icons" style={{ fontSize: "2.5rem", cursor: "pointer" }}>close</i>
                     </span>
                 </div>
                 <div className="global-menu__wrap">
