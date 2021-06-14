@@ -1,0 +1,11 @@
+.grid{
+    flex-basis: 50%;
+    flex-grow: 1;
+    padding: 3px;
+    overflow: hidden;
+}
+.card-images{
+    flex-wrap: wrap;
+    height: 200px;
+    overflow: hidden;
+}

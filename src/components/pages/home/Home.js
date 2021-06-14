@@ -5,8 +5,7 @@ import AboutSection from "./sections/About";
 import EventSection from "./sections/Event";
 import SiteHeroSection from "./sections/SiteHero";
 import TestimonialSection from "./sections/Testimonial";
-import { ourTeam, testimonials, myEvent } from "../../../data/Dammy/home.data";
-import { IP_ADDRESS } from "../../../utils/constants";
+import { ourTeam, testimonials } from "../../../data/Dammy/home.data";
 import { fetchAllPublicEvents } from "../../../services/events.service";
 
 
