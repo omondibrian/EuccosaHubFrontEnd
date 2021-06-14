@@ -1,6 +1,9 @@
 import React from "react";
 import style from "./Cards.module.css";
 import { Cal, Timer, Location } from "../../vectors/Vectors";
+import {format} from "date-fns/fp"
+import en from "date-fns/locale/en-GB";
+// const dateToString = format({ locale: en }, 'MM d yyyy')
 
 export const EventCard = ({ event = {} }) => {
   return (
