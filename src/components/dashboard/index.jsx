@@ -4,6 +4,7 @@ import UserProfile from "./userProfile";
 import { Route } from "react-router-dom";
 import DashboardStats from "./statsOverview";
 import AddNewEvent from "./NewEvent";
+import Events from "./Events";
 import Users from "./Users";
 
 const defaultLayoutProps = {
@@ -18,6 +19,7 @@ export default function DashBoard() {
         <Route exact path="/dashboard" render={() => <DashboardStats />} />
         <Route path="/dashboard/user-profile" render={() => <UserProfile />} />
         <Route path="/dashboard/add-new-event" render={() => <AddNewEvent />} />
+        <Route path="/dashboard/Events" render={() => <Events />} />
         <Route path="/dashboard/users" render={() => <Users />} />
       </DefaultLayout>
     </div>

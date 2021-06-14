@@ -21,3 +21,36 @@ export const addNewEvent = async (event) => {
   request.open("POST", IP_ADDRESS + "/event");
   request.send(formData);
 };
+
+
+export const fetchAllEvents = async ()=>{
+  const result = await fetch(IP_ADDRESS+ "/event/all" , {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+  });
+  if (result.ok) {
+    const data = await result.json();
+    data["status"] = 200;
+    return data;
+  } else {
+    return { message: result.message, status: result.status };
+  }
+}
+
+export const fetchAllPublicEvents = async ()=>{
+  const result = await fetch(IP_ADDRESS+ "/event" , {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+  });
+  if (result.ok) {
+    const data = await result.json();
+    data["status"] = 200;
+    return data;
+  } else {
+    return { message: result.message, status: result.status };
+  }
+}
