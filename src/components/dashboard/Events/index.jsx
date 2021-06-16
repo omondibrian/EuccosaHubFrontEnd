@@ -4,11 +4,11 @@ import { fetchAllEvents } from "../../../services/events.service";
 import EventCardEdit from "./EventCardEdit";
 function Events() {
   const [events, setEvents] = React.useState([]);
+  async function fetchEvents() {
+    const result = await fetchAllEvents();
+    setEvents(result.events);
+  }
   React.useEffect(() => {
-    async function fetchEvents() {
-      const result = await fetchAllEvents();
-      setEvents(result.events);
-    }
     fetchEvents();
   }, []);
   return (
@@ -24,7 +24,7 @@ function Events() {
       <div className="row ">
         {events.length > 0 &&
           events.map(event_ => (
-            <EventCardEdit event={event_}/>
+            <EventCardEdit event={event_} fetchEvent={fetchEvents}/>
           ))}
       </div>
     </div>

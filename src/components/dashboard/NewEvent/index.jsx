@@ -5,18 +5,22 @@ import { EventsContextProvider } from "./newEventProvider";
 import SidebarActions from "../AddNewEvent/SideBarActions";
 import SidebarCategories from "../AddNewEvent/SideBarCategory";
 
-
 const AddNewEvent = (props) => {
-
   return (
-    <EventsContextProvider state = {{...props.location.state}}>
+    <EventsContextProvider state={{ ...props.location.state }}>
       <div className="container-fulid main-content-container px-3 pb-4">
         {/* Page Header */}
         <div className="row page-header py-4">
           <PageTitle
             sm="4"
-            title= {props.location.state ?  props.location.state.title : props.title }
-            subtitle= {props.location.state.subtitle}
+            title={
+              props.location.state ? props.location.state.title : props.title
+            }
+            subtitle={
+              props.location.state
+                ? props.location.state.subtitle
+                : props.subtitle
+            }
             className="text-sm-left"
           />
         </div>
