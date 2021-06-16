@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { addNewEvent } from "../../services/events.service";
 
-
-
 export const addEvent = createAsyncThunk(
   "application/addEvent",
   async (event) => {
@@ -11,36 +9,41 @@ export const addEvent = createAsyncThunk(
   }
 );
 
+export const updateEvent = createAsyncThunk(
+  "application/updateEvent",
+  async (event) => {
+    const res = await addNewEvent(event, "PUT");
+    return res;
+  }
+);
+
 /**
  * retrive an item from local storage
- * @param {string} key - item to retrive from local storage 
+ * @param {string} key - item to retrive from local storage
  * @example
  * getItemFromLocalStorage(ID)
  */
 export const getItemFromLocalStorage = (key) => {
   try {
-    return localStorage.getItem(key)
+    return localStorage.getItem(key);
+  } catch (e) {
+    return "";
   }
-  catch (e) {
-    return ""
-  }
-}
+};
 
 /**
  * store item to localstorage
- * @param {string} key  - key value for item 
- * @param {any} value - value to store 
+ * @param {string} key  - key value for item
+ * @param {any} value - value to store
  * @example
  * const user = {name:"ojay", id:"10"}
  * storeToLocalstorage("user",user)
  */
 export const storeToLocalstorage = (key, value) => {
   try {
-    return localStorage.setItem(key, value)
-  }
-  catch (e) {
-  }
-}
+    return localStorage.setItem(key, value);
+  } catch (e) {}
+};
 
 /**
  * stores an event to local stroge
@@ -51,12 +54,12 @@ export const saveToLocalstorage = async (event) => {
     let files = await readFiles(event.pictorials);
     event.pictorials = files;
   }
-  event.draft = true
-  storeToLocalstorage('event', JSON.stringify(event))
+  event.draft = true;
+  storeToLocalstorage("event", JSON.stringify(event));
 };
 /**
  * Read  files to data: URL representing the file's data.
- * @param {FileList} files 
+ * @param {FileList} files
  * @returns {Promise<Array<sting>>} - resoves with array with data: URL representing the file's data.
  */
 export const readFiles = (files) => {
@@ -84,13 +87,10 @@ export const readFiles = (files) => {
 export const fileBlobFromDataURL = (files) => {
   let fileList = [];
   files.forEach((file) => {
-    fileList.push(
-      fetch(file).then(res => res.blob())
-    )
+    fileList.push(fetch(file).then((res) => res.blob()));
   });
-  return Promise.all(fileList)
+  return Promise.all(fileList);
 };
-
 
 /**
  * clears local storage
@@ -98,11 +98,10 @@ export const fileBlobFromDataURL = (files) => {
 export const clearLocalStorage = () => {
   try {
     localStorage.clear();
-  } catch (e) { }
+  } catch (e) {}
 };
 const id = getItemFromLocalStorage("ID");
 const token = getItemFromLocalStorage("TOKEN");
-
 
 /**
  * react-redux slice that keeps application state
@@ -123,9 +122,9 @@ const Application = createSlice({
       state.isMenuOpen = !state.isMenuOpen;
     },
     /**
-     * 
-     * @param {} state 
-     * @param {Object<string,string>} actions.payload - 
+     *
+     * @param {} state
+     * @param {Object<string,string>} actions.payload -
      * @example
      * const dispatch = useDispatch()
      * const message = {message:"your account was created successfully",
@@ -150,6 +149,9 @@ const Application = createSlice({
       [addEvent.fulfilled]: (state, { payload }) => {
         state.loading = false;
         state.events = state.events.push(payload.events);
+      },
+      [updateEvent.fulfilled]: (state, { payload }) => {
+        console.log(payload);
       },
     },
   },

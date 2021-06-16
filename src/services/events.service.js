@@ -1,7 +1,7 @@
 import { randomString } from "../components/pages/auth/CreateProfilePic";
 import { IP_ADDRESS } from "../utils/constants";
 
-export const addNewEvent = async (event) => {
+export const addNewEvent = async (event,method='POST') => {
   const formData = new FormData();
   for (const field in event) {
     if (Object.hasOwnProperty.call(event, field)) {
@@ -18,9 +18,13 @@ export const addNewEvent = async (event) => {
   }
 
   let request = new XMLHttpRequest();
-  request.open("POST", IP_ADDRESS + "/event");
+  request.open(method, IP_ADDRESS + "/event");
   request.send(formData);
 };
+
+
+
+
 
 export const fetchAllEvents = async () => {
   const result = await fetch(IP_ADDRESS + "/event/all", {
