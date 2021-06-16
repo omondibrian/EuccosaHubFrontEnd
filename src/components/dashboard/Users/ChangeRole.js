@@ -16,12 +16,12 @@ function ChangeRole() {
     })
     React.useEffect(() => {
         const init = async () => {
-            const { users, status } = await Request(`${IP_ADDRESS}/auth/users`);
-            const { role, status: roleStatus } = await Request(`${IP_ADDRESS}/roles`)
-            const { officials, state: officialsState } = await Request(`${IP_ADDRESS}/roles/officials`)
-            if (status === 200 && roleStatus === 200 &&
-                officialsState === 200) {
-                setState({ users: users, roles: role, officials })
+            const { users } = await Request(`${IP_ADDRESS}/auth/users`);
+            const { role: roles } = await Request(`${IP_ADDRESS}/roles`)
+            const { officials } = await Request(`${IP_ADDRESS}/roles/officials`)
+
+            if (users && roles && officials) {
+                setState({ users, roles, officials })
             }
         }
         init()
@@ -62,22 +62,6 @@ function ChangeRole() {
             }))
 
     }
-    const getUser = (id) => {
-        let user;
-        state.users.forEach(item => {
-            if (item.id === id)
-                user = item
-        })
-        return `${user.firstName} ${user.lastName}`
-    }
-    const getRole = (id) => {
-        let role;
-        state.roles.forEach(item => {
-            if (item.id === id)
-                role = item
-        })
-        return role.name
-    }
     const deleteRole = async (id) => {
         const { statue, message } = await Request(`${IP_ADDRESS}/roles/`, "DELETE", headers, { "id": id })
         let alertClass = "alert-danger";
@@ -113,7 +97,7 @@ function ChangeRole() {
             <div className="row page-header py-4">
                 <PageTitle sm="4" title="Official Roles" subtitle="officials" className="text-sm-left" />
             </div>
-            <table className="table mb-5">
+            <table className="table mb-5 table-sm">
                 <thead className="bg-light">
                     <tr>
                         <th scope="col" className="border-0">
@@ -125,17 +109,18 @@ function ChangeRole() {
                         <th>
                             Delete
                         </th>
-
+                  
                     </tr>
                 </thead>
                 <tbody>
                     {state.officials.map(officials =>
                         <tr>
-                            <td>{getRole(officials.id)}</td>
-                            <td>{getUser(officials.role)}</td>
+                            {/* role name */}
+                            <td>{officials.name}</td>
+                            <td>{`${officials.firstName} ${officials.lastName}`}</td>
                             <td>
                                 <i className="material-icons text-danger btn" onClick={() => {
-                                    deleteRole(officials.id)
+                                    deleteRole(officials.role_id)
                                 }}>delete</i>
                             </td>
                         </tr>

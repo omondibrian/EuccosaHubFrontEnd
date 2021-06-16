@@ -9,11 +9,11 @@ const UsersData = () => {
   const [roles, setRoles] = React.useState([]);
   React.useEffect(() => {
     async function initializeUsers() {
-      const res = await Request(`${IP_ADDRESS}/auth/users`);
+      const {users,status} = await Request(`${IP_ADDRESS}/auth/users`);
       const userRoles = await Request(`${IP_ADDRESS}/roles`)
       setRoles(userRoles.role || [])
-      if (res.status === 200) {
-        setUsers(res)
+      if (status === 200) {
+        setUsers(users)
       }
 
     }
