@@ -46,23 +46,22 @@ export const myEvent = {
 
 export const testimonials = [
   {
-    id: 1,
-    message:
+    testimony:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.",
     user: {
-      fullName: "Jonathan Onderi",
+      firstName: "John",
+      lastName:"mdoe",
       occupation: "Developer",
-      profile: avator,
+      profilePic: avator,
     },
   },
   {
-    id: 1,
-    message:
+    testimony:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.",
     user: {
       fullName: "User two",
       occupation: "Developer",
-      profile: Img2,
+      profilePic: Img2,
     },
   },
 ];

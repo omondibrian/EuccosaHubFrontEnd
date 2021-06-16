@@ -3,8 +3,18 @@ import style from "../Home.module.css";
 import EventCard from "../../../cards/event/EventCard";
 import { IP_ADDRESS } from "../../../../utils/constants";
 import EventSkeleton from "../../../skeletons/EventSkeleton";
-
-function EventSection({ events }) {
+import {Request} from "../../../../utils/Request"
+function EventSection() {
+  const [events, setEvents] = React.useState([]);
+  React.useEffect(() => {
+    async function init() {
+      const { events, status } = await Request(`${IP_ADDRESS}/event`);
+      if (status ===200) {
+        setEvents(events);
+      }
+    }
+    init();
+  }, []);
   return (
     <section className={style.events} id="events">
 

@@ -157,7 +157,7 @@ export const Error = () => {
 };
 
 export const PathTop = () => {
-    return (<svg className="block" viewBox="0 0 1280 72" fill="none" >
+    return (<svg className="block" viewBox="0 0 1280 72" fill="none" preserveAspectRatio="none">
         <path d="M1280 71L1280 4.70043C662 104.425 463.035 -25.6055 0 4.70034V71C0 71 146.362 72.4279 385.419 71C624.476 69.5721 803.659 71 990.381 71H1280Z"
             fill="var(--background)" >
         </path> </svg>
@@ -166,7 +166,7 @@ export const PathTop = () => {
 
 export const PathBottom = () => {
     return (
-        <svg className="block" viewBox="0 0 1280 62" fill="none" >
+        <svg className="block" viewBox="0 0 1280 62" fill="none" preserveAspectRatio="none">
             <path d="M1280 32.9851V62.0001H640H0V8.00006C0 8.00006 195.424 42.0001 365.357 42.0001C535.291 42.0001 746.208 0 916.142 0C1086.08 0 1280 32.9851 1280 32.9851Z"
                 fill="var(--background)" >
             </path>

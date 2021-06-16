@@ -16,7 +16,6 @@ const SidebarActions = ({ title }) => {
     toggleVisibility,
     handleSubmit,
   } = React.useContext(EventsContext);
-  console.log(`draft ${draft}`);
   return (
     <div className="card mb-3">
       <div className="border-bottom card-header">
@@ -96,7 +95,6 @@ function Modal({ toggleModal, showModal }) {
       ...schedule,
       [e.target.name]: e.target.value,
     });
-    console.log(schedule);
   };
   return (
     <div className="ml-auto ">

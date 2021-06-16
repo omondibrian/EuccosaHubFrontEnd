@@ -6,6 +6,7 @@ import DashboardStats from "./statsOverview";
 import AddNewEvent from "./NewEvent";
 import Events from "./Events";
 import Users from "./Users";
+import ChangeRole from "./Users/ChangeRole"
 
 const defaultLayoutProps = {
   noNavbar: false,
@@ -20,7 +21,8 @@ export default function DashBoard() {
         <Route path="/dashboard/user-profile" render={() => <UserProfile />} />
         <Route path="/dashboard/add-new-event" render={() => <AddNewEvent />} />
         <Route path="/dashboard/Events" render={() => <Events />} />
-        <Route path="/dashboard/users" render={() => <Users />} />
+        <Route path="/dashboard/users/roles/" render={(props) => <ChangeRole props={props} />} />
+        <Route path="/dashboard/users" exact={true} render={() => <Users />} />
       </DefaultLayout>
     </div>
   );

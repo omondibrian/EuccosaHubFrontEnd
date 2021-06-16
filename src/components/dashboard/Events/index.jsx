@@ -21,7 +21,7 @@ function Events() {
         />
       </div>
       
-      <div className="row p-4 mb-3 ">
+      <div className="row ">
         {events.length > 0 &&
           events.map(event_ => (
             <EventCardEdit event={event_}/>

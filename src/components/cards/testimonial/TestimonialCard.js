@@ -44,14 +44,14 @@ function TestimonialCard({ testimonial }) {
           </svg>
           <div className={style.rounded}>
             <img
-              src={IP_ADDRESS + "/auth/uploads/" + testimonial.user.profilePic}
+              src={testimonial.id ? `${IP_ADDRESS}/auth/uploads/${testimonial.user.profilePic}` : testimonial.user.profilePic}
               alt={testimonial.user.profilePic}
               className={style.img_fluid}
             />
           </div>
         </div>
         <div className={style.testimonial_card__profile__text}>
-          {testimonial.user.firstName + ' '+ testimonial.user.lastName}
+          {testimonial.user.firstName + ' ' + testimonial.user.lastName}
           <br />
           {testimonial.user.occupation}
         </div>
