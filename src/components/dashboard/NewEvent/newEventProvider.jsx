@@ -5,6 +5,7 @@ import {
   fileBlobFromDataURL,
   getItemFromLocalStorage,
   updateEvent,
+  createFlushMessage
 } from "../../../state/slices/Application";
 import { useDispatch } from "react-redux";
 export const EventsContext = createContext();
@@ -95,6 +96,9 @@ export const EventsContextProvider = (props) => {
     };
     if (!draft) {
       dispatch(addEvent(event));
+      dispatch(createFlushMessage({
+        className:'alert-success',message:'successfully saved your changes'
+      }))
       //  localStorage.removeItem("event");
     } else {
       saveToLocalstorage(event);
@@ -126,6 +130,9 @@ export const EventsContextProvider = (props) => {
       isVisible: isVisible,
     };
     dispatch(updateEvent({ id: newEvent.id, ...updateOptions }));
+    dispatch(createFlushMessage({
+      className:'alert-success',message:'successfully saved your changes'
+    }))
   };
   return (
     <EventsContext.Provider

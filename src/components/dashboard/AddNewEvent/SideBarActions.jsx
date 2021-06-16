@@ -15,10 +15,9 @@ const SidebarActions = ({ title }) => {
     draft,
     toggleVisibility,
     handleSubmit,
-    handleUpdate
+    handleUpdate,
   } = React.useContext(EventsContext);
-  // const subRoutine = newEvent.id ? handleUpdate : handleSubmit;
-  const subRoutine =  handleUpdate ;
+  const subRoutine = newEvent.id ? handleUpdate : handleSubmit;
   return (
     <div className="card mb-3">
       <div className="border-bottom card-header">
@@ -56,11 +55,7 @@ const SidebarActions = ({ title }) => {
               <strong className="mr-1">
                 Schedule<sup className="text-danger">*</sup>
               </strong>
-              <Modal
-                toggleModal={toggleModal}
-                showModal={showModal}
-               
-              />
+              <Modal toggleModal={toggleModal} showModal={showModal} />
             </span>
           </li>
           <li className="list-group-item d-flex px-3 border-0">
@@ -69,7 +64,7 @@ const SidebarActions = ({ title }) => {
             </button> */}
             <button
               className="btn btn-primary py-3 px-5 mr-auto"
-              onClick={handleUpdate}
+              onClick={subRoutine}
             >
               <i className="material-icons">file_copy</i> Save
             </button>
@@ -84,21 +79,20 @@ export default SidebarActions;
 
 function Modal({ toggleModal, showModal }) {
   const [schedule, SetSchedule] = React.useState({});
-  const { newEvent,updateSchedule } = React.useContext(EventsContext);
+  const { newEvent, updateSchedule } = React.useContext(EventsContext);
   const handleSubmit = (schedule) => {
     updateSchedule(schedule);
   };
-  React.useEffect(()=>{
-    console.log(newEvent)
-    SetSchedule({...newEvent.schedule})
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  React.useEffect(() => {
+    console.log(newEvent);
+    SetSchedule({ ...newEvent.schedule });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const handleChange = (e) => {
     SetSchedule({
       ...schedule,
       [e.target.name]: e.target.value,
     });
-    console.log(schedule);
   };
   return (
     <div className="ml-auto ">
@@ -186,7 +180,10 @@ function Modal({ toggleModal, showModal }) {
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleSubmit(schedule)}
+                  onClick={() => {
+                    handleSubmit(schedule);
+                    toggleModal(!showModal);
+                  }}
                   className="btn btn-primary"
                 >
                   Save changes

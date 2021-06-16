@@ -268,7 +268,7 @@
 .wave {
   overflow: hidden;
   width: 100%;
-  min-height: 14px;
+  height: 100px;
 }
 
 /**/

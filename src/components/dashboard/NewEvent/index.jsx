@@ -5,8 +5,9 @@ import { EventsContextProvider } from "./newEventProvider";
 import SidebarActions from "../AddNewEvent/SideBarActions";
 import SidebarCategories from "../AddNewEvent/SideBarCategory";
 
+
 const AddNewEvent = (props) => {
- 
+
   return (
     <EventsContextProvider state = {{...props.location.state}}>
       <div className="container-fulid main-content-container px-3 pb-4">

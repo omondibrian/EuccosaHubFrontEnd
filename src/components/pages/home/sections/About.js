@@ -5,8 +5,20 @@ import LeaderBoardCard from "../../../cards/leaderboard/LeaderBoardCard";
 import { PathBottom, PathTop } from "../../../vectors/Vectors";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
+import { IP_ADDRESS } from "../../../../utils/constants";
+import {Request} from "../../../../utils/Request"
 
-function AboutSection({ ourTeam }) {
+function AboutSection() {
+  const [leaderBoard, setLeaderBoard] = React.useState([]);
+  React.useEffect(() => {
+    async function init() {
+      const { officials, status } = await Request(`${IP_ADDRESS}/roles/officials`);
+      if (status === 200) {
+        setLeaderBoard(officials);
+      }
+    }
+    init();
+  }, []);
   const waveFlip = classNames(style.wave, style.flip);
   return (
     <section className={style.about} id="about">
@@ -48,10 +60,10 @@ function AboutSection({ ourTeam }) {
           This is the current leadership team for the Eucossa community
         </div>
         <div className={style.team_slideShow}>
-          {ourTeam.map((profile, indx) => (
+          {leaderBoard.map((profile, indx) => (
             <LeaderBoardCard key={indx} profile={profile} index={indx} />
           ))}
-          {ourTeam.map((profile, indx) => (
+          {leaderBoard.map((profile, indx) => (
             <LeaderBoardCard key={indx} profile={profile} index={`${indx}-1`} />
           ))}
         </div>

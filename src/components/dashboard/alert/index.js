@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { createFlushMessage } from "../../../state/slices/Application";
 
 function Alert({ alert }) {
-// receives object with message and bootrap css class 
-//ie {message:"your acount was created successfully",className:"alert-success"}
+  // receives object with message and bootrap css class 
+  //ie {message:"your acount was created successfully",className:"alert-success"}
 
   const alertClasses = classNames("alert", alert.className);
   const ref = useRef(null);
@@ -16,6 +16,7 @@ function Alert({ alert }) {
   const closeAlert = () => {
     dispatch(createFlushMessage(""));
   };
+  setTimeout(() => dispatch(createFlushMessage("")), 5000)
   return (
     <div className={alertClasses} role="alert" ref={ref}>
       {alert.message}

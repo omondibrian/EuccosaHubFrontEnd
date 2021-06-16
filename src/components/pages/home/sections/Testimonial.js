@@ -3,12 +3,24 @@ import style from "../Home.module.css";
 import "./transition.css"
 import TestimonialCard from "../../../cards/testimonial/TestimonialCard";
 import { CSSTransition } from "react-transition-group";
+import { Request } from "../.../../../../../utils/Request"
+import { IP_ADDRESS } from "../../../../utils/constants";
+import { testimonials as fallBackData } from "../../../../data/Dammy/home.data";
 
-function TestimonialSection({
-  testimonials,
-  activeTestimonialIndex,
-  setActiveTestimonialIndex,
-}) {
+function TestimonialSection() {
+  const [activeTestimonialIndex, setActiveTestimonialIndex] = React.useState(0);
+  const [testimonials, setTestinonials] = React.useState(fallBackData);
+  React.useEffect(() => {
+    const init = async () => {
+      const { testimonies, status } = await Request(
+        `${IP_ADDRESS}/testimonial`
+      );
+      if (status === 200) {
+        setTestinonials(testimonies);
+      }
+    }
+    init()
+  }, [])
   const next = () => {
     let currentIndex = activeTestimonialIndex + 1;
     if (currentIndex > testimonials.length - 1) {
