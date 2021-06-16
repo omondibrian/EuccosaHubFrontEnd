@@ -3,12 +3,17 @@ export const Request = async (
   requestMethod = "GET",
   headers = {
     "Content-Type": "application/json;charset=utf-8",
-  }
+  },
+  body = {}
 ) => {
-  const result = await fetch(endPoint, {
+  const fetchObj = {
     method: requestMethod,
     headers,
-  });
+  };
+  if (requestMethod !== "GET") {
+    fetchObj.body = JSON.stringify(body);
+  }
+  const result = await fetch(endPoint, fetchObj);
   if (result.ok) {
     const data = await result.json();
     data["status"] = 200;

@@ -9,14 +9,16 @@ registerLocale("en", en);
 const SidebarActions = ({ title }) => {
   const [showModal, toggleModal] = React.useState(false);
   const {
-
+    newEvent,
     toggleDraft,
     isVisible,
     draft,
     toggleVisibility,
     handleSubmit,
+    handleUpdate
   } = React.useContext(EventsContext);
-  console.log(`draft ${draft}`);
+  // const subRoutine = newEvent.id ? handleUpdate : handleSubmit;
+  const subRoutine =  handleUpdate ;
   return (
     <div className="card mb-3">
       <div className="border-bottom card-header">
@@ -67,7 +69,7 @@ const SidebarActions = ({ title }) => {
             </button> */}
             <button
               className="btn btn-primary py-3 px-5 mr-auto"
-              onClick={handleSubmit}
+              onClick={handleUpdate}
             >
               <i className="material-icons">file_copy</i> Save
             </button>
