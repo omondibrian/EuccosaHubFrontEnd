@@ -115,18 +115,6 @@ function UserEdit({ selectedUser, setSelectedUser, roles }) {
                                         name="country"
                                         readOnly />
                                 </div>
-                                {/* <div className="col-md-6 form-group">
-                                    <label htmlFor="role">user role</label>
-                                    <select
-                                        id="role"
-                                        name="role"
-                                        className="form-control"
-                                        value={selectedUser.role}
-                                    >
-                                        {roles.map(role => <option key={role.id}>{role.name}</option>)}
-                                        <option>...</option>
-                                    </select>
-                                </div> */}
                                 <div className="col-md-12 form-group">
                                     <div className="form-check">
                                         <input className="form-check-input" type="checkbox" id="active"
